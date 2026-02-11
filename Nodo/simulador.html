@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Capital | Nodo</title>
+    <link rel="icon" type="image/png" href="logo_nodo.png">    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+        if (!user) {
+            window.netlifyIdentity.on("login", () => {
+            document.location.href = "/dashboard.html";
+            });
+        }
+        });
+    }
+    </script>
+</head>
+<body class="calculator-body">
+
+<header>
+    <a href="index.html" class="header-logo"><img src="logo_nodo.png" alt="NODO"></a>
+    
+    <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="research.html" class="nav-link">Research</a>
+        <a href="simulador.html" class="nav-link active">Simulador</a>
+    </nav>
+
+    <div class="mobile-menu-icon" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+    <a href="#contato" class="btn desktop-btn">Contato</a>
+</header>
+
+<main>
+    <section class="section-padding reveal">
+        <div class="calc-intro">
+            <span class="step-num">Financial Intelligence</span>
+            <h1 class="display-title">Arquitetura de <span>Juros</span></h1>
+            <p style="max-width: 600px; opacity: 0.8; margin-top: 20px;">
+                Passe o mouse sobre os pontos do gráfico para ver a evolução detalhada. O capital exige visão de longo prazo e precisão cirúrgica.
+            </p>
+        </div>
+
+        <div class="simulator-main-grid">
+            <div class="simulator-controls">
+                <div class="input-block">
+                    <label>Aporte Inicial (R$)</label>
+                    <input type="number" id="initial" value="100000" oninput="calculate()">
+                </div>
+                <div class="input-block">
+                    <label>Aporte Mensal (R$)</label>
+                    <input type="number" id="monthly" value="5000" oninput="calculate()">
+                </div>
+                <div class="input-block">
+                    <label>Taxa Anual (%)</label>
+                    <input type="number" id="rate" value="12" step="0.5" oninput="calculate()">
+                </div>
+                <div class="input-block">
+                    <label>Tempo (Anos): <span id="years-val" style="color: var(--accent-bronze);">15</span></label>
+                    <input type="range" id="years" min="1" max="40" value="15" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="simulator-display">
+                <div class="display-header">
+                    <div class="result-box">
+                        <small>Patrimônio Projetado</small>
+                        <h2 id="final-res">R$ 0,00</h2>
+                    </div>
+                    <div class="result-box bronze-highlight">
+                        <small>Rendimento em Juros</small>
+                        <h2 id="interest-res">R$ 0,00</h2>
+                    </div>
+                </div>
+
+                <div class="chart-holder">
+                    <canvas id="mainChart"></canvas>
+                </div>
+
+                <div class="inline-cta-box">
+                    <div class="cta-text">
+                        <h4>Deseja blindar esse crescimento?</h4>
+                        <p>Simulações nominais não consideram inflação e impostos. Proteja seu legado com inteligência.</p>
+                    </div>
+                    <a href="index.html#contato" class="btn">Solicitar Diagnóstico</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-column">
+            <img src="logo_nodo.png" alt="NODO" style="height: 45px; margin-bottom: 20px; opacity: 0.8;">
+            <p>Inteligência patrimonial focada na liberdade e na proteção do seu legado.</p>
+        </div>
+
+        <div class="footer-column">
+            <h5>Navegação</h5>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#contato">Diagnóstico</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h5>Contacto</h5>
+            <ul>
+                <li><a href="https://www.linkedin.com/company/nodowealth">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/nodo.wealth/">Instagram</a></li>
+                <li><a href="mailto:nodowealth@gmail.com">E-mail</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h5>Presença</h5>
+            <p>Curitiba, PR<br>Atendimento Global</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="footer-info">NODO | INTELIGÊNCIA PATRIMONIAL &copy; 2026</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+let chart;
+
+function calculate() {
+    const initial = parseFloat(document.getElementById('initial').value) || 0;
+    const monthly = parseFloat(document.getElementById('monthly').value) || 0;
+    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+    const years = parseInt(document.getElementById('years').value);
+    
+    document.getElementById('years-val').innerText = years;
+
+    const monthlyRate = annualRate / 100 / 12;
+    const months = years * 12;
+
+    let labels = [];
+    let totalData = [];
+    let investedData = [];
+    let currentTotal = initial;
+
+    for (let m = 0; m <= months; m++) {
+        if (m > 0) currentTotal = (currentTotal + monthly) * (1 + monthlyRate);
+        if (m % 12 === 0) {
+            labels.push("Ano " + (m / 12));
+            totalData.push(currentTotal.toFixed(2));
+            investedData.push((initial + monthly * m).toFixed(2));
+        }
+    }
+
+    document.getElementById('final-res').innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(currentTotal);
+    document.getElementById('interest-res').innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(currentTotal - (initial + monthly * months));
+
+    renderChart(labels, totalData, investedData);
+}
+
+function renderChart(labels, total, invested) {
+    const ctx = document.getElementById('mainChart').getContext('2d');
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Patrimônio',
+                data: total,
+                borderColor: '#d1a686',
+                backgroundColor: 'rgba(209, 166, 134, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#d1a686'
+            }, {
+                label: 'Investido',
+                data: invested,
+                borderColor: 'rgba(255,255,255,0.2)',
+                borderDash: [5, 5],
+                pointRadius: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#1a1a1a',
+                    titleColor: '#d1a686',
+                    bodyColor: '#fff',
+                    borderColor: '#d1a686',
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: false,
+                    callbacks: {
+                        label: function(context) {
+                            let value = context.parsed.y;
+                            return 'Total: ' + new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#666' } },
+                x: { grid: { display: false }, ticks: { color: '#666' } }
+            }
+        }
+    });
+}
+calculate();
+</script>
+</body>
+</html>

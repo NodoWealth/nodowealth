@@ -1,0 +1,238 @@
+<head>
+    <title>Nodo | Inteligência Patrimonial</title>
+    <meta name="description" content="A Nodo organiza sua vida financeira...">
+    <link rel="icon" type="image/png" href="logo_nodo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+        if (!user) {
+            window.netlifyIdentity.on("login", () => {
+            document.location.href = "/dashboard.html";
+            });
+        }
+        });
+    }
+    </script>
+</head>
+    
+<body>
+
+<header>
+    <a href="index.html" class="header-logo"><img src="logo_nodo.png" alt="NODO"></a>
+    
+    <nav class="main-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="research.html" class="nav-link">Research</a>
+        <a href="simulador.html" class="nav-link">Simulador</a>
+    </nav>
+
+    <div class="mobile-menu-icon" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+    <a href="#contato" class="btn desktop-btn">Contato</a>
+</header>
+
+    <section class="hero reveal">
+        <span class="hero-brand">Nodo</span>
+        <h1>O capital não aceita <br> <span>negligência</span>.</h1>
+        <p>A Nodo organiza sua vida financeira para que você possa se desconectar do caos. Clareza, liberdade e proteção em um único ponto de convergência.</p>
+        <a href="#servicos" class="btn">Nossas frentes</a>
+    </section>
+
+    <section class="data-strip">
+        <div class="data-item">
+            <h2 class="counter" data-target="14">+0</h2>
+            <p>Famílias Atendidas</p>
+        </div>
+        <div class="data-item">
+            <h2 class="counter" data-target="780">0</h2>
+            <p>Custódia Monitorada (k)</p>
+        </div>
+        <div class="data-item">
+            <h2 class="counter" data-target="100">0</h2>
+            <p>% Modelo Fee-Based</p>
+        </div>
+        <div class="data-item">
+            <h2 class="counter" data-target="24">0</h2>
+            <p>Horas de Vigilância</p>
+        </div>
+    </section>
+
+<section id="servicos" class="section-padding">
+    <div class="services-intro reveal">
+        <p>Expertise & Isenção</p>
+        <h2>Nossas Frentes de Atuação</h2>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+            <div class="icon-decor">01</div>
+            <h3>Consolidação de Patrimônio</h3>
+            <div class="service-description">
+                <p>Unificamos o seu patrimônio global em uma interface única. Tenha clareza absoluta sobre alocação, liquidez e performance líquida real de todos os seus ativos, independentemente da instituição.</p>
+            </div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+            <div class="icon-decor">02</div>
+            <h3>Eficiência e Monitoramento</h3>
+            <div class="service-description">
+                <p>Atuamos na vigilância constante de custos, taxas e sobreposição de riscos. Analisamos o mercado para garantir que sua estrutura atual seja a mais eficiente possível.</p>
+            </div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+            <div class="icon-decor">03</div>
+            <h3>Curadoria de Informações</h3>
+            <div class="service-description">
+                <p>Research independente focado no seu perfil. Reunimos informações estratégicas do cenário macroeconômico e organizamos os dados para apoiar suas decisões.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="method-section">
+    <div class="method-header reveal">
+        <span>Workflow</span>
+        <h2>O caminho para a <i>Desconexão.</i></h2>
+    </div>
+
+    <div class="method-row">
+        <div class="method-item reveal reveal-delay-1">
+            <div class="method-dot"></div>
+            <span class="step-num">01 / DIAGNÓSTICO</span>
+            <h4><span>Entender</span> o cenário.</h4>
+            <p>Mapeamos cada ramificação da sua estrutura atual para silenciar o ruído e identificar ineficiências que impedem sua paz de espírito.</p>
+        </div>
+
+        <div class="method-item">
+            <div class="method-dot reveal reveal-delay-2"></div>
+            <span class="step-num">02 / ARQUITETURA</span>
+            <h4><span>Simplificar</span> o fluxo.</h4>
+            <p>Desenhamos uma gestão invisível e eficiente. Onde você gasta menos tempo monitorando números e mais tempo vivendo o que eles proporcionam.</p>
+        </div>
+
+        <div class="method-item">
+            <div class="method-dot reveal reveal-delay-3"></div>
+            <span class="step-num">03 / MONITORAMENTO</span>
+            <h4><span>Evoluir</span> com segurança.</h4>
+            <p>Assumimos a vigilância técnica constante. Protegemos seu capital dos ciclos externos enquanto você mantém o foco no que realmente importa.</p>
+        </div>
+    </div>
+</section>
+
+    <section class="section-padding" style="background: #1a1a1a;">
+    <h2 class="section-title">Soluções</h2>
+    <div class="tier-container">
+        <div class="tier-card reveal reveal-delay-1">
+            <span class="tier-badge">ESSENTIAL</span>
+            <h4>Até R$ 50k</h4>
+            <ul>
+                <li>Uma estrutura ágil e dinâmica para patrimônios que exigem diversificação eficiente. Nosso foco aqui é a proximidade estratégica, ajudando você a otimizar custos e identificar ineficiências em portfólios que começam a ganhar complexidade.</li>
+            </ul>
+        </div>
+        <div class="tier-card reveal reveal-delay-2" style="border-color: rgba(209, 166, 134, 0.4);">
+            <span class="tier-badge">PRIVILEGE</span>
+            <h4>R$ 50k a R$ 500k</h4>
+            <ul>
+                <li>Relacionamento próximo e oportunidades excelentes para organizar sua estrutura. Vamos te ajudar a atingir o sucesso através de uma visão consolidada, unindo nossa curadoria técnica à necessidade de uma gestão mais presente</li>
+            </ul>
+        </div>
+        <div class="tier-card reveal reveal-delay-3">
+            <span class="tier-badge">INFINITE</span>
+            <h4>Acima de R$ 500k</h4>
+            <ul>
+                <li>Equipe altamente especializada dedicada à governança familiar e soluções sob medida. Um atendimento constante e exclusivo, focado na proteção do legado e na inteligência global para as estruturas patrimoniais mais sofisticadas do mercado.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="contato" class="form-area">
+    <div class="form-content">
+        <span>Inicie sua jornada</span>
+        <h2>Recupere o controle do seu <span>Tempo.</span></h2>
+        <p>A Nodo atua sob um regime de discrição e exclusividade. Nosso diagnóstico é o primeiro passo para uma estrutura patrimonial invisível e eficiente.</p>
+        <p>Preencha os dados ao lado para uma análise preliminar de viabilidade.</p>
+    </div>
+
+    <div class="form-card reveal">
+        <form id="my-form" action="https://formspree.io/f/xgozjjqq" method="POST">
+            <div class="input-group">
+                <label><br>Como podemos chamá-lo?</label>
+                <input type="text" name="nome" placeholder="Nome Completo" required>
+            </div>
+
+            <div class="input-group">
+                <label>Canal de contato direto</label>
+                <input type="email" name="email" placeholder="E-mail Pessoal" required>
+            </div>
+
+            <div class="input-group">
+                <label>Enquadramento de Capital</label>
+                <select name="patrimonio" required>
+                    <option value="" disabled selected>Selecione o Volume Sob Gestão</option>
+                    <option value="essential">Essential (Até R$ 50k)</option>
+                    <option value="privilege">Privilege (R$ 50k a R$ 500k)</option>
+                    <option value="infinite">Infinite (Acima de R$ 500k)</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn-submit">Solicitar Diagnóstico Estratégico</button>
+            
+            <span class="privacy-note">SUAS INFORMAÇÕES SÃO CRIPTOGRAFADAS E TRATADAS COM SIGILO ABSOLUTO.</span>
+        </form>
+
+        <div id="status" style="display:none; text-align: center; padding: 20px; color: var(--accent-bronze); font-family: 'Montserrat';">
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Recebemos sua solicitação.</h3>
+            <p style="font-size: 0.9rem; opacity: 0.7;">Em breve, um de nossos especialistas entrará em contato.</p>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-column">
+            <img src="logo_nodo.png" alt="NODO" style="height: 45px; margin-bottom: 20px; opacity: 0.8;">
+            <p>Inteligência patrimonial focada na liberdade e na proteção do seu legado.</p>
+        </div>
+
+        <div class="footer-column">
+            <h5>Navegação</h5>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Diagnóstico</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h5>Contacto</h5>
+            <ul>
+                <li><a href="https://www.linkedin.com/company/nodowealth">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/nodo.wealth/">Instagram</a></li>
+                <li><a href="mailto:nodowealth@gmail.com">E-mail</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h5>Presença</h5>
+            <p>Curitiba, PR<br>Atendimento Global</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="footer-info">NODO | INTELIGÊNCIA PATRIMONIAL &copy; 2026</p>
+        <p class="footer-info" style="font-size: 0.55rem;">Desenvolvido com rigor técnico.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
