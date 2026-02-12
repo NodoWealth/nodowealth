@@ -442,3 +442,4 @@ function updateCharts(data) {
 }
 
 window.onload = renderDashboard;
+
