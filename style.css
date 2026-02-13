@@ -1,89 +1,101 @@
-/* FORÇAR FUNDO PRETO PARA MATAR A BARRA CINZA */
-html, body {
-    background: #050505 !important;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    font-family: sans-serif;
+/* --- CONFIGURAÇÕES BASE --- */
+:root {
+    --bronze: #d1a686;
+    --bg-dark: #050505;
 }
 
+body {
+    background-color: var(--bg-dark);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+/* --- LAYOUT HERO --- */
 .hero-premium {
-    position: relative;
-    padding: 150px 5% 100px;
-    background: #050505;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    padding: 100px 5%;
+    background: radial-gradient(circle at 80% 20%, rgba(209, 166, 134, 0.1), transparent 50%);
 }
 
 .hero-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    gap: 80px;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* O "TCHAN" DA NOTIFICAÇÃO - POSICIONAMENTO ABSOLUTO REAL */
+/* --- TEXTOS --- */
+.hero-title { font-size: 4rem; line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+.bronze-gradient { background: linear-gradient(90deg, var(--bronze), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-description { color: #a1a1aa; font-size: 1.2rem; margin-bottom: 40px; max-width: 500px; }
+
+/* --- O VISUAL DO TERMINAL (A SOLUÇÃO) --- */
 .hero-visual {
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.floating-platform {
-    position: relative; /* ISTO É O QUE PRENDE A NOTIFICAÇÃO */
-    background: rgba(255,255,255,0.05);
+.terminal-card {
+    position: relative; /* Isso 'prende' a notificação aqui */
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
-    padding: 40px;
+    padding: 30px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+    animation: float 6s ease-in-out infinite;
 }
 
+/* NOTIFICAÇÃO SUBINDO COM O "TCHAN" */
 .terminal-notify {
-    position: absolute !important;
-    top: -20px !important;    /* FORÇA PARA CIMA */
-    right: -20px !important;  /* FORÇA PARA A DIREITA */
-    background: #000 !important;
-    border: 1px solid #d1a686 !important;
-    padding: 12px 20px !important;
-    border-radius: 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    z-index: 999 !important;
-    box-shadow: 0 10px 30px rgba(209, 166, 134, 0.4) !important;
-    min-width: 180px;
-}
-
-.notify-dot {
-    width: 8px;
-    height: 8px;
-    background: #d1a686;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #d1a686;
-}
-
-/* FORMATANDO OS STATS PARA NÃO FICAREM FEIOS */
-.hero-stats {
+    position: absolute;
+    top: -30px;    /* Sobe para fora do card */
+    right: -20px;  /* Sai para a direita */
+    background: #000;
+    border: 1px solid var(--bronze);
+    padding: 12px 18px;
+    border-radius: 12px;
     display: flex;
-    gap: 40px;
-    margin-top: 40px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 30px;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(209, 166, 134, 0.3);
 }
 
-.stat-value { font-size: 2.5rem; font-weight: 800; color: #fff; }
-.stat-suffix { color: #d1a686; font-size: 1.5rem; }
-.stat-label { display: block; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.pulse-dot {
+    width: 8px; height: 8px; background: var(--bronze); border-radius: 50%;
+    box-shadow: 0 0 10px var(--bronze);
+}
 
-.bronze-gradient {
-    background: linear-gradient(90deg, #d1a686, #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.notify-info small { color: var(--bronze); font-size: 8px; font-weight: 800; letter-spacing: 1px; display: block; }
+.notify-info p { margin: 0; font-size: 11px; font-weight: 500; }
+
+/* --- GRÁFICOS INTERNOS --- */
+.visual-graph { display: flex; align-items: flex-end; gap: 10px; height: 80px; margin: 20px 0; }
+.bar { flex: 1; background: linear-gradient(to top, var(--bronze), transparent); border-radius: 4px; opacity: 0.6; }
+.positive-growth { color: #10b981; margin-top: 5px; }
+
+/* --- ESTATÍSTICAS --- */
+.hero-stats { display: flex; gap: 40px; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+.stat-value { font-size: 2rem; font-weight: 800; display: block; }
+.stat-label { font-size: 10px; color: #71717a; text-transform: uppercase; letter-spacing: 1px; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Responsividade Básica */
+@media (max-width: 900px) {
+    .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { display: none; }
 }
