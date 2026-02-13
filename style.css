@@ -10,13 +10,14 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* --- RESET E FUNDO INFINITO --- */
 body {
-    background-color: var(--dark);
-    color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.6;
+    background-color: #050505; /* Preto profundo para evitar a barra cinza */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
-
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
 /* HERO */
@@ -199,37 +200,54 @@ footer { padding: 40px; text-align: center; border-top: 1px solid var(--border);
     .hero-visual { display: none; } /* Esconde o visual em telas pequenas para não bugar */
 }
 
-/* --- HEADER SUPREME --- */
+/* --- HEADER SUPREME (REVISADO) --- */
 .header-main {
     position: fixed;
-    top: 20px; /* Ele flutua longe da borda superior */
+    top: 25px; /* Distância do topo para o efeito flutuante */
     left: 50%;
     transform: translateX(-50%);
-    width: 95%;
-    max-width: 1300px;
+    width: 90%;
+    max-width: 1200px;
     height: 70px;
-    z-index: 2000;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border-radius: 20px; /* Bordas arredondadas de software moderno */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* O "Vidro" inicial - Quase invisível */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(0px); /* Começa limpo */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
 }
-
-/* Estado quando a página rola (Adicionado via JS abaixo) */
+/* Estado ao Rolar: O Vidro "Ativa" */
 .header-main.scrolled {
-    top: 10px;
-    height: 60px;
-    background: rgba(10, 10, 11, 0.85);
+    top: 15px;
+    height: 65px;
+    background: rgba(10, 10, 11, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 .header-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
     padding: 0 30px;
+}
+
+/* Garante que o Hero ocupe a tela toda e fique POR BAIXO do header */
+.hero-premium {
+    position: relative;
+    padding-top: 150px; /* O conteúdo do Hero desce, mas o fundo sobe até o topo */
+    min-height: 100vh;
+    background: radial-gradient(circle at top right, rgba(209, 166, 134, 0.1), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(15, 15, 15, 1), #050505);
+    display: flex;
+    align-items: center;
 }
 
 /* BRANDING */
