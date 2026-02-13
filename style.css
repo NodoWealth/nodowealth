@@ -17,7 +17,7 @@ body {
     display: flex;
     align-items: center;
     /* Reduzi de 180px/120px para 60px para aproximar do header */
-    padding-top: 60px !important; 
+    padding-top: 10px !important; 
     padding-bottom: 40px;
     background: radial-gradient(circle at 80% 20%, rgba(209, 166, 134, 0.1), transparent 50%);
 }
@@ -32,7 +32,7 @@ body {
     /* Remove qualquer margem de segurança que o navegador possa colocar */
     align-items: center; 
     position: relative;
-    top: -20px; /* Move todo o bloco sutilmente para cima */
+    top: -50px; /* Move todo o bloco sutilmente para cima */
 }
 
 /* --- TEXTOS --- */
