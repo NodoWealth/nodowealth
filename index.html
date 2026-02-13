@@ -3,131 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nodo Wealth | Inteligência Patrimonial & Consultoria</title>
+    <title>Nodo Wealth | Inteligência Patrimonial</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <a href="index.html" class="header-logo"><img src="logo_nodo.png" alt="NODO"></a>
-    <nav class="main-nav">
-        <a href="#solucoes" class="nav-link">Soluções</a>
-        <a href="#contabilidade" class="nav-link">Para Contadores</a>
-        <a href="research.html" class="nav-link">Research</a>
-        <a href="acesso.html" class="nav-btn">Área do Cliente</a>
-    </nav>
+    <div class="container-nav">
+        <img src="logo_nodo.png" alt="Nodo Wealth" class="logo">
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#contadores">Para Contabilidades</a>
+            <a href="acesso.html" class="btn-login">Área do Cliente</a>
+        </nav>
+    </div>
 </header>
 
-<section class="section hero">
-    <div class="container-max center">
-        <span class="step" style="margin-bottom: 1rem; display: block;">INTELIGÊNCIA PATRIMONIAL</span>
-        <h1 style="font-size: clamp(2.5rem, 8vw, 5rem);">Simplicidade para <span class="bronze">bilhões</span>.<br>Clareza para <span class="bronze">milhares</span>.</h1>
-        <p style="max-width: 700px; margin: 2rem auto;">Seja organizando dívidas ou consolidando heranças, a Nodo provê a tecnologia e a consultoria que escritórios de contabilidade usam para escalar o sucesso de seus clientes.</p>
-        
-        <div class="grid-3" style="margin-top: var(--space-l);">
-            <div class="glass-card">
-                <div class="icon" style="font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
-                <h3>Engenharia de Gasto</h3>
-                <p>Mapeie vazamentos financeiros e reestruture sua capacidade de aporte em 30 dias.</p>
+<section class="hero">
+    <div class="container">
+        <h1>Sua vida financeira, <br><span class="bronze">consolidada e inteligente.</span></h1>
+        <p>Da organização de dívidas à preservação de heranças. Acompanhamos sua jornada com tecnologia e consultoria de elite.</p>
+        <div class="hero-actions">
+            <a href="acesso.html" class="btn-main">Começar Agora</a>
+            <a href="#servicos" class="btn-sub">Conhecer Serviços</a>
+        </div>
+    </div>
+</section>
+
+<section id="servicos" class="services">
+    <div class="container">
+        <h2 class="section-title">Como ajudamos você</h2>
+        <div class="service-grid">
+            <div class="s-card">
+                <div class="s-icon">📊</div>
+                <h3>Consolidação de Ativos</h3>
+                <p>Uma visão única de tudo o que você possui: imóveis, ações, caixa e passivos. Clareza total do seu patrimônio líquido.</p>
             </div>
-            <div class="glass-card">
-                <div class="icon" style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
-                <h3>Research & Oportunidades</h3>
-                <p>Acesso direto a teses de investimento exclusivas e relatórios de alta convicção.</p>
+            <div class="s-card">
+                <div class="s-icon">🏗️</div>
+                <h3>Engenharia Financeira</h3>
+                <p>Análise de eficiência de gastos. Identificamos gargalos e estruturamos um plano real para otimizar seu fluxo mensal.</p>
             </div>
-            <div class="glass-card" style="background: linear-gradient(145deg, rgba(209,166,134,0.1) 0%, rgba(10,10,11,1) 100%);">
-                <div class="icon" style="font-size: 2rem; margin-bottom: 1rem;">🤝</div>
-                <h3>Parceria B2B</h3>
-                <p>Plugue a Nodo ao seu escritório e transforme seu serviço de IRPF em Wealth Management.</p>
+            <div class="s-card">
+                <div class="s-icon">🔍</div>
+                <h3>Research de Oportunidades</h3>
+                <p>Relatórios diretos ao ponto. Saiba onde estão as melhores oportunidades de investimento com base em teses sólidas.</p>
             </div>
         </div>
     </div>
 </section>
 
-    <section id="solucoes" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">A Trilha Nodo Wealth</h2>
-            <div class="grid-3">
-                <div class="feature-card">
-                    <span class="step">01</span>
-                    <h3>Recuperação & Eficiência</h3>
-                    <p>Para quem precisa estancar gastos, trocar dívidas caras e organizar o fluxo de caixa para voltar a respirar.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="step">02</span>
-                    <h3>Acumulação Estratégica</h3>
-                    <p>Para quem já poupa e busca otimizar aportes através de nossa consultoria e research de oportunidades.</p>
-                </div>
-                <div class="feature-card">
-                    <span class="step">03</span>
-                    <h3>Preservação de Legado</h3>
-                    <p>Consolidação de ativos globais e inteligência sucessória para grandes patrimônios.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contabilidade" class="bg-dark-soft section-padding">
-        <div class="container grid-2">
-            <div>
-                <h2 class="bronze">Seu escritório de contabilidade com braço de Gestão de Ativos.</h2>
-                <p>Plugamos a tecnologia e a consultoria da Nodo ao seu escritório. Agregue valor aos seus clientes de IRPF e consultoria empresarial oferecendo gestão patrimonial completa.</p>
-                <ul class="list-check">
-                    <li>Relatórios de Consolidação White Label</li>
-                    <li>Suporte em Engenharia Financeira para clientes</li>
-                    <li>Research exclusivo para seus parceiros</li>
-                </ul>
-                <a href="#contato" class="btn-outline">Seja um Parceiro Nodo</a>
-            </div>
-            <div class="stats-box">
-                <div class="card-glass">
-                    <small>Diferencial Nodo</small>
-                    <p>"Transformamos dados contábeis em decisões de riqueza."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="container">
-            <h2 class="center">Nossos Pilares</h2>
-            <div class="grid-3">
-                <div class="service-item">
-                    <i class="icon">📊</i>
-                    <h4>Consolidação de Ativos</h4>
-                    <p>Tudo o que você possui (imóveis, ações, caixa, dívidas) em uma única visão clara.</p>
-                </div>
-                <div class="service-item">
-                    <i class="icon">🔍</i>
-                    <h4>Research de Oportunidades</h4>
-                    <p>Análises profundas para você não investir por impulso, mas por convicção.</p>
-                </div>
-                <div class="service-item">
-                    <i class="icon">🏗️</i>
-                    <h4>Engenharia Financeira</h4>
-                    <p>Otimização de gastos e reestruturação de plano para máxima eficiência do seu suado dinheiro.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    <div class="footer-main">
-        <div class="footer-column">
-            <img src="logo_nodo.png" alt="NODO" style="height: 40px;">
-            <p>Curitiba, PR | Atendimento Global</p>
-        </div>
-        <div class="footer-column">
-            <h5>Soluções</h5>
-            <a href="#">Boutique de Wealth</a>
-            <a href="#">Para Contadores</a>
-            <a href="#">Simulador</a>
+<section id="contadores" class="b2b-section">
+    <div class="container">
+        <div class="b2b-content">
+            <h2>Expandindo Escritórios de Contabilidade</h2>
+            <p>Transforme seu escritório em um centro de gestão de ativos. Ofereça aos seus clientes uma inteligência que vai além do imposto de renda.</p>
+            <a href="mailto:contato@nodowealth.com.br" class="btn-outline">Seja um parceiro Nodo</a>
         </div>
     </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Nodo Wealth | Curitiba, PR</p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
