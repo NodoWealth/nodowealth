@@ -187,3 +187,98 @@ body {
 .hero-premium {
     padding-top: 120px !important; /* Compensa a altura do header fixo */
 }
+
+/* --- SEÇÃO SOLUÇÕES --- */
+.solutions-section {
+    padding: 100px 5%;
+    background: #050505;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.badge {
+    color: var(--bronze);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: 1px solid rgba(209, 166, 134, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-top: 20px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.bronze-text { color: var(--bronze); }
+
+/* Grid de Cards */
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.sol-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 24px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.sol-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--bronze);
+    transform: translateY(-10px);
+}
+
+.sol-icon {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--bronze);
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+.sol-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.sol-card p {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.sol-footer {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bronze);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card em destaque (Nodo Terminal) */
+.sol-card.highlight {
+    background: linear-gradient(145deg, rgba(209, 166, 134, 0.1), transparent);
+    border: 1px solid rgba(209, 166, 134, 0.3);
+}
