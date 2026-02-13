@@ -345,3 +345,48 @@ footer {
     .sidebar { display: none; } /* Em mobile, usaremos o menu hamburger */
     .main-content { margin-left: 0; width: 100%; padding-bottom: 80px; }
 }
+
+/* Animação de Revelação Suave */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efeito de Vidro Flutuante para Seções */
+.glass-panel {
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 24px;
+    padding: 60px;
+    margin-top: -100px; /* Sobreposição elegante */
+}
+
+/* Tipografia Dinâmica */
+.hero-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+/* Destaque Bronze Animado */
+@keyframes bronze-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.text-shimmer {
+    background: linear-gradient(90deg, #d1a686, #fff, #d1a686);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: bronze-shimmer 5s linear infinite;
+}

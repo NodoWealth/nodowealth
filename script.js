@@ -176,3 +176,43 @@ function renderChart(labels, data, invested) {
         }
     });
 }
+
+/* ==========================================================================
+   OPTIMIZED UX ENGINE
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    // Outras inicializações...
+});
+
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Uma vez revelado, não precisa mais observar
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15, // Começa a animação quando 15% do item aparece
+        rootMargin: "0px 0px -50px 0px" // Margem inferior para o usuário ver o início
+    });
+
+    reveals.forEach(el => revealObserver.observe(el));
+}
+
+// Suavização do Menu ao Rolar
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.style.padding = "15px 5%";
+        header.style.background = "rgba(5, 5, 5, 0.95)";
+    } else {
+        header.style.padding = "0 5%";
+        header.style.background = "rgba(5, 5, 5, 0.6)";
+    }
+});
