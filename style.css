@@ -1,255 +1,203 @@
 /* ==========================================================================
-   1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS DE LUXO
    ========================================================================== */
 :root {
-    --bg-color: #0f0f0f;
-    --card-bg: #151515;
-    --text-primary: #e3dfd4;
+    --bg-color: #050505; /* Preto mais profundo, menos cinza */
+    --card-bg: rgba(255, 255, 255, 0.03); /* Vidro sutil */
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #f2f2f2;
     --text-muted: #888888;
-    --accent-bronze: #d1a686;
-    --accent-bronze-dark: #a8856c;
-    --border-color: #1f1f23;
-    --success: #10b981;
-    --danger: #ef4444;
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --radius: 12px;
+    
+    /* Gradiente Bronze Premium (Efeito Ouro/Bronze Metálico) */
+    --bronze-gradient: linear-gradient(135deg, #eecda3 0%, #d1a686 100%);
+    --bronze-glow: rgba(209, 166, 134, 0.3);
+    
+    --radius: 16px; /* Curvas mais suaves */
+    --transition-premium: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); /* Curva "Apple" */
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    scroll-behavior: smooth; 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    /* Adiciona uma textura sutil de ruído se quiser, ou mantém limpo */
 }
 
-a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
+/* Tipografia de Luxo */
+h1, h2, h3 { letter-spacing: -0.03em; font-weight: 600; }
+p { font-weight: 300; opacity: 0.9; }
+
+/* Efeito de Texto Metálico */
+.text-gradient {
+    background: var(--bronze-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
 
 /* ==========================================================================
-   2. HEADER & NAVEGAÇÃO
+   2. HEADER COM EFEITO FROSTED GLASS (Desfoque)
    ========================================================================== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    height: 85px;
+    height: 90px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(15, 15, 15, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background: rgba(5, 5, 5, 0.6); /* Transparência maior */
+    backdrop-filter: blur(20px); /* O segredo do efeito vidro */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-premium);
 }
-
-.header-logo img { height: 40px; }
-
-.main-nav { display: flex; gap: 35px; }
 
 .nav-link {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px; /* Espaçamento chique */
     color: var(--text-muted);
+    position: relative;
+    padding: 5px 0;
 }
 
-.nav-link:hover, .nav-link.active { color: var(--accent-bronze); }
-
-/* Menu Mobile */
-.mobile-menu-icon {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 6px;
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background: var(--bronze-gradient);
+    transition: var(--transition-premium);
 }
 
-.mobile-menu-icon span {
-    width: 25px;
-    height: 2px;
-    background: var(--text-primary);
-    transition: var(--transition-smooth);
-}
+.nav-link:hover { color: #fff; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
 /* ==========================================================================
-   3. COMPONENTES REUTILIZÁVEIS (BOTÕES E CARDS)
+   3. HERO & ILUMINAÇÃO (AMBIENT GLOW)
    ========================================================================== */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* O "Spotlight" no fundo */
+.ambient-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(209,166,134,0.15) 0%, rgba(0,0,0,0) 70%);
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Botões Premium */
 .btn-primary {
-    background: var(--accent-bronze);
-    color: #000;
-    padding: 12px 28px;
-    border-radius: 6px;
+    background: var(--bronze-gradient);
+    color: #0a0a0a;
+    padding: 16px 32px;
+    border-radius: 50px; /* Botão pílula é mais moderno */
     font-weight: 600;
     border: none;
     cursor: pointer;
+    transition: var(--transition-premium);
+    box-shadow: 0 10px 30px -10px var(--bronze-glow);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.btn-primary:hover { background: var(--accent-bronze-dark); }
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -10px var(--bronze-glow);
+}
 
 .btn-outline {
-    border: 1px solid var(--accent-bronze);
-    color: var(--accent-bronze);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
     padding: 10px 24px;
-    border-radius: 6px;
-    display: inline-block;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: var(--transition-premium);
 }
 
-.btn-outline:hover { background: var(--accent-bronze); color: #000; }
-
-.section-padding { padding: 100px 5%; }
-
-.bronze { color: var(--accent-bronze); }
+.btn-outline:hover {
+    border-color: #d1a686;
+    background: rgba(209, 166, 134, 0.1);
+}
 
 /* ==========================================================================
-   4. SIMULADOR DE JUROS (SIMULADOR.HTML)
+   4. CARDS & GLASSMORPHISM
    ========================================================================== */
-.calculator-grid {
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.input-group { margin-bottom: 20px; }
-
-.input-group label {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-
-.input-group input {
-    width: 100%;
-    background: #1a1a1a;
-    border: 1px solid var(--border-color);
-    color: white;
-    padding: 12px;
-    border-radius: var(--radius);
-    outline: none;
-}
-
-.input-group input:focus { border-color: var(--accent-bronze); }
+.section-padding { padding: 120px 5%; }
+.container { max-width: 1200px; margin: 0 auto; }
 
 .result-card {
     background: var(--card-bg);
-    padding: 30px;
+    padding: 50px 40px;
     border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    text-align: center;
+    border: 1px solid var(--card-border);
+    transition: var(--transition-premium);
+    position: relative;
+    overflow: hidden;
 }
 
-#res-patrimonio { font-size: 2.5rem; color: var(--accent-bronze); font-weight: 700; }
+/* Brilho sutil ao passar o mouse no card */
+.result-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(209, 166, 134, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
 
-.chart-container {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 20px;
-    height: 450px;
-    border: 1px solid var(--border-color);
+.result-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #fff;
 }
 
 /* ==========================================================================
-   5. ACESSO / LOGIN (ACESSO.HTML)
+   5. NÚMEROS (DATA STRIP)
    ========================================================================== */
-.main-auth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 170px);
-    padding: 40px 20px;
-}
-
-.auth-card {
-    width: 100%;
-    max-width: 400px;
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-.auth-card h2 { margin-bottom: 25px; text-align: center; font-size: 1.5rem; }
-
-.hidden { display: none; }
-
-#auth-msg {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 0.9rem;
-    min-height: 20px;
+.data-strip {
+    border-top: 1px solid rgba(255,255,255,0.05) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    background: rgba(255,255,255,0.01) !important; /* Quase invisível */
+    backdrop-filter: blur(10px);
 }
 
 /* ==========================================================================
-   6. FOOTER
+   6. RODAPÉ E EXTRAS
    ========================================================================== */
 footer {
+    background: #020202;
+    border-top: 1px solid var(--card-border);
     padding: 80px 5% 40px;
-    background: #0a0a0a;
-    border-top: 1px solid var(--border-color);
 }
 
-.footer-main {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-}
+/* Mobile Menu */
+.mobile-menu-icon span { background: #fff; height: 1px; }
 
-.footer-column h5 {
-    color: var(--accent-bronze);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-}
-
-.footer-bottom {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid #1a1a1a;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-}
-
-/* ==========================================================================
-   7. RESPONSIVIDADE (MEDIA QUERIES)
-   ========================================================================== */
+/* Responsivo */
 @media (max-width: 900px) {
-    .mobile-menu-icon { display: flex; }
-
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: #0f0f0f;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.5s;
-    }
-
-    .main-nav.active { right: 0; }
-
-    .calculator-grid { grid-template-columns: 1fr; }
-    
-    .footer-main { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 600px) {
-    .footer-main { grid-template-columns: 1fr; }
-    #res-patrimonio { font-size: 1.8rem; }
+    .main-nav { background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); }
+    h1 { font-size: 2.5rem !important; }
 }
