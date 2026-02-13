@@ -3,96 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nodo | Wealth Architecture</title>
+    <title>Nodo Wealth | Inteligência Patrimonial</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Plus+Jakarta+Sans:wght@200;400;700&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+    
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
     <header>
-        <div class="header-container" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+        <div class="header-container" style="width: 100%; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
             <a href="index.html" class="header-logo">
-                <img src="logo_nodo.png" alt="NODO Wealth" style="height: 30px;">
+                <img src="logo_nodo.png" alt="NODO Wealth" style="height: 22px;">
             </a>
+            
             <nav class="main-nav">
-                <a href="#metodo" class="nav-link">O Método</a>
+                <a href="#proposta" class="nav-link">Proposta</a>
                 <a href="research.html" class="nav-link">Research</a>
                 <a href="simulador.html" class="nav-link">Simulador</a>
-                <a href="acesso.html" class="btn-outline" style="border: 1px solid #d1a686; color: #d1a686; padding: 10px 25px; margin-left: 20px;">Acesso Membro</a>
+                <a href="acesso.html" class="btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Entrar</a>
             </nav>
         </div>
     </header>
 
     <main>
         <section class="hero">
-            <div class="container">
-                <h4 class="reveal" style="color: #d1a686; letter-spacing: 6px; margin-bottom: 20px; font-weight: 400;">ORDEM • PROTEÇÃO • LIBERDADE</h4>
-                <h1 class="hero-title reveal">Onde a Gestão de Elite <br><span class="text-shimmer">encontra o seu Futuro.</span></h1>
-                <p class="reveal" style="max-width: 700px; margin: 0 auto 40px; color: #aaa; font-size: 1.2rem; line-height: 1.8;">
-                    Não importa onde você está hoje. O que importa é a <strong>arquitetura</strong> que você usa para construir o amanhã. Acesse as ferramentas de consolidação patrimonial antes restritas aos Family Offices de Curitiba.
-                </p>
-                <div class="reveal">
-                    <a href="acesso.html" class="btn-primary">Iniciar Minha Arquitetura</a>
+            <div class="hero-content">
+                <span style="color: var(--accent); font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;">Arquitetura Financeira</span>
+                <h1>A clareza técnica que o seu património exige.</h1>
+                <p>Consolide os seus investimentos e aceda a teses de gestão de elite numa interface minimalista desenhada para a tomada de decisão.</p>
+                
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="acesso.html" class="btn-primary">Criar Conta Gratuita</a>
+                    <a href="simulador.html" class="btn-outline">Simular Futuro</a>
                 </div>
             </div>
         </section>
 
-        <section id="metodo" class="section-padding" style="background: #080808;">
-            <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div class="reveal">
-                    <h2 style="font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 30px;">O Código da <br><span class="bronze">Perpetuidade</span></h2>
-                    <p style="color: #888; margin-bottom: 25px;">A Nodo nasceu com uma missão clara: provar que a <strong>Inteligência Patrimonial</strong> não deve ser um privilégio, mas um padrão.</p>
-                    <p style="color: #888;">Nossa plataforma traduz complexidade financeira em clareza visual, permitindo que qualquer pessoa aplique o rigor de gestão de um fundo soberano em suas finanças pessoais.</p>
+        <section id="proposta" class="section-padding" style="border-top: 1px solid var(--border);">
+            <div class="grid">
+                <div class="card">
+                    <div style="width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px;"></div>
+                    <h3>Consolidação Global</h3>
+                    <p>Unifique contas bancárias, corretoras e ativos alternativos num único terminal técnico e sem ruído visual.</p>
                 </div>
                 
-                <div class="grid-cards reveal">
-                    <div class="result-card" style="margin-bottom: 20px;">
-                        <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.1rem;">Consolidação Global</h3>
-                        <p style="font-size: 0.85rem; color: #666;">Visualize ativos de qualquer corretora ou banco. A organização é o primeiro passo para o poder financeiro.</p>
-                    </div>
-                    <div class="result-card">
-                        <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.1rem;">Educação Institucional</h3>
-                        <p style="font-size: 0.85rem; color: #666;">Tenha acesso a relatórios (Research) com a profundidade que o mercado institucional exige.</p>
-                    </div>
+                <div class="card">
+                    <div style="width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px;"></div>
+                    <h3>Research Direto</h3>
+                    <p>Relatórios fundamentados e teses de investimento reais. Sem conflitos de interesse, apenas dados.</p>
+                </div>
+                
+                <div class="card">
+                    <div style="width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px;"></div>
+                    <h3>Segurança de Dados</h3>
+                    <p>A sua privacidade é o nosso ativo mais valioso. Processamento de dados criptografado e interface privada.</p>
                 </div>
             </div>
         </section>
 
-        <section class="data-strip" style="background: var(--premium-black); padding: 80px 0; border-top: 1px solid #1a1a1a;">
-            <div class="container" style="display: flex; justify-content: space-around; text-align: center;">
-                <div class="reveal">
-                    <h2 class="counter text-gradient" data-target="14" style="font-size: 3rem;">0</h2>
-                    <p style="font-size: 0.7rem; letter-spacing: 3px; color: #444; margin-top: 10px;">ANOS DE EXPERIÊNCIA</p>
-                </div>
-                <div class="reveal">
-                    <h2 class="counter text-gradient" data-target="500" style="font-size: 3rem;">0</h2>
-                    <p style="font-size: 0.7rem; letter-spacing: 3px; color: #444; margin-top: 10px;">MILHÕES EM CUSTÓDIA</p>
-                </div>
-                <div class="reveal">
-                    <h2 class="counter text-gradient" data-target="100" style="font-size: 3rem;">0%</h2>
-                    <p style="font-size: 0.7rem; letter-spacing: 3px; color: #444; margin-top: 10px;">FOCO NO RESULTADO</p>
-                </div>
+        <section class="section-padding" style="background: #f9f9f9; text-align: center; border-top: 1px solid var(--border);">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <h2 style="font-size: 2rem; margin-bottom: 20px;">Pronto para organizar o seu legado?</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Junte-se a investidores que priorizam a inteligência e a ordem patrimonial acima de tudo.</p>
+                <a href="acesso.html" class="btn-primary">Aceder ao Terminal</a>
             </div>
         </section>
     </main>
 
-    <footer style="background: #000; padding: 80px 10% 40px; border-top: 1px solid #111;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;">
-            <div style="max-width: 300px;">
-                <img src="logo_nodo.png" style="height: 25px; margin-bottom: 25px; filter: grayscale(1);">
-                <p style="color: #333; font-size: 0.8rem; line-height: 1.8;">A Nodo Wealth Intelligence é uma plataforma de organização e análise patrimonial. Não realizamos venda de ativos financeiros.</p>
+    <footer style="padding: 60px 5%; border-top: 1px solid var(--border);">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; max-width: 1400px; margin: 0 auto;">
+            <div>
+                <img src="logo_nodo.png" style="height: 18px; filter: grayscale(1); margin-bottom: 20px; opacity: 0.5;">
+                <p style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">
+                    © 2026 Nodo Wealth Intelligence.<br>
+                    Desenvolvido para clareza patrimonial.
+                </p>
             </div>
-            <div class="footer-links">
-                <h5 style="color: #fff; margin-bottom: 20px; font-size: 0.7rem; letter-spacing: 2px;">MEMBROS</h5>
-                <ul style="list-style: none; color: #444; font-size: 0.85rem; line-height: 2.5;">
-                    <li><a href="acesso.html">Login Terminal</a></li>
-                    <li><a href="simulador.html">Simulador de Futuro</a></li>
-                </ul>
+            
+            <div style="display: flex; gap: 60px;">
+                <div class="footer-group">
+                    <h5 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Privado</h5>
+                    <ul style="list-style: none; font-size: 0.85rem;">
+                        <li style="margin-bottom: 8px;"><a href="acesso.html" style="color: var(--text-muted);">Login</a></li>
+                        <li style="margin-bottom: 8px;"><a href="research.html" style="color: var(--text-muted);">Research</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-group">
+                    <h5 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Contacto</h5>
+                    <ul style="list-style: none; font-size: 0.85rem;">
+                        <li style="margin-bottom: 8px;"><a href="mailto:nodowealth@gmail.com" style="color: var(--text-muted);">E-mail</a></li>
+                        <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-muted);">LinkedIn</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <p style="text-align: center; color: #222; font-size: 0.7rem; margin-top: 60px;">© 2026 NODO WEALTH. TODOS OS DIREITOS RESERVADOS.</p>
     </footer>
 
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/dashboard.html";
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>
