@@ -237,3 +237,127 @@ footer { padding: 40px; text-align: center; border-top: 1px solid var(--border);
     .hero-stats { justify-content: center; gap: 20px; }
     .hero-visual { display: none; } /* Esconde o visual em telas pequenas para não bugar */
 }
+
+/* --- HEADER PREMIMUM --- */
+.header-premium {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+/* Efeito de vidro que só aparece ao rolar ou por padrão */
+.header-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: -1;
+}
+
+.container-header {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO E STATUS */
+.logo-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.logo-premium {
+    height: 28px;
+    filter: brightness(1.1);
+}
+
+.logo-status {
+    font-size: 10px;
+    color: var(--bronze);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+    opacity: 0.7;
+}
+
+/* NAVEGAÇÃO MINIMALISTA */
+.nav-list {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-item {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--bronze);
+    transition: 0.3s;
+}
+
+.nav-item:hover { color: #fff; }
+.nav-item:hover::after { width: 100%; }
+
+/* BOTÃO DE LOGIN COM INDICADOR */
+.btn-login-minimal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid rgba(209, 166, 134, 0.3);
+    border-radius: 100px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(209, 166, 134, 0.05);
+    transition: 0.3s;
+}
+
+.btn-login-minimal:hover {
+    background: rgba(209, 166, 134, 0.15);
+    border-color: var(--bronze);
+    box-shadow: 0 0 20px rgba(209, 166, 134, 0.2);
+}
+
+.dot-auth {
+    width: 6px;
+    height: 6px;
+    background: var(--bronze);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+    .nav-luxury { display: none; }
+    .logo-status { display: none; }
+}
