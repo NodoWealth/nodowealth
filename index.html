@@ -3,115 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nodo Wealth | Inteligência Patrimonial</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Nodo Wealth | Inteligência Patrimonial & Consultoria</title>
     <link rel="stylesheet" href="style.css">
-    
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-    <header>
-        <div class="header-container" style="width: 100%; display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto;">
-            <a href="index.html" class="header-logo">
-                <img src="logo_nodo.png" alt="NODO Wealth" style="height: 22px;">
-            </a>
-            
-            <nav class="main-nav">
-                <a href="#proposta" class="nav-link">Proposta</a>
-                <a href="research.html" class="nav-link">Research</a>
-                <a href="simulador.html" class="nav-link">Simulador</a>
-                <a href="acesso.html" class="btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Entrar</a>
-            </nav>
+<header>
+    <a href="index.html" class="header-logo"><img src="logo_nodo.png" alt="NODO"></a>
+    <nav class="main-nav">
+        <a href="#solucoes" class="nav-link">Soluções</a>
+        <a href="#contabilidade" class="nav-link">Para Contadores</a>
+        <a href="research.html" class="nav-link">Research</a>
+        <a href="acesso.html" class="nav-btn">Área do Cliente</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="reveal">Inteligência para quem quer <span class="bronze">chegar lá</span> e para quem já <span class="bronze">conquistou tudo</span>.</h1>
+            <p class="reveal-delay">Seja para sair das dívidas ou para proteger um legado multigeracional. Nós somos o braço direito estratégico da sua vida financeira.</p>
+            <div class="hero-btns reveal-delay-2">
+                <a href="#contato" class="btn-primary">Solicitar Diagnóstico</a>
+                <a href="simulador.html" class="btn-outline">Simular Futuro</a>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <span style="color: var(--accent); font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;">Arquitetura Financeira</span>
-                <h1>A clareza técnica que o seu património exige.</h1>
-                <p>Consolide os seus investimentos e aceda a teses de gestão de elite numa interface minimalista desenhada para a tomada de decisão.</p>
-                
-                <div style="display: flex; gap: 15px; margin-top: 20px;">
-                    <a href="acesso.html" class="btn-primary">Criar Conta Gratuita</a>
-                    <a href="simulador.html" class="btn-outline">Simular Futuro</a>
+    <section id="solucoes" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">A Trilha Nodo Wealth</h2>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <span class="step">01</span>
+                    <h3>Recuperação & Eficiência</h3>
+                    <p>Para quem precisa estancar gastos, trocar dívidas caras e organizar o fluxo de caixa para voltar a respirar.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="step">02</span>
+                    <h3>Acumulação Estratégica</h3>
+                    <p>Para quem já poupa e busca otimizar aportes através de nossa consultoria e research de oportunidades.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="step">03</span>
+                    <h3>Preservação de Legado</h3>
+                    <p>Consolidação de ativos globais e inteligência sucessória para grandes patrimônios.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="proposta" class="section-padding" style="border-top: 1px solid var(--border);">
-            <div class="grid">
-                <div class="card">
-                    <div style="width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px;"></div>
-                    <h3>Consolidação Global</h3>
-                    <p>Unifique contas bancárias, corretoras e ativos alternativos num único terminal técnico e sem ruído visual.</p>
-                </div>
-                
-                <div class="card">
-                    <div style="width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px;"></div>
-                    <h3>Research Direto</h3>
-                    <p>Relatórios fundamentados e teses de investimento reais. Sem conflitos de interesse, apenas dados.</p>
-                </div>
-                
-                <div class="card">
-                    <div style="width: 40px; height: 2px; background: var(--accent); margin-bottom: 20px;"></div>
-                    <h3>Segurança de Dados</h3>
-                    <p>A sua privacidade é o nosso ativo mais valioso. Processamento de dados criptografado e interface privada.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-padding" style="background: #f9f9f9; text-align: center; border-top: 1px solid var(--border);">
-            <div style="max-width: 600px; margin: 0 auto;">
-                <h2 style="font-size: 2rem; margin-bottom: 20px;">Pronto para organizar o seu legado?</h2>
-                <p style="color: var(--text-muted); margin-bottom: 30px;">Junte-se a investidores que priorizam a inteligência e a ordem patrimonial acima de tudo.</p>
-                <a href="acesso.html" class="btn-primary">Aceder ao Terminal</a>
-            </div>
-        </section>
-    </main>
-
-    <footer style="padding: 60px 5%; border-top: 1px solid var(--border);">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; max-width: 1400px; margin: 0 auto;">
+    <section id="contabilidade" class="bg-dark-soft section-padding">
+        <div class="container grid-2">
             <div>
-                <img src="logo_nodo.png" style="height: 18px; filter: grayscale(1); margin-bottom: 20px; opacity: 0.5;">
-                <p style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">
-                    © 2026 Nodo Wealth Intelligence.<br>
-                    Desenvolvido para clareza patrimonial.
-                </p>
+                <h2 class="bronze">Seu escritório de contabilidade com braço de Gestão de Ativos.</h2>
+                <p>Plugamos a tecnologia e a consultoria da Nodo ao seu escritório. Agregue valor aos seus clientes de IRPF e consultoria empresarial oferecendo gestão patrimonial completa.</p>
+                <ul class="list-check">
+                    <li>Relatórios de Consolidação White Label</li>
+                    <li>Suporte em Engenharia Financeira para clientes</li>
+                    <li>Research exclusivo para seus parceiros</li>
+                </ul>
+                <a href="#contato" class="btn-outline">Seja um Parceiro Nodo</a>
             </div>
-            
-            <div style="display: flex; gap: 60px;">
-                <div class="footer-group">
-                    <h5 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Privado</h5>
-                    <ul style="list-style: none; font-size: 0.85rem;">
-                        <li style="margin-bottom: 8px;"><a href="acesso.html" style="color: var(--text-muted);">Login</a></li>
-                        <li style="margin-bottom: 8px;"><a href="research.html" style="color: var(--text-muted);">Research</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-group">
-                    <h5 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Contacto</h5>
-                    <ul style="list-style: none; font-size: 0.85rem;">
-                        <li style="margin-bottom: 8px;"><a href="mailto:nodowealth@gmail.com" style="color: var(--text-muted);">E-mail</a></li>
-                        <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-muted);">LinkedIn</a></li>
-                    </ul>
+            <div class="stats-box">
+                <div class="card-glass">
+                    <small>Diferencial Nodo</small>
+                    <p>"Transformamos dados contábeis em decisões de riqueza."</p>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/dashboard.html";
-                    });
-                }
-            });
-        }
-    </script>
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="center">Nossos Pilares</h2>
+            <div class="grid-3">
+                <div class="service-item">
+                    <i class="icon">📊</i>
+                    <h4>Consolidação de Ativos</h4>
+                    <p>Tudo o que você possui (imóveis, ações, caixa, dívidas) em uma única visão clara.</p>
+                </div>
+                <div class="service-item">
+                    <i class="icon">🔍</i>
+                    <h4>Research de Oportunidades</h4>
+                    <p>Análises profundas para você não investir por impulso, mas por convicção.</p>
+                </div>
+                <div class="service-item">
+                    <i class="icon">🏗️</i>
+                    <h4>Engenharia Financeira</h4>
+                    <p>Otimização de gastos e reestruturação de plano para máxima eficiência do seu suado dinheiro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-column">
+            <img src="logo_nodo.png" alt="NODO" style="height: 40px;">
+            <p>Curitiba, PR | Atendimento Global</p>
+        </div>
+        <div class="footer-column">
+            <h5>Soluções</h5>
+            <a href="#">Boutique de Wealth</a>
+            <a href="#">Para Contadores</a>
+            <a href="#">Simulador</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

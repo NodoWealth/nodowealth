@@ -1,140 +1,172 @@
 /* ==========================================================================
-   1. DESIGN SYSTEM: SILENT LUXURY
+   1. VARIÁVEIS E RESET
    ========================================================================== */
 :root {
-    --bg: #ffffff;             /* Fundo branco limpo */
-    --bg-dark: #0a0a0a;        /* Preto profundo para seções de destaque */
-    --text-main: #1a1a1a;      /* Cinza quase preto para leitura */
-    --text-muted: #666666;     /* Cinza para detalhes */
-    --accent: #d1a686;         /* Bronze apenas em detalhes mínimos */
-    --border: #e5e5e5;         /* Bordas finíssimas */
-    --radius: 8px;
+    --bg-color: #050505;
+    --bg-soft: #0f0f0f;
+    --card-bg: #151515;
+    --text-primary: #e3dfd4;
+    --text-muted: #71717a;
+    --accent-bronze: #d1a686;
+    --success: #10b981;
+    --danger: #ef4444;
+    --border: #1f1f23;
+    --radius: 12px;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+* { 
+    margin: 0; padding: 0; box-sizing: border-box; 
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
 
 body {
-    background-color: var(--bg);
-    color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.5;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+img { max-width: 100%; }
+
 /* ==========================================================================
-   2. HEADER: MINIMALISTA
+   2. COMPONENTES REUTILIZÁVEIS (Utility Classes)
+   ========================================================================== */
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.section-padding { padding: 80px 0; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+.bronze { color: var(--accent-bronze); }
+.positive { color: var(--success); }
+.negative { color: var(--danger); }
+.center { text-align: center; }
+
+/* Botões */
+.btn-primary, .btn-outline {
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--accent-bronze);
+    color: var(--bg-color);
+}
+
+.btn-outline {
+    border: 1px solid var(--accent-bronze);
+    color: var(--accent-bronze);
+}
+
+.btn-primary:hover, .btn-outline:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(209, 166, 134, 0.2);
+}
+
+/* ==========================================================================
+   3. HEADER & NAVEGAÇÃO
    ========================================================================== */
 header {
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    height: 70px;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
     z-index: 1000;
+    border-bottom: 1px solid var(--border);
 }
 
-.header-logo img { height: 24px; filter: grayscale(1); }
-
-.main-nav { display: flex; gap: 30px; align-items: center; }
+.header-logo img { height: 35px; }
 
 .nav-link {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-main);
-    text-decoration: none;
-    transition: 0.2s;
+    margin-right: 25px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
 
-.nav-link:hover { color: var(--accent); }
+.nav-link:hover, .nav-link.active { color: var(--accent-bronze); }
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--text-primary);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
 
 /* ==========================================================================
-   3. HERO: FUNCIONAL & DIRETO
+   4. SEÇÕES ESPECÍFICAS (Index & Dashboard)
    ========================================================================== */
 .hero {
-    padding: 120px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: left; /* Alinhamento à esquerda é mais funcional e executivo */
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
-    margin-bottom: 24px;
-    color: var(--bg-dark);
+.hero h1 { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
+
+.feature-card, .service-item, .nav-card {
+    background: var(--bg-soft);
+    padding: 40px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
 }
 
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 600px;
+.feature-card:hover { border-color: var(--accent-bronze); background: var(--card-bg); }
+
+.step { color: var(--accent-bronze); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
+
+/* Dashboard Glassmorphism */
+.card-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: var(--radius);
+}
+
+/* ==========================================================================
+   5. FOOTER
+   ========================================================================== */
+footer {
+    background: var(--bg-soft);
+    padding: 60px 5% 20px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 40px;
     margin-bottom: 40px;
 }
 
-/* ==========================================================================
-   4. BOTÕES: SEM GRADIENTES
-   ========================================================================== */
-.btn-primary {
-    background: var(--bg-dark);
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: var(--radius);
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: 0.3s;
-}
-
-.btn-primary:hover { background: #333; transform: translateY(-2px); }
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    color: var(--text-main);
-    font-weight: 500;
-    transition: 0.2s;
-}
-
-.btn-outline:hover { border-color: var(--text-main); background: #f9f9f9; }
-
-/* ==========================================================================
-   5. GRID DE SERVIÇOS: CLEAN CARDS
-   ========================================================================== */
-.section-padding { padding: 100px 5%; }
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    padding: 40px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    transition: 0.3s;
-}
-
-.card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-.card h3 { margin-bottom: 15px; font-size: 1.25rem; }
-.card p { color: var(--text-muted); font-size: 0.95rem; }
+.footer-column h5 { color: var(--accent-bronze); margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; }
+.footer-column a { display: block; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
+.footer-column a:hover { color: var(--accent-bronze); }
 
 /* ==========================================================================
    6. RESPONSIVIDADE
    ========================================================================== */
-@media (max-width: 768px) {
-    .hero { text-align: center; }
-    .hero p { margin: 0 auto 40px; }
-    .main-nav { display: none; } /* Ideal implementar menu burger simples */
+@media (max-width: 900px) {
+    .footer-main { grid-template-columns: 1fr 1fr; }
+    header { padding: 0 20px; }
+    .main-nav { display: none; } /* Idealmente aqui entraria o seu menu hambúrguer */
+}
+
+@media (max-width: 600px) {
+    .footer-main { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
 }
