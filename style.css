@@ -1,172 +1,78 @@
-/* ==========================================================================
-   1. VARIÁVEIS E RESET
-   ========================================================================== */
 :root {
-    --bg-color: #050505;
-    --bg-soft: #0f0f0f;
-    --card-bg: #151515;
-    --text-primary: #e3dfd4;
-    --text-muted: #71717a;
-    --accent-bronze: #d1a686;
-    --success: #10b981;
-    --danger: #ef4444;
-    --border: #1f1f23;
-    --radius: 12px;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Paleta Boutique */
+    --bg-main: #0a0a0b;
+    --bg-surface: #141416;
+    --bg-card: rgba(26, 26, 29, 0.6);
+    --accent: #d1a686; /* Bronze Nodo */
+    --accent-hover: #e5c0a3;
+    --text-head: #ffffff;
+    --text-body: #a1a1aa;
+    --border: rgba(255, 255, 255, 0.08);
+    
+    /* Sistema de Espaçamento */
+    --space-xs: 0.5rem;
+    --space-s: 1rem;
+    --space-m: 2rem;
+    --space-l: 4rem;
 }
 
-* { 
-    margin: 0; padding: 0; box-sizing: border-box; 
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
+/* Reset de Alta Performance */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background: var(--bg-main); 
+    color: var(--text-body); 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; transition: var(--transition); }
-ul { list-style: none; }
-img { max-width: 100%; }
+/* Typography Engine */
+h1, h2, h3 { color: var(--text-head); font-weight: 700; letter-spacing: -0.02em; }
+p { font-size: 1.05rem; line-height: 1.7; }
 
-/* ==========================================================================
-   2. COMPONENTES REUTILIZÁVEIS (Utility Classes)
-   ========================================================================== */
-.container { width: 90%; max-width: 1200px; margin: 0 auto; }
-.section-padding { padding: 80px 0; }
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+/* Layout Grid System */
+.section { padding: var(--space-l) 5%; }
+.container-max { max-width: 1400px; margin: 0 auto; }
 
-.bronze { color: var(--accent-bronze); }
-.positive { color: var(--success); }
-.negative { color: var(--danger); }
-.center { text-align: center; }
+/* Components: O Novo Padrão Nodo */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: var(--space-m);
+    transition: all 0.3s ease;
+}
 
-/* Botões */
-.btn-primary, .btn-outline {
-    padding: 12px 28px;
-    border-radius: var(--radius);
-    font-weight: 600;
-    display: inline-block;
+.glass-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.btn-luxury {
+    background: var(--accent);
+    color: var(--bg-main);
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border: none;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-.btn-primary {
-    background: var(--accent-bronze);
-    color: var(--bg-color);
-}
+.btn-luxury:hover { background: var(--accent-hover); box-shadow: 0 0 30px rgba(209, 166, 134, 0.3); }
 
-.btn-outline {
-    border: 1px solid var(--accent-bronze);
-    color: var(--accent-bronze);
-}
-
-.btn-primary:hover, .btn-outline:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(209, 166, 134, 0.2);
-}
-
-/* ==========================================================================
-   3. HEADER & NAVEGAÇÃO
-   ========================================================================== */
+/* Header Modernizado */
 header {
-    height: 80px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(15px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
     border-bottom: 1px solid var(--border);
-}
-
-.header-logo img { height: 35px; }
-
-.nav-link {
-    margin-right: 25px;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.nav-link:hover, .nav-link.active { color: var(--accent-bronze); }
-
-.nav-btn {
-    background: transparent;
-    border: 1px solid var(--text-primary);
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-}
-
-/* ==========================================================================
-   4. SEÇÕES ESPECÍFICAS (Index & Dashboard)
-   ========================================================================== */
-.hero {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero h1 { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
-
-.feature-card, .service-item, .nav-card {
-    background: var(--bg-soft);
-    padding: 40px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    transition: var(--transition);
-}
-
-.feature-card:hover { border-color: var(--accent-bronze); background: var(--card-bg); }
-
-.step { color: var(--accent-bronze); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
-
-/* Dashboard Glassmorphism */
-.card-glass {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: var(--radius);
-}
-
-/* ==========================================================================
-   5. FOOTER
-   ========================================================================== */
-footer {
-    background: var(--bg-soft);
-    padding: 60px 5% 20px;
-    border-top: 1px solid var(--border);
-}
-
-.footer-main {
-    display: grid;
-    grid-template-columns: 2fr repeat(3, 1fr);
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-column h5 { color: var(--accent-bronze); margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; }
-.footer-column a { display: block; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; }
-.footer-column a:hover { color: var(--accent-bronze); }
-
-/* ==========================================================================
-   6. RESPONSIVIDADE
-   ========================================================================== */
-@media (max-width: 900px) {
-    .footer-main { grid-template-columns: 1fr 1fr; }
-    header { padding: 0 20px; }
-    .main-nav { display: none; } /* Idealmente aqui entraria o seu menu hambúrguer */
-}
-
-@media (max-width: 600px) {
-    .footer-main { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.5rem; }
+    background: rgba(10, 10, 11, 0.8);
+    position: sticky; top: 0; z-index: 100;
 }
