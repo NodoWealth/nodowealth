@@ -199,126 +199,135 @@ footer { padding: 40px; text-align: center; border-top: 1px solid var(--border);
     .hero-visual { display: none; } /* Esconde o visual em telas pequenas para não bugar */
 }
 
-/* --- HEADER PREMIMUM --- */
-.header-premium {
+/* --- HEADER SUPREME --- */
+.header-main {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 90px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s ease;
-}
-
-/* Efeito de vidro que só aparece ao rolar ou por padrão */
-.header-blur {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: -1;
-}
-
-.container-header {
+    top: 20px; /* Ele flutua longe da borda superior */
+    left: 50%;
+    transform: translateX(-50%);
     width: 95%;
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1300px;
+    height: 70px;
+    z-index: 2000;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 20px; /* Bordas arredondadas de software moderno */
+}
+
+/* Estado quando a página rola (Adicionado via JS abaixo) */
+.header-main.scrolled {
+    top: 10px;
+    height: 60px;
+    background: rgba(10, 10, 11, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+    padding: 0 30px;
 }
 
-/* LOGO E STATUS */
-.logo-link {
+/* BRANDING */
+.logo-wrapper {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
 }
 
-.logo-premium {
-    height: 28px;
-    filter: brightness(1.1);
+.logo-img {
+    height: 24px;
+    filter: drop-shadow(0 0 8px rgba(209, 166, 134, 0.2));
 }
 
-.logo-status {
-    font-size: 10px;
-    color: var(--bronze);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 4px;
-    opacity: 0.7;
-}
-
-/* NAVEGAÇÃO MINIMALISTA */
-.nav-list {
+.brand-meta {
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 12px;
+}
+
+.brand-name {
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.brand-status {
+    color: var(--bronze);
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+    gap: 30px;
     list-style: none;
 }
 
-.nav-item {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+.nav-link-custom {
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
-    letter-spacing: 0.5px;
+    font-size: 13px;
+    font-weight: 500;
     transition: 0.3s;
-    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.nav-item::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--bronze);
-    transition: 0.3s;
+.nav-link-custom:hover {
+    color: var(--bronze);
+    text-shadow: 0 0 15px rgba(209, 166, 134, 0.5);
 }
 
-.nav-item:hover { color: #fff; }
-.nav-item:hover::after { width: 100%; }
-
-/* BOTÃO DE LOGIN COM INDICADOR */
-.btn-login-minimal {
+/* ACTIONS */
+.header-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    border: 1px solid rgba(209, 166, 134, 0.3);
-    border-radius: 100px;
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    background: rgba(209, 166, 134, 0.05);
-    transition: 0.3s;
+    gap: 20px;
 }
 
-.btn-login-minimal:hover {
-    background: rgba(209, 166, 134, 0.15);
-    border-color: var(--bronze);
-    box-shadow: 0 0 20px rgba(209, 166, 134, 0.2);
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.03);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-.dot-auth {
+.connection-status small { font-size: 9px; color: #555; }
+
+.ping {
     width: 6px;
     height: 6px;
-    background: var(--bronze);
+    background: #10b981; /* Verde conexão */
     border-radius: 50%;
-    display: inline-block;
+    box-shadow: 0 0 10px #10b981;
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 900px) {
-    .nav-luxury { display: none; }
-    .logo-status { display: none; }
+.btn-access {
+    background: linear-gradient(135deg, rgba(209, 166, 134, 0.1), rgba(209, 166, 134, 0.05));
+    border: 1px solid rgba(209, 166, 134, 0.3);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.btn-access:hover {
+    border-color: var(--bronze);
+    background: var(--bronze);
+    color: #000;
 }
