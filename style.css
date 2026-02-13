@@ -99,3 +99,85 @@ body {
     .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
     .hero-visual { display: none; }
 }
+
+/* --- HEADER RECONSTRUIDO --- */
+.header-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 10000; /* Garante que fica acima de tudo */
+    display: flex;
+    align-items: center;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo e Texto lateral */
+.logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+.logo-img { height: 30px; }
+.brand-meta { border-left: 1px solid rgba(211, 166, 134, 0.3); padding-left: 15px; }
+.brand-name { display: block; color: #fff; font-weight: 800; font-size: 14px; letter-spacing: 1px; }
+.brand-status { color: #d1a686; font-size: 8px; letter-spacing: 2px; font-weight: 700; }
+
+/* Menu Central */
+.nav-links { display: flex; gap: 30px; }
+.nav-link-custom { 
+    color: #a1a1aa; 
+    text-decoration: none; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px; 
+    font-weight: 600;
+    transition: 0.3s;
+}
+.nav-link-custom:hover { color: #d1a686; }
+
+/* Botão e Status Direito */
+.header-actions { display: flex; align-items: center; gap: 20px; }
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.03);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.ping {
+    width: 6px; height: 6px; background: #10b981; border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+}
+
+.btn-access {
+    background: rgba(211, 166, 134, 0.1);
+    border: 1px solid #d1a686;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 11px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.4s;
+}
+
+.btn-access:hover { background: #d1a686; color: #000; }
+
+/* --- AJUSTE NO HERO PARA NÃO FICAR ATRÁS DO HEADER --- */
+.hero-premium {
+    padding-top: 120px !important; /* Compensa a altura do header fixo */
+}
