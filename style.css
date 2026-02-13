@@ -1,112 +1,52 @@
 /* ==========================================================================
-   1. DESIGN SYSTEM & RESET (NODO WEALTH V3)
+   RESET E BASE (ESSENCIAL PARA NÃO BUGAR)
    ========================================================================== */
 :root {
     --bg-deep: #050505;
-    --bg-soft: #0a0a0b;
     --bronze: #d1a686;
-    --bronze-glow: rgba(209, 166, 134, 0.3);
-    --text-main: #ffffff;
     --text-dim: #a1a1aa;
-    --border: rgba(255, 255, 255, 0.08);
     --glass: rgba(255, 255, 255, 0.03);
-    --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-deep);
-    color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* ==========================================================================
-   2. HEADER PREMIUM (FLUTUANTE)
-   ========================================================================== */
-.header-main {
-    position: fixed;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1300px;
-    height: 70px;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    transition: var(--transition);
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(10px);
-}
-
-.header-main.scrolled {
-    top: 15px;
-    background: rgba(10, 10, 11, 0.85);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.header-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 35px;
-}
-
-.logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-img { height: 24px; }
-.brand-meta { border-left: 1px solid var(--border); padding-left: 12px; display: flex; flex-direction: column; }
-.brand-name { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #fff; }
-.brand-status { font-size: 8px; color: var(--bronze); letter-spacing: 2px; }
-
-.nav-links { display: flex; gap: 40px; list-style: none; }
-.nav-link-custom { color: var(--text-dim); text-decoration: none; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
-.nav-link-custom:hover { color: var(--bronze); text-shadow: 0 0 10px var(--bronze-glow); }
-
-.btn-access {
-    background: var(--bronze-glow);
-    border: 1px solid rgba(209, 166, 134, 0.3);
+    background-color: var(--bg-deep) !important;
     color: #fff;
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: 0.4s;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
-.btn-access:hover { background: var(--bronze); color: #000; }
-
 /* ==========================================================================
-   3. HERO & VISUAL HUD (O "TCHAN")
+   HERO E ESTRUTURA
    ========================================================================== */
 .hero-premium {
-    position: relative;
-    padding-top: 180px;
+    padding-top: 140px;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: radial-gradient(circle at 80% 20%, rgba(209, 166, 134, 0.05), transparent 40%);
+    background: radial-gradient(circle at 80% 20%, rgba(209, 166, 134, 0.05), transparent 45%);
 }
 
 .hero-wrapper {
     width: 90%;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: 80px;
     align-items: center;
 }
 
-/* Notificação Terminal HUD */
+/* Títulos e Textos */
+.hero-title { font-size: 4rem; line-height: 1.1; font-weight: 800; margin-bottom: 25px; }
+.bronze-gradient { background: linear-gradient(90deg, #d1a686, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-description { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px; }
+
+/* ==========================================================================
+   VISUAL HUD (A CORREÇÃO DO "TCHAN")
+   ========================================================================== */
 .hero-visual {
     position: relative;
     display: flex;
@@ -114,33 +54,32 @@ body {
 }
 
 .floating-platform {
-    position: relative; /* Base para a notificação */
+    position: relative; /* FUNDAMENTAL: A notificação se prende aqui */
     background: var(--glass);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(25px);
     border: 1px solid var(--border);
-    border-radius: 35px;
+    border-radius: 30px;
     padding: 40px;
     width: 100%;
-    max-width: 440px;
-    box-shadow: 0 80px 150px rgba(0,0,0,0.6);
-    animation: floatAnim 8s ease-in-out infinite;
+    max-width: 400px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    animation: floatMaster 6s ease-in-out infinite;
 }
 
+/* A NOTIFICAÇÃO QUE ESTAVA EMBAIXO - AGORA FORÇADA PARA O TOPO */
 .terminal-notify {
-    position: absolute;
-    /* FORÇA A NOTIFICAÇÃO PARA O TOPO DIREITO */
-    top: -30px; 
-    right: -20px;
-    background: rgba(10, 10, 12, 0.95);
-    border: 1px solid var(--bronze);
-    padding: 14px 22px;
-    border-radius: 16px;
-    z-index: 100;
+    position: absolute !important; /* Força a saída do fluxo */
+    top: -25px !important;        /* Sobe para fora do card */
+    right: -20px !important;       /* Sai para a direita */
+    background: #0a0a0c !important;
+    border: 1px solid var(--bronze) !important;
+    padding: 12px 20px;
+    border-radius: 12px;
+    z-index: 999;
     display: flex;
     align-items: center;
-    gap: 15px;
-    box-shadow: 0 15px 45px rgba(209, 166, 134, 0.4);
-    animation: notifyPulse 4s ease-in-out infinite;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(209, 166, 134, 0.4);
 }
 
 .notify-dot {
@@ -148,33 +87,29 @@ body {
     height: 8px;
     background: var(--bronze);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--bronze);
+    box-shadow: 0 0 10px var(--bronze);
 }
 
 .notify-text small { color: var(--bronze); font-size: 8px; font-weight: 800; letter-spacing: 2px; display: block; }
-.notify-text p { color: #fff; font-size: 11px; font-weight: 500; margin: 0; }
+.notify-text p { color: #fff; font-size: 11px; margin: 0; font-weight: 600; }
 
-/* Gráficos e Stats do Hero */
-.hero-stats { display: flex; gap: 50px; margin-top: 50px; padding-top: 40px; border-top: 1px solid var(--border); }
-.stat-number { display: flex; align-items: baseline; }
-.stat-value { font-size: 2.2rem; font-weight: 800; color: #fff; }
-.stat-suffix { color: var(--bronze); font-size: 1.4rem; font-weight: 700; margin-left: 4px; }
-.stat-label { font-size: 10px; text-transform: uppercase; color: var(--text-dim); letter-spacing: 2px; display: block; margin-top: 5px; }
-
-/* Animações */
-@keyframes floatAnim {
-    0%, 100% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-30px) rotate(1deg); }
+/* ==========================================================================
+   STATS (FORMATAÇÃO)
+   ========================================================================== */
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
 }
 
-@keyframes notifyPulse {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-5px) scale(1.03); box-shadow: 0 20px 60px rgba(209, 166, 134, 0.6); }
-}
+.stat-value { font-size: 2rem; font-weight: 800; color: #fff; }
+.stat-suffix { color: var(--bronze); font-size: 1.2rem; font-weight: 700; }
+.stat-label { display: block; font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
 
-/* Responsividade */
-@media (max-width: 1100px) {
-    .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
-    .hero-visual, .nav-links { display: none; }
-    .hero-stats { justify-content: center; }
+/* Animação de Flutuar */
+@keyframes floatMaster {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
