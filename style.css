@@ -560,6 +560,87 @@ body {
     .contact-form-container { padding: 30px; }
 }
 
+/* --- SEÇÃO DE FEEDBACK --- */
+.feedback-section {
+    padding: 100px 5%;
+    background: #050505;
+}
+
+.section-header.center {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.feedback-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 24px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.feedback-card:hover {
+    border-color: rgba(209, 166, 134, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.quote-icon {
+    font-family: serif;
+    font-size: 60px;
+    color: var(--bronze);
+    line-height: 1;
+    margin-bottom: -20px;
+    opacity: 0.4;
+}
+
+.feedback-text {
+    color: #d1d1d6;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.client-avatar {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--bronze), #8b6e58);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.client-meta strong {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+}
+
+.client-meta small {
+    color: #71717a;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* --- SEÇÃO DE CONTATO --- */
 .contact-section {
     padding: 120px 5%;
