@@ -301,3 +301,56 @@ body {
     .btn-shiny, .btn-ghost { width: 100%; padding: 18px; text-align: center; }
     .hero-cta-group { flex-direction: column; width: 100%; }
 }
+
+/* --- FORMATAÇÃO DOS STATS (CORREÇÃO) --- */
+.hero-stats {
+    display: flex;
+    gap: 60px; /* Espaço entre as colunas */
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-number {
+    display: flex;
+    align-items: baseline; /* Alinha o número com o sufixo pela base da letra */
+}
+
+.stat-value {
+    font-size: 2.5rem; /* Número bem grande */
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.stat-suffix {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--bronze); /* Cor bronze da Nodo */
+    margin-left: 2px;
+}
+
+.stat-label {
+    font-size: 10px;
+    color: #71717a; /* Cinza discreto */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Responsividade para não quebrar no celular */
+@media (max-width: 768px) {
+    .hero-stats {
+        gap: 30px;
+        justify-content: center;
+    }
+    .stat-value { font-size: 1.8rem; }
+    .stat-suffix { font-size: 1.2rem; }
+}
