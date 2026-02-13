@@ -901,3 +901,129 @@ body {
         text-align: center;
     }
 }
+
+/* ==========================================================================
+   OTIMIZAÇÃO MOBILE (RESPONSIVIDADE)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .hero-wrapper, .method-grid, .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .hero-title {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 1. Header Mobile */
+    .header-main {
+        height: 70px;
+    }
+    
+    .nav-links, .status-badge {
+        display: none; /* Esconde o menu e o status para limpar o visual */
+    }
+
+    /* 2. Hero Section */
+    .hero-premium {
+        padding-top: 100px;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin: 0 auto 30px auto;
+    }
+
+    .hero-cta-group {
+        flex-direction: column; /* Botões um em cima do outro */
+        gap: 15px;
+    }
+
+    .btn-shiny, .btn-outline {
+        width: 100%; /* Botões ocupam a largura toda no celular */
+        text-align: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+    }
+
+    /* 3. Terminal Visual (O Card flutuante) */
+    .hero-visual {
+        margin-top: 40px;
+    }
+
+    .terminal-card {
+        max-width: 100%;
+        padding: 25px;
+    }
+
+    .terminal-notify {
+        right: 0; /* Centraliza ou encosta na borda para não vazar da tela */
+        top: -20px;
+        padding: 10px 15px !important;
+    }
+
+    /* 4. Seções de Conteúdo */
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .solutions-grid, .feedback-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .method-intro {
+        position: static;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    /* 5. Contato */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-container {
+        padding: 25px;
+    }
+
+    /* 6. Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .footer-brand .footer-tagline {
+        margin: 20px auto;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Ajustes para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .stat-item {
+        width: 100%; /* Stats ficam em lista se a tela for minúscula */
+    }
+}
