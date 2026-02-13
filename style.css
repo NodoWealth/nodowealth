@@ -16,17 +16,23 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 100px 5%;
+    /* Reduzi de 180px/120px para 60px para aproximar do header */
+    padding-top: 60px !important; 
+    padding-bottom: 40px;
     background: radial-gradient(circle at 80% 20%, rgba(209, 166, 134, 0.1), transparent 50%);
 }
 
 .hero-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
     max-width: 1200px;
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
+    /* Remove qualquer margem de segurança que o navegador possa colocar */
+    align-items: center; 
+    position: relative;
+    top: -20px; /* Move todo o bloco sutilmente para cima */
 }
 
 /* --- TEXTOS --- */
