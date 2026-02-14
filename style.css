@@ -203,21 +203,23 @@ body {
 .brand-status { color: #d1a686; font-size: 8px; letter-spacing: 2px; font-weight: 700; }
 
 /* Menu Central */
-.nav-links a, 
-.dropdown-trigger {
-    color: #71717a;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.nav-links {
+    display: flex;         /* Coloca os itens lado a lado */
+    align-items: center;   /* Alinha todos verticalmente ao centro */
+    gap: 30px;             /* Espaço uniforme entre os itens */
+}
+
+/* Garante que o dropdown não quebre a linha dentro do flex */
+.dropdown {
     display: flex;
     align-items: center;
 }
 
-.nav-links a:hover, 
-.dropdown-trigger:hover {
-    color: var(--bronze);
+/* Reset extra para garantir que os links não empilhem */
+.nav-links a, 
+.dropdown-trigger {
+    white-space: nowrap;   /* Impede que o texto quebre em duas linhas */
+    margin: 0;             /* Remove margens que possam empurrar o vizinho */
 }
 
 /* Botão e Status Direito */
