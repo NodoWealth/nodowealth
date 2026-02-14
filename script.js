@@ -309,3 +309,48 @@ function enviarLeadFormspree(nome, fone, inicial, final, tempo) {
         body: JSON.stringify(data)
     }).catch(err => console.error("Erro ao registrar lead:", err));
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btnReveal = document.getElementById('btn-reveal');
+
+    if (btnReveal) {
+        btnReveal.addEventListener('click', function() {
+            // Pegar valores financeiros
+            const p = parseFloat(document.getElementById('initial-val').value) || 0;
+            const pm = parseFloat(document.getElementById('monthly-val').value) || 0;
+            const rAnual = parseFloat(document.getElementById('rate-val').value) || 0;
+            const anos = parseFloat(document.getElementById('period-val').value) || 0;
+
+            // Pegar valores do Lead
+            const name = document.getElementById('user-name').value;
+            const phone = document.getElementById('user-phone').value;
+
+            if (p <= 0 || !name || phone.length < 10) {
+                alert("Por favor, preencha os dados financeiros e sua identificação.");
+                return;
+            }
+
+            // Matemática Financeira
+            const rMensal = (rAnual / 100) / 12;
+            const meses = anos * 12;
+            const montante = p * Math.pow(1 + rMensal, meses) + pm * ((Math.pow(1 + rMensal, meses) - 1) / rMensal);
+            const investido = p + (pm * meses);
+            const juros = montante - investido;
+
+            // Renderizar
+            document.getElementById('res-total-value').innerText = montante.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            document.getElementById('res-invested').innerText = investido.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            document.getElementById('res-interest').innerText = juros.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+
+            // Trocar Estado
+            document.getElementById('state-lock').classList.remove('active');
+            document.getElementById('state-final').classList.add('active');
+
+            // Animar Barras
+            setTimeout(() => {
+                document.getElementById('bar-inv').style.width = (invested / montante * 100) + "%";
+                document.getElementById('bar-int').style.width = (juros / montante * 100) + "%";
+            }, 200);
+        });
+    }
+});
