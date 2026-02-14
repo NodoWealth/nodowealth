@@ -114,18 +114,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* Ajuste Mobile */
-@media (max-width: 600px) {
-    .hero-cta-group {
-        flex-direction: column;
-        width: 100%;
-    }
-    .btn-shiny, .btn-outline {
-        width: 100%;
-        text-align: center;
-    }
-}
-
 /* NOTIFICAÇÃO SUBINDO COM O "TCHAN" */
 .terminal-notify {
     position: absolute;
@@ -163,12 +151,6 @@ body {
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
-}
-
-/* Responsividade Básica */
-@media (max-width: 900px) {
-    .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
-    .hero-visual { display: none; }
 }
 
 /* --- HEADER RECONSTRUIDO --- */
@@ -434,12 +416,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Responsividade */
-@media (max-width: 900px) {
-    .method-grid { grid-template-columns: 1fr; gap: 60px; }
-    .method-intro { position: relative; top: 0; text-align: center; }
-}
-
 /* --- SEÇÃO DE CONTATO --- */
 .contact-section {
     padding: 120px 5%;
@@ -553,12 +529,6 @@ body {
 }
 
 .footer-links a:hover { color: var(--bronze); }
-
-/* Responsividade */
-@media (max-width: 900px) {
-    .contact-wrapper { grid-template-columns: 1fr; gap: 50px; }
-    .contact-form-container { padding: 30px; }
-}
 
 /* --- SEÇÃO DE FEEDBACK --- */
 .feedback-section {
@@ -755,12 +725,6 @@ body {
 
 .footer-links a:hover { color: var(--bronze); }
 
-/* Responsividade */
-@media (max-width: 900px) {
-    .contact-wrapper { grid-template-columns: 1fr; gap: 50px; }
-    .contact-form-container { padding: 30px; }
-}
-
 /* --- FOOTER PREMIUM NODO --- */
 .main-footer {
     padding: 100px 0 40px;
@@ -889,66 +853,69 @@ body {
     box-shadow: 0 0 10px #10b981;
 }
 
-/* Responsivo */
-@media (max-width: 900px) {
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-}
-
 /* ==========================================================================
-   OTIMIZAÇÃO PREMIUM MOBILE (768px ou menos)
+   OTIMIZAÇÃO COMPLETA NODO MOBILE (RESPONSIVIDADE PREMIUM)
    ========================================================================== */
 
 @media (max-width: 768px) {
     
-    /* 1. HEADER: Ajuste de proporção e logo */
-    .header-main {
-        height: 65px;
-        background: rgba(5, 5, 5, 0.95); /* Mais opaco no mobile para leitura */
+    /* --- 1. CONFIGURAÇÕES GERAIS --- */
+    body {
+        overflow-x: hidden; /* Evita scrolls laterais acidentais */
     }
 
-    .header-container {
-        width: 92%;
-    }
-
-    .logo-img {
-        height: 24px; /* Logo um pouco menor */
-    }
-
-    .brand-meta {
-        display: none; /* Esconde o texto lateral da logo para ganhar espaço */
-    }
-
-    .nav-links, .status-badge {
-        display: none; /* Mantém o foco no CTA principal */
-    }
-
-    .btn-access {
-        padding: 8px 15px;
-        font-size: 10px;
-    }
-
-    /* 2. HERO: Alinhamento e espaçamento */
-    .hero-premium {
-        padding-top: 110px !important; /* Compensa o header fixo */
+    .section-title {
+        font-size: 2.2rem !important;
+        line-height: 1.2;
         text-align: center;
     }
 
+    .badge {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 15px;
+    }
+
+    /* --- 2. HEADER: COMPACTO E LIMPO --- */
+    .header-main {
+        height: 70px;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    .brand-meta, .nav-links, .status-badge {
+        display: none !important; /* Remove excesso de informação no mobile */
+    }
+
+    .btn-access {
+        padding: 10px 18px;
+        font-size: 11px;
+    }
+
+    /* --- 3. HERO: FOCO CENTRALIZADO --- */
+    .hero-premium {
+        padding: 120px 6% 60px !important;
+        text-align: center;
+    }
+
+    .hero-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
     .hero-title {
-        font-size: 2.4rem;
-        line-height: 1.2;
+        font-size: 2.6rem !important;
     }
 
     .hero-description {
+        margin: 0 auto 30px;
         font-size: 1rem;
-        padding: 0 10px;
     }
 
     .hero-cta-group {
@@ -958,122 +925,143 @@ body {
     }
 
     .btn-shiny, .btn-outline {
-        min-width: 240px;
-        width: 85%; /* Quase cheio, mas com bordas */
+        width: 100%;
+        max-width: 280px; /* Largura elegante de pílula */
+        min-width: unset;
         text-align: center;
     }
 
-    /* 3. TERMINAL VISUAL: Ajuste de escala */
+    .hero-stats {
+        justify-content: center;
+        gap: 30px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 30px;
+    }
+
+    .stat-value { font-size: 1.8rem; }
+
+    /* --- 4. VISUAL DO TERMINAL: ESCALONADO --- */
     .hero-visual {
-        margin-top: 50px;
-        overflow: visible; /* Garante que a notificação não seja cortada */
+        margin-top: 20px;
     }
 
     .terminal-card {
-        transform: scale(0.9);
+        transform: scale(0.95);
         margin: 0 auto;
-        width: 95%;
+        width: 100%;
+        padding: 25px 20px;
     }
 
     .terminal-notify {
-        top: -15px !important;
-        right: 5px !important;
-        transform: scale(0.8);
-        min-width: 160px;
+        top: -20px !important;
+        right: 0px !important;
+        transform: scale(0.85);
+        min-width: 170px;
+        z-index: 10;
     }
 
-    /* 4. FORMULÁRIO: Correção de bugs e usabilidade */
-    .contact-form-container {
-        padding: 30px 20px;
-        margin: 0 10px;
-    }
-
-    .form-group input, 
-    .form-group select {
-        font-size: 16px !important; /* Evita que o iOS dê zoom automático ao clicar */
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.05); /* Um pouco mais visível */
-    }
-
-    /* Melhora a legibilidade do select no Android/iOS */
-    .form-group select option {
-        background: #111 !important;
-        color: #fff !important;
-    }
-
-    /* 5. SEÇÕES DE CONTEÚDO: Respiro e Grids */
-    .solutions-section, .method-section, .feedback-section {
-        padding: 70px 6%;
-    }
-
-    .solutions-grid, .feedback-grid {
+    /* --- 5. SERVIÇOS: LISTA VERTICAL --- */
+    .solutions-section { padding: 80px 6%; }
+    
+    .solutions-grid {
+        grid-template-columns: 1fr !important;
         gap: 20px;
     }
 
-    .sol-card, .feedback-card {
-        padding: 30px 20px;
-    }
+    .sol-card { padding: 40px 30px; }
 
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    /* 6. METODOLOGIA: Correção da linha do tempo */
+    /* --- 6. METODOLOGIA: CORREÇÃO DOS NÚMEROS --- */
+    .method-section { padding: 80px 6%; }
+    
     .method-grid {
-        gap: 40px;
+        grid-template-columns: 1fr !important;
+        gap: 50px;
     }
 
-    .step-item {
-        padding: 25px;
+    .method-intro { text-align: center; }
+
+    .step-item { padding: 30px 20px; }
+
+    .step-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
 
-    /* 7. FOOTER: Reorganização e centralização */
-    .main-footer {
-        padding: 60px 5% 30px;
+    .step-num {
+        /* Bloqueio de deformação */
+        flex: 0 0 40px !important; /* Não cresce, não encolhe, base 40px */
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 1px solid var(--bronze) !important;
+        font-size: 14px !important;
     }
+
+    .step-item h3 { font-size: 1.25rem !important; margin: 0; }
+
+    /* --- 7. FEEDBACK: CARDS AJUSTADOS --- */
+    .feedback-grid { grid-template-columns: 1fr !important; }
+
+    /* --- 8. CONTATO: FORMULÁRIO ERGONÔMICO --- */
+    .contact-wrapper {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .contact-info p { margin: 20px auto 30px; }
+
+    .contact-form-container {
+        padding: 35px 20px;
+        margin: 0;
+    }
+
+    .form-group input, .form-group select {
+        font-size: 16px !important; /* Impede zoom no iPhone */
+        padding: 14px;
+    }
+
+    .form-group select {
+        background-position: calc(100% - 15px) center;
+    }
+
+    /* --- 9. FOOTER: CENTRALIZADO --- */
+    .main-footer { padding: 80px 6% 40px; }
 
     .footer-grid {
-        grid-template-columns: 1fr; /* Tudo em uma coluna */
+        grid-template-columns: 1fr !important;
         text-align: center;
-        gap: 45px;
+        gap: 50px;
     }
 
-    .footer-brand .logo-wrapper {
-        justify-content: center;
-    }
-
-    .footer-brand .footer-tagline {
-        margin: 20px auto 0;
-    }
-
-    .footer-nav h4 {
-        margin-bottom: 15px;
-    }
-
-    .footer-social {
-        justify-content: center;
-    }
+    .footer-brand .logo-wrapper { justify-content: center; }
+    .footer-brand .footer-tagline { margin: 20px auto; }
+    .footer-social { justify-content: center; }
 
     .footer-bottom {
-        flex-direction: column-reverse; /* Copyright por último */
+        flex-direction: column-reverse;
         gap: 25px;
-        border-top: 1px solid rgba(255,255,255,0.05);
-        padding-top: 30px;
+        text-align: center;
+        padding-top: 40px;
     }
 
     .footer-legal {
         flex-direction: column;
         gap: 15px;
-        align-items: center;
     }
 
-    .legal-links {
-        justify-content: center;
-    }
+    .legal-links { justify-content: center; gap: 25px; }
 }
 
-/* Ajuste específico para telas ultra-pequenas */
-@media (max-width: 380px) {
-    .hero-title { font-size: 2.1rem; }
-    .btn-shiny, .btn-outline { min-width: 200px; width: 100%; }
+/* Ajuste para telas muito finas */
+@media (max-width: 400px) {
+    .hero-title { font-size: 2.1rem !important; }
+    .terminal-card { transform: scale(0.85); margin-left: -5%; width: 110%; }
 }
