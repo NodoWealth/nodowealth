@@ -47,138 +47,47 @@
     </div>
 </header>
 
-    <main class="tool-main-content">
-        <section class="calc-hero">
-            <div class="container">
-                <span class="badge">Wealth Engine</span>
-                <h1 class="tool-title">Simulador de <span class="bronze-text">Juros Compostos</span></h1>
-                <p class="tool-subtitle">Projete a evolução do seu patrimônio sob a ótica da engenharia financeira Nodo.</p>
-            </div>
-        </section>
+<main class="tool-main-content">
+    <section class="calc-hero">
+        <div class="container">
+            <span class="badge">Wealth Engine</span>
+            <h1 class="tool-title">Simulador de <span class="bronze-text">Juros Compostos</span></h1>
+            <p class="tool-subtitle">Projete a evolução do seu patrimônio sob a ótica da engenharia financeira Nodo.</p>
+        </div>
+    </section>
 
-        <section class="calc-container-section">
-            <div class="container">
-                <div class="calc-card-main">
-                    
-                    <div class="calc-inputs-wrapper">
-                        <div class="input-grid">
-                            <div class="input-field">
-                                <label for="initial-val">Patrimônio Inicial (R$)</label>
-                                <input type="number" id="initial-val" placeholder="0,00">
-                            </div>
-                            <div class="input-field">
-                                <label for="monthly-val">Aporte Mensal (R$)</label>
-                                <input type="number" id="monthly-val" placeholder="0,00">
-                            </div>
-                            <div class="input-field">
-                                <label for="rate-val">Taxa de Juros Anual (%)</label>
-                                <input type="number" id="rate-val" placeholder="Ex: 12">
-                            </div>
-                            <div class="input-field">
-                                <label for="period-val">Período (Anos)</label>
-                                <input type="number" id="period-val" placeholder="Ex: 10">
-                            </div>
+    <section class="calc-container-section">
+        <div class="container">
+            <div class="calc-card-main">
+                
+                <div class="calc-inputs-wrapper">
+                    <div class="input-grid">
+                        <div class="input-field">
+                            <label for="initial-val">Patrimônio Inicial (R$)</label>
+                            <input type="number" id="initial-val" placeholder="0,00">
                         </div>
-                        
-                        <button id="btn-pre-calc" class="btn-shiny btn-full">Simular Projeção Alpha</button>
-                    </div>
-
-                    <div class="calc-results-wrapper">
-                        <div id="state-lock" class="result-state active">
-                            <div class="terminal-header">
-                                <div class="pulse-icon"></div>
-                                <span class="system-tag">Nodo Intelligence Engine v2.0</span>
-                            </div>
-                            
-                            <h3 class="widget-title">Desbloquear Projeção <br><span class="bronze-text">Patrimonial Alpha</span></h3>
-                            <p class="widget-desc">A identificação é necessária para gerar o relatório de simulação e comparativo de mercado.</p>
-
-                            <div class="terminal-inputs">
-                                <div class="fancy-input-group">
-                                    <input type="text" id="user-name" required placeholder=" ">
-                                    <label>Nome do Investidor</label>
-                                </div>
-                                <div class="fancy-input-group">
-                                    <input type="tel" id="user-phone" required placeholder=" ">
-                                    <label>WhatsApp Internacional</label>
-                                </div>
-                                <button id="btn-reveal" class="btn-shiny-terminal">
-                                    PROCESSAR DADOS <span class="btn-arrow">→</span>
-                                </button>
-                            </div>
+                        <div class="input-field">
+                            <label for="monthly-val">Aporte Mensal (R$)</label>
+                            <input type="number" id="monthly-val" placeholder="0,00">
                         </div>
-
-                        <div id="state-final" class="result-state">
-                            <div class="dashboard-header">
-                                <small>PROJEÇÃO DE LONGO PRAZO</small>
-                                <h2 id="res-total-value">R$ 0,00</h2>
-                            </div>
-
-                            <div class="visual-engine">
-                                <div class="chart-labels">
-                                    <span>Composição do Patrimônio</span>
-                                    <span id="perc-interest-label" class="bronze-text">0% Juros</span>
-                                </div>
-                                <div class="neon-chart-bar">
-                                    <div id="bar-inv" class="neon-fill invested"></div>
-                                    <div id="bar-int" class="neon-fill interest"></div>
-                                </div>
-                            </div>
-
-                            <div class="data-grid-premium">
-                                <div class="data-card">
-                                    <span class="label">Principal</span>
-                                    <p id="res-invested">R$ 0,00</p>
-                                </div>
-                                <div class="data-card highlighted">
-                                    <span class="label">Poder do Tempo</span>
-                                    <p id="res-interest">R$ 0,00</p>
-                                </div>
-                            </div>
-
-                            <div class="insight-box">
-                                <i class="insight-icon">💡</i>
-                                <p>Sua rentabilidade está <strong>24% acima</strong> da média de mercado para este perfil.</p>
-                            </div>
-
-                            <button onclick="window.location.reload()" class="btn-restart">NOVA SIMULAÇÃO</button>
+                        <div class="input-field">
+                            <label for="rate-val">Taxa de Juros Anual (%)</label>
+                            <input type="number" id="rate-val" placeholder="Ex: 12">
+                        </div>
+                        <div class="input-field">
+                            <label for="period-val">Período (Anos)</label>
+                            <input type="number" id="period-val" placeholder="Ex: 10">
                         </div>
                     </div>
-                        <div id="state-lock" class="result-state">
-                            <div class="lock-header">
-                                <h3>Cálculo Concluído</h3>
-                                <p>Para visualizar o resultado e receber nossa análise, identifique-se:</p>
-                            </div>
-                            <div class="input-field">
-                                <label>Seu WhatsApp</label>
-                                <input type="tel" id="user-phone" placeholder="(00) 00000-0000">
-                            </div>
-                            <button id="btn-reveal" class="btn-outline btn-full">Liberar Resultado</button>
-                        </div>
-                        <div class="final-display">
-                            <span class="res-label">Patrimônio Projetado</span>
-                            <h2 id="res-total-value">R$ 0,00</h2>
-                            
-                            <div class="composition-bar">
-                                <div id="bar-inv" class="bar-invested" style="width: 0%"></div>
-                                <div id="bar-int" class="bar-interest" style="width: 0%"></div>
-                            </div>
-                            
-                            <div class="bar-legend">
-                                <span><b style="color:#888">•</b> Aportes</span>
-                                <span><b style="color:var(--bronze)">•</b> Juros</span>
-                            </div>
-
-                            <div class="res-stats">
-                                <p id="res-invested">Total investido: R$ 0,00</p>
-                            </div>
-                            <button onclick="window.location.reload()" class="btn-reset">Nova Simulação</button>
-                        </div>
-                    </div>
+                    <button id="btn-pre-calc" class="btn-shiny-terminal" style="width: 100%;">SIMULAR PROJEÇÃO ALPHA</button>
                 </div>
-            </div>
-        </section>
-    </main>
+
+                <div class="calc-results-wrapper">
+                    </div>
+
+            </div> </div>
+    </section>
+</main>
 
     <footer class="main-footer">
     <div class="container">
