@@ -203,23 +203,90 @@ body {
 .brand-status { color: #d1a686; font-size: 8px; letter-spacing: 2px; font-weight: 700; }
 
 /* Menu Central */
+/* --- ESTILO UNIFICADO DOS LINKS DO HEADER --- */
+
+/* 1. O container pai alinha todos em linha */
 .nav-links {
-    display: flex;         /* Coloca os itens lado a lado */
-    align-items: center;   /* Alinha todos verticalmente ao centro */
-    gap: 30px;             /* Espaço uniforme entre os itens */
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espaço entre os itens */
 }
 
-/* Garante que o dropdown não quebre a linha dentro do flex */
+/* 2. Seletor universal para links comuns E o gatilho do dropdown */
+.nav-links a, 
+.dropdown-trigger {
+    color: #71717a !important; /* Cor cinza padrão */
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+/* 3. Efeito de Hover unificado */
+.nav-links a:hover, 
+.dropdown:hover .dropdown-trigger {
+    color: #d1a686 !important; /* Bronze Nodo */
+}
+
+/* --- AJUSTES DO DROPDOWN --- */
+
 .dropdown {
+    position: relative;
     display: flex;
     align-items: center;
 }
 
-/* Reset extra para garantir que os links não empilhem */
-.nav-links a, 
-.dropdown-trigger {
-    white-space: nowrap;   /* Impede que o texto quebre em duas linhas */
-    margin: 0;             /* Remove margens que possam empurrar o vizinho */
+/* A seta ao lado do texto Sistemas */
+.arrow {
+    font-size: 10px;
+    margin-left: 6px;
+    opacity: 0.7;
+}
+
+/* O menu que aparece */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-width: 260px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 10px; /* Espaço visual */
+    z-index: 1000;
+}
+
+/* Ponte invisível para o mouse não "perder" o menu no caminho */
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    height: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInSlide 0.2s ease-out;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 /* Botão e Status Direito */
