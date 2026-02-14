@@ -903,93 +903,177 @@ body {
 }
 
 /* ==========================================================================
-   OTIMIZAÇÃO MOBILE (RESPONSIVIDADE)
+   OTIMIZAÇÃO PREMIUM MOBILE (768px ou menos)
    ========================================================================== */
 
-@media (max-width: 1024px) {
-    .hero-wrapper, .method-grid, .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-    
-    .hero-title {
-        font-size: 3.2rem;
-    }
-}
-
 @media (max-width: 768px) {
-    /* 1. Ajuste de Títulos: Menos agressivos */
-    .hero-title {
-        font-size: 2.8rem;
-        letter-spacing: -1px;
+    
+    /* 1. HEADER: Ajuste de proporção e logo */
+    .header-main {
+        height: 65px;
+        background: rgba(5, 5, 5, 0.95); /* Mais opaco no mobile para leitura */
     }
 
-    /* 2. Botões: Em vez de Full Width, vamos usar largura fixa e centralizada */
+    .header-container {
+        width: 92%;
+    }
+
+    .logo-img {
+        height: 24px; /* Logo um pouco menor */
+    }
+
+    .brand-meta {
+        display: none; /* Esconde o texto lateral da logo para ganhar espaço */
+    }
+
+    .nav-links, .status-badge {
+        display: none; /* Mantém o foco no CTA principal */
+    }
+
+    .btn-access {
+        padding: 8px 15px;
+        font-size: 10px;
+    }
+
+    /* 2. HERO: Alinhamento e espaçamento */
+    .hero-premium {
+        padding-top: 110px !important; /* Compensa o header fixo */
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
     .hero-cta-group {
         flex-direction: column;
-        align-items: center; /* Centraliza os botões */
-        gap: 12px;
+        align-items: center;
+        gap: 15px;
     }
 
     .btn-shiny, .btn-outline {
-        width: auto;           /* Remove o Full Width */
-        min-width: 260px;      /* Garante uma largura mínima elegante */
-        max-width: 90%;        /* Não deixa estourar em telas muito pequenas */
-        padding: 16px 30px;    /* Reduz um pouco o tamanho */
+        min-width: 240px;
+        width: 85%; /* Quase cheio, mas com bordas */
         text-align: center;
     }
 
-    /* 3. Terminal Visual: Reduzimos a escala para não ocupar a tela toda */
+    /* 3. TERMINAL VISUAL: Ajuste de escala */
     .hero-visual {
-        margin-top: 30px;
-        transform: scale(0.9); /* Diminui o card levemente para criar respiro */
+        margin-top: 50px;
+        overflow: visible; /* Garante que a notificação não seja cortada */
     }
 
     .terminal-card {
-        padding: 20px;
-        margin: 0 15px; /* Adiciona margem lateral para o card não tocar as bordas */
+        transform: scale(0.9);
+        margin: 0 auto;
+        width: 95%;
     }
 
     .terminal-notify {
-        right: 10px; /* Traz a notificação mais para dentro */
-        transform: scale(0.85); /* Deixa a notificação mais delicada no mobile */
+        top: -15px !important;
+        right: 5px !important;
+        transform: scale(0.8);
+        min-width: 160px;
     }
 
-    /* 4. Stats: Alinhamento horizontal elegante */
-    .hero-stats {
-        flex-direction: row; /* Mantém lado a lado se couber */
-        flex-wrap: wrap;     /* Quebra se for muito pequeno */
-        justify-content: center;
-        gap: 25px;
+    /* 4. FORMULÁRIO: Correção de bugs e usabilidade */
+    .contact-form-container {
+        padding: 30px 20px;
+        margin: 0 10px;
     }
 
-    .stat-item {
-        text-align: center;
+    .form-group input, 
+    .form-group select {
+        font-size: 16px !important; /* Evita que o iOS dê zoom automático ao clicar */
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05); /* Um pouco mais visível */
     }
 
-    /* 5. Seções de Conteúdo: Mantendo margens internas */
-    .solutions-section, .method-section, .feedback-section, .contact-section {
-        padding: 80px 8%; /* Aumenta a margem lateral para o texto "respirar" */
+    /* Melhora a legibilidade do select no Android/iOS */
+    .form-group select option {
+        background: #111 !important;
+        color: #fff !important;
+    }
+
+    /* 5. SEÇÕES DE CONTEÚDO: Respiro e Grids */
+    .solutions-section, .method-section, .feedback-section {
+        padding: 70px 6%;
+    }
+
+    .solutions-grid, .feedback-grid {
+        gap: 20px;
+    }
+
+    .sol-card, .feedback-card {
+        padding: 30px 20px;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
-    /* 6. Contact Form: Não encostar nas bordas */
-    .contact-form-container {
-        padding: 30px 20px;
-        margin: 0 5px;
+    /* 6. METODOLOGIA: Correção da linha do tempo */
+    .method-grid {
+        gap: 40px;
+    }
+
+    .step-item {
+        padding: 25px;
+    }
+
+    /* 7. FOOTER: Reorganização e centralização */
+    .main-footer {
+        padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Tudo em uma coluna */
+        text-align: center;
+        gap: 45px;
+    }
+
+    .footer-brand .logo-wrapper {
+        justify-content: center;
+    }
+
+    .footer-brand .footer-tagline {
+        margin: 20px auto 0;
+    }
+
+    .footer-nav h4 {
+        margin-bottom: 15px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse; /* Copyright por último */
+        gap: 25px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 30px;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .legal-links {
+        justify-content: center;
     }
 }
 
-/* Ajustes para telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .stat-item {
-        width: 100%; /* Stats ficam em lista se a tela for minúscula */
-    }
+/* Ajuste específico para telas ultra-pequenas */
+@media (max-width: 380px) {
+    .hero-title { font-size: 2.1rem; }
+    .btn-shiny, .btn-outline { min-width: 200px; width: 100%; }
 }
