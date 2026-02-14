@@ -287,6 +287,7 @@ body {
 /* ==========================================================================
    5. CALCULADORA (FERRAMENTAS)
    ========================================================================== */
+.tool-main-content { padding-top: 120px; /* Isso garante que o título comece abaixo do header */}
 .calc-hero { text-align: center; padding: 40px 0 60px; }
 .tool-title { font-size: 3rem; font-weight: 800; margin: 0 0 15px; color: #fff; }
 .tool-subtitle { color: #a1a1aa; max-width: 600px; margin: 0 auto; line-height: 1.6; }
