@@ -3,146 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Juros Compostos | Nodo Intelligence</title>
+    <title>Calculadora Alpha | Nodo Intelligence</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="body-terminal">
 
-   <header class="header-main">
-    <div class="header-container">
-        <a href="../index.html" class="logo-wrapper">
-            <img src="../logo_nodo.png" alt="Nodo" class="logo-img">
-            <div class="brand-meta">
-                <span class="brand-name">NODO</span>
-                <span class="brand-status">EQUITY & CORE</span>
-            </div>
-        </a>
-
-        <nav class="nav-links">
-            <a href="../index.html">Ecossistema</a>
-            <a href="../index.html">Metodologia</a>
-            
-            <div class="dropdown">
-                <a href="#" class="dropdown-trigger">Sistemas <span class="arrow">▾</span></a>
-                <div class="dropdown-content">
-                    <div class="dropdown-grid">
-                        <a href="calculadora.html" class="dropdown-item">
-                            <div class="item-icon">📈</div>
-                            <div class="item-text">
-                                <strong>Juros Compostos</strong>
-                                <span>Projeção de liberdade.</span>
-                            </div>
-                        </a>
-                    </div>
+    <header class="header-main">
+        <div class="header-container">
+            <a href="../index.html" class="logo-wrapper">
+                <img src="../logo_nodo.png" alt="Nodo" class="logo-img">
+                <div class="brand-meta">
+                    <span class="brand-name">NODO</span>
+                    <span class="brand-status">EQUITY & CORE</span>
                 </div>
-            </div>
-            
-            <a href="../index.html">Contato</a>
-        </nav>
-
-        <div class="header-actions">
-            <a href="#" class="btn-access">Acessar Terminal</a>
-        </div>
-    </div>
-</header>
-
-<main class="tool-main-content">
-    <section class="calc-hero">
-        <div class="container">
-            <span class="badge">Wealth Engine</span>
-            <h1 class="tool-title">Simulador de <span class="bronze-text">Juros Compostos</span></h1>
-            <p class="tool-subtitle">Projete a evolução do seu patrimônio sob a ótica da engenharia financeira Nodo.</p>
-        </div>
-    </section>
-
-    <section class="calc-container-section">
-        <div class="container">
-            <div class="calc-card-main">
-                
-                <div class="calc-inputs-wrapper">
-                    <div class="input-grid">
-                        <div class="input-field">
-                            <label for="initial-val">Patrimônio Inicial (R$)</label>
-                            <input type="number" id="initial-val" placeholder="0,00">
-                        </div>
-                        <div class="input-field">
-                            <label for="monthly-val">Aporte Mensal (R$)</label>
-                            <input type="number" id="monthly-val" placeholder="0,00">
-                        </div>
-                        <div class="input-field">
-                            <label for="rate-val">Taxa de Juros Anual (%)</label>
-                            <input type="number" id="rate-val" placeholder="Ex: 12">
-                        </div>
-                        <div class="input-field">
-                            <label for="period-val">Período (Anos)</label>
-                            <input type="number" id="period-val" placeholder="Ex: 10">
-                        </div>
-                    </div>
-                    <button class="btn-shiny-terminal" style="width: 100%; opacity: 0.5; cursor: default;">DADOS SINCRONIZADOS</button>
-                </div>
-
-                <div class="calc-results-wrapper">
-                    <div id="state-lock" class="result-state active">
-                        <div class="terminal-header">
-                            <div class="pulse-icon"></div>
-                            <span class="system-tag">Nodo Intelligence Engine v2.0</span>
-                        </div>
-                        
-                        <h3 class="widget-title">Desbloquear Projeção <br><span class="bronze-text">Patrimonial Alpha</span></h3>
-                        
-                        <div class="terminal-inputs">
-                            <div class="fancy-input-group">
-                                <input type="text" id="user-name" required placeholder=" ">
-                                <label>Nome do Investidor</label>
-                            </div>
-                            <div class="fancy-input-group">
-                                <input type="tel" id="user-phone" required placeholder=" ">
-                                <label>WhatsApp Internacional</label>
-                            </div>
-                            <button id="btn-reveal" class="btn-shiny-terminal">
-                                PROCESSAR DADOS <span class="btn-arrow">→</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="state-final" class="result-state">
-                        </div>
-                </div> 
-
-            </div> </div>
-    </section>
-</main>
-
-<footer class="main-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="logo-wrapper">
-                    <img src="../logo_nodo.png" alt="Nodo Logo" class="logo-img">
-                    <div class="brand-meta">
-                        <span class="brand-name">NODO</span>
-                        <span class="brand-status">EQUITY & CORE</span>
-                    </div>
-                </div>
-                <p class="footer-tagline">Engenharia financeira e research independente para quem busca liberdade e inteligência patrimonial.</p>
-            </div>
-            <div class="footer-nav">
-                <h4>Navegação</h4>
-                <ul>
-                    <li><a href="../index.html">Início</a></li>
-                    <li><a href="../index.html">Ecossistema</a></li>
-                    <li><a href="../index.html">Metodologia</a></li>
-                    <li><a href="../index.html">Diagnóstico</a></li>
-                </ul>
-            </div>
-            </div>
-        <div class="footer-bottom">
-            <div class="footer-legal">
-                <span>&copy; 2026 NODO WEALTH. Todos os direitos reservados.</span>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html">Ecossistema</a>
+                <a href="../index.html">Metodologia</a>
+                <a href="#" class="bronze-text">Sistemas</a>
+                <a href="../index.html">Contato</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn-access">Acessar Terminal</a>
             </div>
         </div>
-    </div>
-</footer>
+    </header>
+
+    <main class="tool-main-content">
+        <section class="calc-hero">
+            <div class="container">
+                <span class="badge">Wealth Engine</span>
+                <h1 class="tool-title">Simulador de <span class="bronze-text">Juros Compostos</span></h1>
+                <p class="tool-subtitle">Engenharia financeira para projeção de liberdade patrimonial.</p>
+            </div>
+        </section>
+
+        <section class="calc-container-section">
+            <div class="container">
+                <div class="calc-card-main">
+                    
+                    <div class="calc-inputs-column">
+                        <h3 class="column-title">Parâmetros de Análise</h3>
+                        <div class="input-grid-wrapper">
+                            <div class="input-field-premium">
+                                <label>Patrimônio Inicial (R$)</label>
+                                <input type="number" id="initial-val" placeholder="0,00">
+                            </div>
+                            <div class="input-field-premium">
+                                <label>Aporte Mensal (R$)</label>
+                                <input type="number" id="monthly-val" placeholder="0,00">
+                            </div>
+                            <div class="input-field-premium">
+                                <label>Taxa de Juros Anual (%)</label>
+                                <input type="number" id="rate-val" placeholder="Ex: 12.5">
+                            </div>
+                            <div class="input-field-premium">
+                                <label>Horizonte (Anos)</label>
+                                <input type="number" id="period-val" placeholder="Ex: 10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-results-wrapper">
+                        <div id="state-lock" class="result-state active">
+                            <div class="terminal-header">
+                                <div class="pulse-icon"></div>
+                                <span class="system-tag">Nodo Intelligence Engine</span>
+                            </div>
+                            <h3 class="widget-title">Gerar Relatório <br><span class="bronze-text">Estratégico</span></h3>
+                            <div class="terminal-form">
+                                <div class="fancy-group">
+                                    <input type="text" id="user-name" required placeholder=" ">
+                                    <label>Nome Completo</label>
+                                </div>
+                                <div class="fancy-group">
+                                    <input type="tel" id="user-phone" required placeholder=" ">
+                                    <label>WhatsApp</label>
+                                </div>
+                                <button id="btn-reveal" class="btn-shiny-terminal">PROCESSAR PROJEÇÃO →</button>
+                            </div>
+                        </div>
+
+                        <div id="state-final" class="result-state">
+                            <div class="dashboard-render">
+                                <span class="res-label">PATRIMÔNIO ESTIMADO</span>
+                                <h2 id="res-total-value">R$ 0,00</h2>
+                                
+                                <div class="neon-chart-container">
+                                    <div class="neon-bar-base">
+                                        <div id="bar-inv" class="neon-fill-inv"></div>
+                                        <div id="bar-int" class="neon-fill-int"></div>
+                                    </div>
+                                    <div class="chart-legend">
+                                        <span><i class="dot-gray"></i> Aportes</span>
+                                        <span id="perc-interest-label"><i class="dot-bronze"></i> Juros</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-grid-premium">
+                                    <div class="data-card">
+                                        <small>Investido</small>
+                                        <p id="res-invested">R$ 0,00</p>
+                                    </div>
+                                    <div class="data-card">
+                                        <small>Juros Acumulados</small>
+                                        <p id="res-interest" class="bronze-text">R$ 0,00</p>
+                                    </div>
+                                </div>
+                                <button onclick="window.location.reload()" class="btn-restart">RECOMEÇAR ANÁLISE</button>
+                            </div>
+                        </div>
+                    </div> </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        </footer>
 
     <script src="../script.js"></script>
 </body>
