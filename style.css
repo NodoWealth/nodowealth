@@ -124,6 +124,8 @@ body {
 }
 .btn-access:hover { background: var(--bronze); color: #000; }
 
+
+
 /* ==========================================================================
    3. HERO SECTION (HOME)
    ========================================================================== */
@@ -490,6 +492,69 @@ canvas#evolutionChart {
     
     canvas#evolutionChart {
         max-height: 200px; /* Limita a altura para não empurrar tudo para baixo */
+    }
+}
+
+/* --- MENU HAMBÚRGUER --- */
+.mobile-menu-icon {
+    display: none; /* Escondido no Desktop */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.mobile-menu-icon .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--bronze);
+    transition: 0.3s;
+}
+
+/* --- MEDIA QUERY GLOBAL (Celulares) --- */
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: flex; /* Mostra o ícone no mobile */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%; /* Escondido fora da tela */
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transition: 0.4s;
+    }
+
+    .nav-links.active {
+        right: 0; /* Desliza para dentro da tela */
+    }
+
+    /* AJUSTE DE GRIDS EM TODAS AS PÁGINAS */
+    .hero-wrapper, 
+    .calc-card-main, 
+    .footer-container,
+    .input-grid-wrapper {
+        grid-template-columns: 1fr !important; /* Tudo vira uma única coluna */
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Ajuste de Texto para não estourar a tela */
+    h1 { font-size: 1.8rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    
+    .container {
+        width: 90% !important;
+        padding: 0 5%;
     }
 }
 

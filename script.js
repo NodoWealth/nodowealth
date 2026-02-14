@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+let evolutionChartInstance = null;
+
 function initNavigation() {
     const menuIcon = document.querySelector('.mobile-menu-icon');
     const nav = document.querySelector('.main-nav');
@@ -54,40 +56,119 @@ function initScrollEffects() {
     reveals.forEach(el => revealObserver.observe(el));
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const menuIcon = document.querySelector('.mobile-menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Animação do ícone (opcional: transforma em X)
+            menuIcon.classList.toggle('open');
+        });
+    }
+    
+    // Fecha o menu ao clicar em qualquer link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+});
+
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
 let myChart = null;
 
-function initTerminalNodo(btn) {
-    btn.addEventListener('click', function() {
-        // 1. Coleta de Identificação
-        const name = document.getElementById('user-name').value;
-        const phone = document.getElementById('user-phone').value;
+btn.addEventListener('click', () => {
+        // 1. Coleta de dados
+        const inicial = parseFloat(document.getElementById('initial-val').value) || 0;
+        const mensal = parseFloat(document.getElementById('monthly-val').value) || 0;
+        const taxaAnual = parseFloat(document.getElementById('rate-val').value) || 0;
+        const tempoAnos = parseInt(document.getElementById('period-val').value) || 0;
 
-        // 2. Coleta de Parâmetros Financeiros
-        const p = parseFloat(document.getElementById('initial-val').value) || 0;
-        const pm = parseFloat(document.getElementById('monthly-val').value) || 0;
-        const rAnual = parseFloat(document.getElementById('rate-val').value) || 0;
-        const anos = parseInt(document.getElementById('period-val').value) || 0;
-
-        // Validação
-        if (!name || phone.length < 10 || p <= 0 || anos <= 0) {
-            alert("Por favor, preencha todos os parâmetros e sua identificação.");
+        if (tempoAnos <= 0) {
+            alert("Por favor, insira um período válido.");
             return;
         }
 
-        // Efeito visual de processamento
-        btn.innerHTML = `<span class="spinner"></span> ANALISANDO CENÁRIOS...`;
-        btn.disabled = true;
+        // 2. Cálculos Financeiros
+        const meses = tempoAnos * 12;
+        const taxaMensal = Math.pow(1 + (taxaAnual / 100), 1/12) - 1;
+        
+        let total = inicial;
+        let investido = inicial;
+        let historicoValores = [inicial];
+        let labelsAnos = ['Início'];
 
-        setTimeout(() => {
-            executarEngineAlpha(name, phone, p, pm, rAnual, anos);
-            btn.innerHTML = `PROCESSAR PROJEÇÃO →`;
-            btn.disabled = false;
-        }, 1200);
+        for (let i = 1; i <= meses; i++) {
+            total = (total + mensal) * (1 + taxaMensal);
+            investido += mensal;
+            
+            // Guarda o valor a cada 12 meses para o gráfico
+            if (i % 12 === 0) {
+                historicoValores.push(total.toFixed(2));
+                labelsAnos.push(`Ano ${i/12}`);
+            }
+        }
+
+        const juros = total - investido;
+        const percJuros = (juros / total) * 100;
+
+        // 3. Atualizar Interface (Textos e Barras Neon)
+        document.getElementById('res-total-value').innerText = total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+        document.getElementById('res-invested').innerText = investido.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+        document.getElementById('res-interest').innerText = juros.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+        
+        document.getElementById('bar-inv').style.width = (100 - percJuros) + "%";
+        document.getElementById('bar-int').style.width = percJuros + "%";
+
+        // 4. MUDANÇA DE ESTADO (Esconde formulário, mostra resultado)
+        document.getElementById('state-lock').classList.remove('active');
+        document.getElementById('state-lock').style.display = 'none';
+        const finalState = document.getElementById('state-final');
+        finalState.classList.add('active');
+        finalState.style.display = 'block';
+
+        // 5. GERAR O GRÁFICO (Aqui está o segredo)
+        const ctx = document.getElementById('evolutionChart').getContext('2d');
+        
+        if (evolutionChartInstance) {
+            evolutionChartInstance.destroy(); // Limpa o gráfico antigo
+        }
+
+        evolutionChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labelsAnos,
+                datasets: [{
+                    label: 'Evolução Patrimonial',
+                    data: historicoValores,
+                    borderColor: '#d1a686',
+                    backgroundColor: 'rgba(209, 166, 134, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#d1a686'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { ticks: { color: '#52525b' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    x: { ticks: { color: '#52525b' }, grid: { display: false } }
+                }
+            }
+        });
+
+        // Opcional: Enviar os dados (Lead)
+        logLead(inicial, total, tempoAnos);
     });
-}
 
 function executarEngineAlpha(nome, fone, inicial, mensal, taxaAnual, anos) {
     const taxaMensal = (taxaAnual / 100) / 12;
