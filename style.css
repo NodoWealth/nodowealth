@@ -1316,7 +1316,7 @@ body {
 
 /* Correção do Header invadindo o título */
 .pt-large {
-    padding-top: 140px !important; /* Ajuste este valor conforme a altura do seu header */
+    padding-top: 1px !important; /* Ajuste este valor conforme a altura do seu header */
 }
 
 /* Container Principal do Widget */
