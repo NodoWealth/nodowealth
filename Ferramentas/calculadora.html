@@ -6,10 +6,6 @@
     <title>Calculadora Alpha | Nodo Intelligence</title>
     <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <div class="chart-wrapper-interactive" style="height: 300px; margin: 20px 0;">
-        <canvas id="evolutionChart"></canvas>
-    </div>
 </head>
 <body class="body-terminal">
 
@@ -94,16 +90,20 @@
                                 <span class="res-label">PATRIMÔNIO ESTIMADO</span>
                                 <h2 id="res-total-value">R$ 0,00</h2>
                                 
-                                <div class="neon-chart-container">
-                                    <div class="neon-bar-base">
-                                        <div id="bar-inv" class="neon-fill-inv"></div>
-                                        <div id="bar-int" class="neon-fill-int"></div>
-                                    </div>
-                                    <div class="chart-legend">
-                                        <span><i class="dot-gray"></i> Aportes</span>
-                                        <span id="perc-interest-label"><i class="dot-bronze"></i> Juros</span>
-                                    </div>
-                                </div>
+                        <div class="neon-chart-container">
+                            <div style="height: 200px; margin-bottom: 20px;">
+                                <canvas id="evolutionChart"></canvas>
+                            </div>
+                            
+                            <div class="neon-bar-base">
+                                <div id="bar-inv" class="neon-fill-inv"></div>
+                                <div id="bar-int" class="neon-fill-int"></div>
+                            </div>
+                            <div class="chart-legend">
+                                <span><i class="dot-gray"></i> Aportes</span>
+                                <span id="perc-interest-label"><i class="dot-bronze"></i> Juros</span>
+                            </div>
+                        </div>
 
                                 <div class="data-grid-premium">
                                     <div class="data-card">
@@ -123,8 +123,62 @@
         </section>
     </main>
 
-    <footer class="main-footer">
-        </footer>
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-wrapper">
+                    <img src="logo_nodo.png" alt="Nodo Logo" class="logo-img">
+                    <div class="brand-meta">
+                        <span class="brand-name">NODO</span>
+                        <span class="brand-status">EQUITY & CORE</span>
+                    </div>
+                </div>
+                <p class="footer-tagline">Engenharia financeira e research independente para quem busca liberdade e inteligência patrimonial.</p>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#ecossistema">Ecossistema</a></li>
+                    <li><a href="#metodo">Metodologia</a></li>
+                    <li><a href="#contato">Diagnóstico</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="#">Research de Ativos</a></li>
+                    <li><a href="#">Lifestyle Financeiro</a></li>
+                    <li><a href="#">Consolidação</a></li>
+                    <li><a href="#">Nodo Terminal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Conecte-se</h4>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/nodowealth" title="LinkedIn">IN</a>
+                    <a href="https://www.instagram.com/nodowealth/" title="Instagram">IG</a>
+                    <a href="https://wa.me/5541987134426" title="WhatsApp">WA</a>
+                </div>
+                <p class="footer-email">contato@nodowealth.com.br</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <span>&copy; 2026 NODO WEALTH. Todos os direitos reservados.</span>
+                <div class="legal-links">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <script src="../script.js"></script>
 </body>
