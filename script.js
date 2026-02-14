@@ -217,3 +217,73 @@ window.addEventListener('scroll', () => {
     }
 });
 
+/* ==========================================================================
+   LÓGICA DA CALCULADORA NODO
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btnPreCalc = document.getElementById('btn-pre-calc');
+    const btnReveal = document.getElementById('btn-reveal');
+
+    // Estado 1 -> Estado 2 (Bloqueio)
+    if (btnPreCalc) {
+        btnPreCalc.addEventListener('click', function() {
+            const initial = document.getElementById('initial-val').value;
+            if (!initial || initial <= 0) {
+                alert("Por favor, insira um patrimônio inicial.");
+                return;
+            }
+
+            document.getElementById('state-empty').classList.remove('active');
+            document.getElementById('state-lock').classList.add('active');
+            
+            this.innerText = "Simulação Pronta";
+            this.disabled = true;
+            this.style.opacity = "0.5";
+        });
+    }
+
+    // Estado 2 -> Estado 3 (Resultado Final + Formspree)
+    if (btnReveal) {
+        btnReveal.addEventListener('click', function() {
+            const phone = document.getElementById('user-phone').value;
+            
+            if (phone.length < 10) {
+                alert("Por favor, insira um WhatsApp válido para receber a análise.");
+                return;
+            }
+
+            // Coleta de Dados
+            const p = parseFloat(document.getElementById('initial-val').value) || 0;
+            const pm = parseFloat(document.getElementById('monthly-val').value) || 0;
+            const r = (parseFloat(document.getElementById('rate-val').value) / 100) / 12;
+            const n = (parseFloat(document.getElementById('period-val').value) || 0) * 12;
+
+            // Fórmula M = P(1+i)^n + PMT * [((1+i)^n - 1) / i]
+            const total = p * Math.pow(1 + r, n) + pm * ((Math.pow(1 + r, n) - 1) / r);
+            const totalInvested = p + (pm * n);
+            const interest = total - totalInvested;
+
+            // Renderização dos Resultados
+            document.getElementById('res-total-value').innerText = total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            document.getElementById('res-invested').innerText = "Total investido: " + totalInvested.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            document.getElementById('res-interest').innerText = "Total em juros: " + interest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+
+            // Troca de Interface
+            document.getElementById('state-lock').classList.remove('active');
+            document.getElementById('state-final').classList.add('active');
+
+            // Envio para o Formspree
+            fetch("https://formspree.io/f/xgozjjqq", {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ferramenta: "Calculadora de Juros",
+                    whatsapp: phone,
+                    valor_projetado: total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+                    periodo_anos: n/12
+                })
+            });
+        });
+    }
+});

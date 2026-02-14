@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros Compostos | Nodo Intelligence</title>
+    
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="body-terminal">
+
+    <header class="header-main">
+        <div class="header-container">
+            <div class="logo-wrapper">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/logo-nodo.png" alt="Nodo Logo" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="../index.html#ecossistema">Ecossistema</a>
+                <a href="../index.html#metodo">Metodologia</a>
+                
+                <div class="dropdown">
+                    <button class="dropdown-trigger">Sistemas <span class="arrow">▾</span></button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-grid">
+                            <a href="calculadora.html" class="dropdown-item">
+                                <div class="item-icon">📈</div>
+                                <div class="item-text">
+                                    <strong>Juros Compostos</strong>
+                                    <span>Projeção de liberdade.</span>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item disabled">
+                                <div class="item-icon">🛡️</div>
+                                <div class="item-text">
+                                    <strong>Tax Burner</strong>
+                                    <span>Em breve.</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="../index.html#contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/SEUNUMERO" class="btn-access">Falar com Advisor</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="tool-main-content">
+        <section class="calc-hero">
+            <div class="container">
+                <span class="badge">Wealth Engine</span>
+                <h1 class="tool-title">Simulador de <span class="bronze-text">Juros Compostos</span></h1>
+                <p class="tool-subtitle">Projete a evolução do seu patrimônio sob a ótica da engenharia financeira Nodo.</p>
+            </div>
+        </section>
+
+        <section class="calc-container-section">
+            <div class="container">
+                <div class="calc-card-main">
+                    
+                    <div class="calc-inputs-wrapper">
+                        <div class="input-grid">
+                            <div class="input-field">
+                                <label for="initial-val">Patrimônio Inicial (R$)</label>
+                                <input type="number" id="initial-val" placeholder="0,00">
+                            </div>
+                            <div class="input-field">
+                                <label for="monthly-val">Aporte Mensal (R$)</label>
+                                <input type="number" id="monthly-val" placeholder="0,00">
+                            </div>
+                            <div class="input-field">
+                                <label for="rate-val">Taxa de Juros Anual (%)</label>
+                                <input type="number" id="rate-val" placeholder="Ex: 12">
+                            </div>
+                            <div class="input-field">
+                                <label for="period-val">Período (Anos)</label>
+                                <input type="number" id="period-val" placeholder="Ex: 10">
+                            </div>
+                        </div>
+                        
+                        <button id="btn-pre-calc" class="btn-shiny btn-full">Simular Projeção Alpha</button>
+                    </div>
+
+                    <div class="calc-results-wrapper">
+                        <div id="state-empty" class="result-state active">
+                            <div class="icon-placeholder">📊</div>
+                            <p>Aguardando parâmetros para inicializar o cálculo.</p>
+                        </div>
+
+                        <div id="state-lock" class="result-state">
+                            <div class="lock-header">
+                                <h3>Cálculo Concluído</h3>
+                                <p>Para visualizar o resultado e receber nossa análise, identifique-se:</p>
+                            </div>
+                            <div class="input-field">
+                                <label>Seu WhatsApp</label>
+                                <input type="tel" id="user-phone" placeholder="(00) 00000-0000">
+                            </div>
+                            <button id="btn-reveal" class="btn-outline btn-full">Liberar Resultado</button>
+                        </div>
+
+                        <div id="state-final" class="result-state">
+                            <div class="final-display">
+                                <span class="res-label">Patrimônio Projetado</span>
+                                <h2 id="res-total-value">R$ 0,00</h2>
+                                <div class="res-stats">
+                                    <p id="res-invested">Total investido: R$ 0,00</p>
+                                    <p id="res-interest" class="bronze-text">Total em juros: R$ 0,00</p>
+                                </div>
+                                <button onclick="window.location.reload()" class="btn-reset">Nova Simulação</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../assets/logo-nodo.png" alt="Nodo Logo" class="footer-logo">
+                    <p class="footer-tagline">Engenharia financeira para proteção e escala de legado.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <a href="../index.html#ecossistema">Ecossistema</a>
+                    <a href="calculadora.html">Sistemas</a>
+                    <a href="../index.html#contato">Contato</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nodo Wealth. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
