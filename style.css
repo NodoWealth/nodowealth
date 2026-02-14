@@ -1314,6 +1314,11 @@ body {
    TERMINAL NODO: SISTEMA DE INTELIGÊNCIA E CALCULADORA (PREMIUM)
    ========================================================================== */
 
+/* Correção do Header invadindo o título */
+.pt-large {
+    padding-top: 140px !important; /* Ajuste este valor conforme a altura do seu header */
+}
+
 /* Container Principal do Widget */
 .calc-results-wrapper {
     background: rgba(10, 10, 10, 0.85); /* Efeito Dark Glass */
@@ -1703,4 +1708,12 @@ body {
 @media (max-width: 991px) {
     .calc-card-main { grid-template-columns: 1fr; padding: 20px; }
     .input-grid-wrapper { grid-template-columns: 1fr; }
+}
+
+.chart-wrapper-interactive {
+    position: relative;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    padding: 15px;
 }

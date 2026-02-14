@@ -354,3 +354,88 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+let myChart = null; // Variável global para controlar o gráfico
+
+function executarCalculoAlpha(nome, fone, inicial, mensal, taxaAnual, anos) {
+    const taxaMensal = (taxaAnual / 100) / 12;
+    const mesesTotais = anos * 12;
+    
+    let labels = [];
+    let dataInvestido = [];
+    let dataTotal = [];
+    let dataJuros = [];
+
+    // Cálculo mês a mês para gerar os dados do gráfico
+    for (let i = 0; i <= mesesTotais; i++) {
+        const montante = inicial * Math.pow(1 + taxaMensal, i) + 
+                         mensal * ((Math.pow(1 + taxaMensal, i) - 1) / taxaMensal);
+        const investido = inicial + (mensal * i);
+        const juros = montante - investido;
+
+        // Adicionamos ao gráfico apenas os pontos anuais para não poluir
+        if (i % 12 === 0 || i === mesesTotais) {
+            labels.push(`Ano ${i/12}`);
+            dataInvestido.push(investido.toFixed(2));
+            dataTotal.push(montante.toFixed(2));
+            dataJuros.push(juros.toFixed(2));
+        }
+    }
+
+    renderizarGrafico(labels, dataInvestido, dataJuros, dataTotal);
+    
+    // Atualiza os textos de resultado final (Montante do último mês)
+    const totalFinal = dataTotal[dataTotal.length - 1];
+    document.getElementById('res-total-value').innerText = parseFloat(totalFinal).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+    // ... restante da atualização de textos ...
+}
+
+function renderizarGrafico(labels, investido, juros, total) {
+    const ctx = document.getElementById('evolutionChart').getContext('2d');
+    
+    // Se o gráfico já existir (em uma nova simulação), nós o destruímos para criar o novo
+    if (myChart) { myChart.destroy(); }
+
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Acumulado',
+                data: total,
+                borderColor: '#d1a686', // Bronze Nodo
+                backgroundColor: 'rgba(209, 166, 134, 0.1)',
+                fill: true,
+                tension: 0.4
+            }, {
+                label: 'Aportes Totais',
+                data: investido,
+                borderColor: '#52525b',
+                borderDash: [5, 5],
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            let value = context.parsed.y;
+                            return label + ': ' + value.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+                        }
+                    }
+                },
+                legend: { display: false }
+            },
+            scales: {
+                y: { display: false },
+                x: { ticks: { color: '#52525b' }, grid: { display: false } }
+            }
+        }
+    });
+}
