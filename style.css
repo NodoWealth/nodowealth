@@ -1329,6 +1329,27 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Isso força os inputs da esquerda a seguirem o design do site */
+.calc-inputs-wrapper input {
+    background: #0f0f0f !important;
+    border: 1px solid #27272a !important;
+    color: #fff !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+}
+
+/* Garante que o grid funcione */
+.calc-card-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide em dois no desktop */
+    gap: 30px;
+}
+
+@media (max-width: 991px) {
+    .calc-card-main {
+        grid-template-columns: 1fr; /* Empilha no mobile */
+    }
+}
 }
 
 /* Header do Sistema */

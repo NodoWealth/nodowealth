@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Juros Compostos | Nodo Intelligence</title>
-    
     <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body class="body-terminal">
 
    <header class="header-main">
     <div class="header-container">
-        <a href="/" class="logo-wrapper">
+        <a href="../index.html" class="logo-wrapper">
             <img src="../logo_nodo.png" alt="Nodo" class="logo-img">
             <div class="brand-meta">
                 <span class="brand-name">NODO</span>
@@ -19,27 +18,27 @@
             </div>
         </a>
 
-<nav class="nav-links">
-    <a href="../index.html">Ecossistema</a>
-    <a href="../index.html">Metodologia</a>
-    
-    <div class="dropdown">
-        <a href="#" class="dropdown-trigger">Sistemas <span class="arrow">▾</span></a>
-        <div class="dropdown-content">
-            <div class="dropdown-grid">
-                <a href="Ferramentas/calculadora.html" class="dropdown-item">
-                    <div class="item-icon">📈</div>
-                    <div class="item-text">
-                        <strong>Juros Compostos</strong>
-                        <span>Projeção de liberdade.</span>
+        <nav class="nav-links">
+            <a href="../index.html">Ecossistema</a>
+            <a href="../index.html">Metodologia</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropdown-trigger">Sistemas <span class="arrow">▾</span></a>
+                <div class="dropdown-content">
+                    <div class="dropdown-grid">
+                        <a href="calculadora.html" class="dropdown-item">
+                            <div class="item-icon">📈</div>
+                            <div class="item-text">
+                                <strong>Juros Compostos</strong>
+                                <span>Projeção de liberdade.</span>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
-    </div>
-    
-    <a href="../index.html">Contato</a>
-</nav>
+            
+            <a href="../index.html">Contato</a>
+        </nav>
 
         <div class="header-actions">
             <a href="#" class="btn-access">Acessar Terminal</a>
@@ -83,13 +82,72 @@
                 </div>
 
                 <div class="calc-results-wrapper">
+                    <div id="state-lock" class="result-state active">
+                        <div class="terminal-header">
+                            <div class="pulse-icon"></div>
+                            <span class="system-tag">Nodo Intelligence Engine v2.0</span>
+                        </div>
+                        
+                        <h3 class="widget-title">Desbloquear Projeção <br><span class="bronze-text">Patrimonial Alpha</span></h3>
+                        <p class="widget-desc">A identificação é necessária para gerar o relatório de simulação e comparativo de mercado.</p>
+
+                        <div class="terminal-inputs">
+                            <div class="fancy-input-group">
+                                <input type="text" id="user-name" required placeholder=" ">
+                                <label>Nome do Investidor</label>
+                            </div>
+                            <div class="fancy-input-group">
+                                <input type="tel" id="user-phone" required placeholder=" ">
+                                <label>WhatsApp Internacional</label>
+                            </div>
+                            <button id="btn-reveal" class="btn-shiny-terminal">
+                                PROCESSAR DADOS <span class="btn-arrow">→</span>
+                            </button>
+                        </div>
                     </div>
 
-            </div> </div>
+                    <div id="state-final" class="result-state">
+                        <div class="dashboard-header">
+                            <small>PROJEÇÃO DE LONGO PRAZO</small>
+                            <h2 id="res-total-value">R$ 0,00</h2>
+                        </div>
+
+                        <div class="visual-engine">
+                            <div class="chart-labels">
+                                <span>Composição</span>
+                                <span id="perc-interest-label" class="bronze-text">0% Juros</span>
+                            </div>
+                            <div class="neon-chart-bar">
+                                <div id="bar-inv" class="neon-fill invested"></div>
+                                <div id="bar-int" class="neon-fill interest"></div>
+                            </div>
+                        </div>
+
+                        <div class="data-grid-premium">
+                            <div class="data-card">
+                                <span class="label">Principal</span>
+                                <p id="res-invested">R$ 0,00</p>
+                            </div>
+                            <div class="data-card">
+                                <span class="label">Poder do Tempo</span>
+                                <p id="res-interest" class="bronze-text">R$ 0,00</p>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <p>💡 <strong>Insight:</strong> Esta projeção utiliza juros compostos reais. Acelere sua liberdade com aportes constantes.</p>
+                        </div>
+
+                        <button onclick="window.location.reload()" class="btn-restart">NOVA SIMULAÇÃO</button>
+                    </div>
+                </div> 
+
+            </div> 
+        </div>
     </section>
 </main>
 
-    <footer class="main-footer">
+<footer class="main-footer">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
@@ -102,7 +160,6 @@
                 </div>
                 <p class="footer-tagline">Engenharia financeira e research independente para quem busca liberdade e inteligência patrimonial.</p>
             </div>
-
             <div class="footer-nav">
                 <h4>Navegação</h4>
                 <ul>
@@ -112,35 +169,10 @@
                     <li><a href="../index.html">Diagnóstico</a></li>
                 </ul>
             </div>
-
-            <div class="footer-nav">
-                <h4>Serviços</h4>
-                <ul>
-                    <li><a href="../index.html">Research de Ativos</a></li>
-                    <li><a href="../index.html">Lifestyle Financeiro</a></li>
-                    <li><a href="../index.html">Consolidação</a></li>
-                    <li><a href="../index.html">Nodo Terminal</a></li>
-                </ul>
             </div>
-
-            <div class="footer-nav">
-                <h4>Conecte-se</h4>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/company/nodowealth" title="LinkedIn">IN</a>
-                    <a href="https://www.instagram.com/nodowealth/" title="Instagram">IG</a>
-                    <a href="https://wa.me/5541987134426" title="WhatsApp">WA</a>
-                </div>
-                <p class="footer-email">contato@nodowealth.com.br</p>
-            </div>
-        </div>
-
         <div class="footer-bottom">
             <div class="footer-legal">
                 <span>&copy; 2026 NODO WEALTH. Todos os direitos reservados.</span>
-                <div class="legal-links">
-                    <a href="#">Privacidade</a>
-                    <a href="#">Termos de Uso</a>
-                </div>
             </div>
         </div>
     </div>
