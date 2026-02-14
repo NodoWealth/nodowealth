@@ -56,33 +56,13 @@ function initScrollEffects() {
     reveals.forEach(el => revealObserver.observe(el));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const menuIcon = document.querySelector('.mobile-menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuIcon && navLinks) {
-        menuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // Animação do ícone (opcional: transforma em X)
-            menuIcon.classList.toggle('open');
-        });
-    }
-    
-    // Fecha o menu ao clicar em qualquer link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-});
-
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
 let myChart = null;
 
-btn.addEventListener('click', () => {
+function initTerminalNodo(btn) {
+    btn.addEventListener('click', () => {
         // 1. Coleta de dados
         const inicial = parseFloat(document.getElementById('initial-val').value) || 0;
         const mensal = parseFloat(document.getElementById('monthly-val').value) || 0;
