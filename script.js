@@ -229,6 +229,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnPreCalc) {
         btnPreCalc.addEventListener('click', function() {
             const initial = document.getElementById('initial-val').value;
+            // Cálculo das porcentagens para a barra
+            const percInvested = (totalInvested / total) * 100;
+            const percInterest = (interest / total) * 100;
+
+// Animação da barra
+document.getElementById('bar-inv').style.width = percInvested + "%";
+document.getElementById('bar-int').style.width = percInterest + "%";
             if (!initial || initial <= 0) {
                 alert("Por favor, insira um patrimônio inicial.");
                 return;
@@ -240,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.innerText = "Simulação Pronta";
             this.disabled = true;
             this.style.opacity = "0.5";
+            
         });
     }
 

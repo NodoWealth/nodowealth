@@ -7,49 +7,45 @@
     
     <link rel="stylesheet" href="../style.css">
 </head>
-<body class="body-terminal">
+<body>
 
-    <header class="header-main">
-        <div class="header-container">
-            <div class="logo-wrapper">
-                <a href="../index.html" class="logo-link">
-                    <img src="../assets/logo-nodo.png" alt="Nodo Logo" class="logo-img">
+   <header class="header-main">
+    <div class="header-container">
+        <a href="/" class="logo-wrapper">
+            <img src="../logo_nodo.png" alt="Nodo" class="logo-img">
+            <div class="brand-meta">
+                <span class="brand-name">NODO</span>
+                <span class="brand-status">EQUITY & CORE</span>
+            </div>
+        </a>
+
+<nav class="nav-links">
+    <a href="../index.html">Ecossistema</a>
+    <a href="../index.html">Metodologia</a>
+    
+    <div class="dropdown">
+        <a href="#" class="dropdown-trigger">Sistemas <span class="arrow">▾</span></a>
+        <div class="dropdown-content">
+            <div class="dropdown-grid">
+                <a href="Ferramentas/calculadora.html" class="dropdown-item">
+                    <div class="item-icon">📈</div>
+                    <div class="item-text">
+                        <strong>Juros Compostos</strong>
+                        <span>Projeção de liberdade.</span>
+                    </div>
                 </a>
             </div>
-
-            <nav class="nav-links">
-                <a href="../index.html#ecossistema">Ecossistema</a>
-                <a href="../index.html#metodo">Metodologia</a>
-                
-                <div class="dropdown">
-                    <button class="dropdown-trigger">Sistemas <span class="arrow">▾</span></button>
-                    <div class="dropdown-content">
-                        <div class="dropdown-grid">
-                            <a href="calculadora.html" class="dropdown-item">
-                                <div class="item-icon">📈</div>
-                                <div class="item-text">
-                                    <strong>Juros Compostos</strong>
-                                    <span>Projeção de liberdade.</span>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item disabled">
-                                <div class="item-icon">🛡️</div>
-                                <div class="item-text">
-                                    <strong>Tax Burner</strong>
-                                    <span>Em breve.</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <a href="../index.html#contato">Contato</a>
-            </nav>
-
-            <div class="header-actions">
-                <a href="https://wa.me/SEUNUMERO" class="btn-access">Falar com Advisor</a>
-            </div>
         </div>
-    </header>
+    </div>
+    
+    <a href="../index.html">Contato</a>
+</nav>
+
+        <div class="header-actions">
+            <a href="#" class="btn-access">Acessar Terminal</a>
+        </div>
+    </div>
+</header>
 
     <main class="tool-main-content">
         <section class="calc-hero">
@@ -104,17 +100,24 @@
                             </div>
                             <button id="btn-reveal" class="btn-outline btn-full">Liberar Resultado</button>
                         </div>
-
-                        <div id="state-final" class="result-state">
-                            <div class="final-display">
-                                <span class="res-label">Patrimônio Projetado</span>
-                                <h2 id="res-total-value">R$ 0,00</h2>
-                                <div class="res-stats">
-                                    <p id="res-invested">Total investido: R$ 0,00</p>
-                                    <p id="res-interest" class="bronze-text">Total em juros: R$ 0,00</p>
-                                </div>
-                                <button onclick="window.location.reload()" class="btn-reset">Nova Simulação</button>
+                        <div class="final-display">
+                            <span class="res-label">Patrimônio Projetado</span>
+                            <h2 id="res-total-value">R$ 0,00</h2>
+                            
+                            <div class="composition-bar">
+                                <div id="bar-inv" class="bar-invested" style="width: 0%"></div>
+                                <div id="bar-int" class="bar-interest" style="width: 0%"></div>
                             </div>
+                            
+                            <div class="bar-legend">
+                                <span><b style="color:#888">•</b> Aportes</span>
+                                <span><b style="color:var(--bronze)">•</b> Juros</span>
+                            </div>
+
+                            <div class="res-stats">
+                                <p id="res-invested">Total investido: R$ 0,00</p>
+                            </div>
+                            <button onclick="window.location.reload()" class="btn-reset">Nova Simulação</button>
                         </div>
                     </div>
                 </div>
@@ -123,24 +126,61 @@
     </main>
 
     <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="../assets/logo-nodo.png" alt="Nodo Logo" class="footer-logo">
-                    <p class="footer-tagline">Engenharia financeira para proteção e escala de legado.</p>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-wrapper">
+                    <img src="logo_nodo.png" alt="Nodo Logo" class="logo-img">
+                    <div class="brand-meta">
+                        <span class="brand-name">NODO</span>
+                        <span class="brand-status">EQUITY & CORE</span>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <a href="../index.html#ecossistema">Ecossistema</a>
-                    <a href="calculadora.html">Sistemas</a>
-                    <a href="../index.html#contato">Contato</a>
-                </div>
+                <p class="footer-tagline">Engenharia financeira e research independente para quem busca liberdade e inteligência patrimonial.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Nodo Wealth. Todos os direitos reservados.</p>
+
+            <div class="footer-nav">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html">Ecossistema</a></li>
+                    <li><a href="../index.html">Metodologia</a></li>
+                    <li><a href="../index.html">Diagnóstico</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="../index.html">Research de Ativos</a></li>
+                    <li><a href="../index.html">Lifestyle Financeiro</a></li>
+                    <li><a href="../index.html">Consolidação</a></li>
+                    <li><a href="../index.html">Nodo Terminal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Conecte-se</h4>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/nodowealth" title="LinkedIn">IN</a>
+                    <a href="https://www.instagram.com/nodowealth/" title="Instagram">IG</a>
+                    <a href="https://wa.me/5541987134426" title="WhatsApp">WA</a>
+                </div>
+                <p class="footer-email">contato@nodowealth.com.br</p>
             </div>
         </div>
-    </footer>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <span>&copy; 2026 NODO WEALTH. Todos os direitos reservados.</span>
+                <div class="legal-links">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <script src="../script.js"></script>
 </body>
