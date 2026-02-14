@@ -220,3 +220,5 @@ function initCounters() {
     }, { threshold: 0.5 });
     countElements.forEach(el => observer.observe(el));
 }
+
+window.scrollTo({ top: document.getElementById('state-final').offsetTop - 100, behavior: 'smooth' });

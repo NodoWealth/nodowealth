@@ -419,6 +419,80 @@ canvas#evolutionChart {
     .header-container { justify-content: center; }
 }
 
+@media (max-width: 768px) {
+    /* Ajuste para os números/estatísticas não esticarem */
+    .hero-wrapper, .stats-container, .input-grid-wrapper {
+        grid-template-columns: 1fr !important; /* Força uma coluna única */
+        gap: 30px;
+    }
+
+    .brand-name {
+        font-size: 1.2rem; /* Evita que o nome da marca quebre o header */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 15px 20px;
+        justify-content: space-between;
+    }
+
+    /* Esconde os links de navegação no mobile para não amontoar */
+    /* Dica: Futuramente você pode trocar por um menu "Hambúrguer" */
+    .nav-links {
+        display: none; 
+    }
+
+    .btn-access {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    .logo-img {
+        height: 30px; /* Reduz a logo no celular */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Faz a calculadora virar uma coluna só */
+    .calc-card-main {
+        flex-direction: column;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    /* Ajusta o título para não ficar gigante no celular */
+    .tool-title {
+        font-size: 1.8rem !important;
+        padding: 0 15px;
+    }
+
+    /* Garante que os campos de input ocupem a largura total */
+    .input-field-premium {
+        width: 100%;
+    }
+
+    .input-field-premium input {
+        font-size: 16px; /* Evita o zoom automático do iOS ao clicar */
+    }
+
+    /* O dashboard de resultados precisa de espaço */
+    .calc-results-wrapper {
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    /* Ajuste do gráfico para não sumir */
+    .neon-chart-container {
+        height: auto;
+        padding: 15px;
+    }
+    
+    canvas#evolutionChart {
+        max-height: 200px; /* Limita a altura para não empurrar tudo para baixo */
+    }
+}
+
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 @keyframes slideUp { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
