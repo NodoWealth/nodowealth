@@ -902,6 +902,97 @@ body {
     }
 }
 
+/* --- MEGA MENU DROPDOWN --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.arrow {
+    font-size: 10px;
+    transition: 0.3s;
+}
+
+/* O container que desce */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-width: 280px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    z-index: 1000;
+    margin-top: 10px;
+    opacity: 0;
+    animation: slideUp 0.3s forwards;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown:hover .arrow {
+    transform: rotate(180deg);
+}
+
+/* Itens dentro do dropdown */
+.dropdown-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none !important;
+    transition: 0.3s;
+}
+
+.dropdown-item:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.item-icon { font-size: 18px; }
+
+.item-text strong {
+    display: block;
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.item-text span {
+    color: #71717a;
+    font-size: 11px;
+}
+
+/* Estilo para itens bloqueados (Em breve) */
+.dropdown-item.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
 /* ==========================================================================
    OTIMIZAÇÃO COMPLETA NODO MOBILE (RESPONSIVIDADE PREMIUM)
    ========================================================================== */
