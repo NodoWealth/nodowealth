@@ -240,25 +240,26 @@
             </div>
 
             <div class="contact-form-container">
-                <form class="nodo-form">
+                <form id="nodo-contact-form" action="https://formspree.io/f/xgozjjqq" method="POST" class="nodo-form">
                     <div class="form-group">
                         <label>Nome Completo</label>
-                        <input type="text" placeholder="Como podemos te chamar?">
+                        <input type="text" name="name" required placeholder="Como podemos te chamar?">
                     </div>
                     <div class="form-group">
                         <label>WhatsApp / Telegram</label>
-                        <input type="tel" placeholder="(00) 00000-0000">
+                        <input type="tel" name="phone" required placeholder="(00) 00000-0000">
                     </div>
                     <div class="form-group">
                         <label>Qual seu principal foco hoje?</label>
-                        <select>
-                            <option>Research de Investimentos</option>
-                            <option>Consultoria de Lifestyle Financeiro</option>
-                            <option>Consolidação de Patrimônio</option>
-                            <option>Outros</option>
+                        <select name="subject">
+                            <option value="Research">Research de Investimentos</option>
+                            <option value="Consultoria">Consultoria de Lifestyle Financeiro</option>
+                            <option value="Consolidacao">Consolidação de Patrimônio</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn-shiny">Solicitar Diagnóstico</button>
+                    <button type="submit" id="submit-btn" class="btn-shiny">Solicitar Diagnóstico</button>
+                    
+                    <p id="form-status" style="margin-top: 20px; font-size: 14px; display: none;"></p>
                 </form>
             </div>
         </div>

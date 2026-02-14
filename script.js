@@ -216,3 +216,50 @@ window.addEventListener('scroll', () => {
         header.style.background = "rgba(5, 5, 5, 0.6)";
     }
 });
+
+<script>
+    const form = document.getElementById("nodo-contact-form");
+    const status = document.getElementById("form-status");
+    const btn = document.getElementById("submit-btn");
+
+    async function handleSubmit(event) {
+      event.preventDefault(); // Impede o redirecionamento
+      btn.innerText = "Enviando...";
+      btn.disabled = true;
+
+      const data = new FormData(event.target);
+      
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "✓ Solicitação enviada com sucesso. Entraremos em contato.";
+          status.style.color = "#d1a686"; // Cor Bronze
+          status.style.display = "block";
+          form.reset(); // Limpa o formulário
+          btn.innerText = "Enviado";
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              status.innerHTML = "Ops! Ocorreu um erro ao enviar.";
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Erro de conexão. Tente novamente mais tarde.";
+        status.style.color = "#ff4444";
+        status.style.display = "block";
+      }).finally(() => {
+        btn.disabled = false;
+        if(btn.innerText !== "Enviado") btn.innerText = "Solicitar Diagnóstico";
+      });
+    }
+    
+    form.addEventListener("submit", handleSubmit)
+</script>
