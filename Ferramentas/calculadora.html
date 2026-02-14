@@ -84,10 +84,56 @@
                     </div>
 
                     <div class="calc-results-wrapper">
-                        <div id="state-empty" class="result-state active">
-                            <div class="icon-placeholder">📊</div>
-                            <p>Aguardando parâmetros para inicializar o cálculo.</p>
+                <div id="state-lock" class="result-state active">
+                    <div class="widget-header">
+                        <span class="badge-small">Análise Alpha</span>
+                        <h3>Liberar Relatório</h3>
+                        <p>Insira seus dados para processar a curva de juros.</p>
+                    </div>
+                    <div class="widget-form">
+                        <div class="input-field mini">
+                            <label>Seu Nome</label>
+                            <input type="text" id="user-name" placeholder="Nome completo">
                         </div>
+                        <div class="input-field mini">
+                            <label>WhatsApp</label>
+                            <input type="tel" id="user-phone" placeholder="(00) 00000-0000">
+                        </div>
+                        <button id="btn-reveal" class="btn-shiny btn-full">Gerar Gráfico de Projeção</button>
+                    </div>
+                </div>
+
+                <div id="state-final" class="result-state">
+                    <div class="dashboard-widget">
+                        <span class="res-label">Patrimônio Estimado</span>
+                        <h2 id="res-total-value">R$ 0,00</h2>
+                        
+                        <div class="chart-container">
+                            <div class="chart-bar">
+                                <div id="bar-inv" class="bar-fill invested"></div>
+                                <div id="bar-int" class="bar-fill interest"></div>
+                            </div>
+                            <div class="chart-legend">
+                                <span><i class="dot-inv"></i> Investido</span>
+                                <span><i class="dot-int"></i> Juros</span>
+                            </div>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <small>Total Investido</small>
+                                <p id="res-invested">R$ 0,00</p>
+                            </div>
+                            <div class="stat-item">
+                                <small>Total em Juros</small>
+                                <p id="res-interest" class="bronze-text">R$ 0,00</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="window.location.reload()" class="btn-reset">Refazer Simulação</button>
+                    </div>
+                </div>
+            </div>
 
                         <div id="state-lock" class="result-state">
                             <div class="lock-header">
@@ -130,7 +176,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="logo-wrapper">
-                    <img src="logo_nodo.png" alt="Nodo Logo" class="logo-img">
+                    <img src="../logo_nodo.png" alt="Nodo Logo" class="logo-img">
                     <div class="brand-meta">
                         <span class="brand-name">NODO</span>
                         <span class="brand-status">EQUITY & CORE</span>
