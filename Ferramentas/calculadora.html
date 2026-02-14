@@ -84,57 +84,66 @@
                     </div>
 
                     <div class="calc-results-wrapper">
-                <div id="state-lock" class="result-state active">
-                    <div class="widget-header">
-                        <span class="badge-small">Análise Alpha</span>
-                        <h3>Liberar Relatório</h3>
-                        <p>Insira seus dados para processar a curva de juros.</p>
-                    </div>
-                    <div class="widget-form">
-                        <div class="input-field mini">
-                            <label>Seu Nome</label>
-                            <input type="text" id="user-name" placeholder="Nome completo">
-                        </div>
-                        <div class="input-field mini">
-                            <label>WhatsApp</label>
-                            <input type="tel" id="user-phone" placeholder="(00) 00000-0000">
-                        </div>
-                        <button id="btn-reveal" class="btn-shiny btn-full">Gerar Gráfico de Projeção</button>
-                    </div>
-                </div>
-
-                <div id="state-final" class="result-state">
-                    <div class="dashboard-widget">
-                        <span class="res-label">Patrimônio Estimado</span>
-                        <h2 id="res-total-value">R$ 0,00</h2>
-                        
-                        <div class="chart-container">
-                            <div class="chart-bar">
-                                <div id="bar-inv" class="bar-fill invested"></div>
-                                <div id="bar-int" class="bar-fill interest"></div>
+                        <div id="state-lock" class="result-state active">
+                            <div class="terminal-header">
+                                <div class="pulse-icon"></div>
+                                <span class="system-tag">Nodo Intelligence Engine v2.0</span>
                             </div>
-                            <div class="chart-legend">
-                                <span><i class="dot-inv"></i> Investido</span>
-                                <span><i class="dot-int"></i> Juros</span>
+                            
+                            <h3 class="widget-title">Desbloquear Projeção <br><span class="bronze-text">Patrimonial Alpha</span></h3>
+                            <p class="widget-desc">A identificação é necessária para gerar o relatório de simulação e comparativo de mercado.</p>
+
+                            <div class="terminal-inputs">
+                                <div class="fancy-input-group">
+                                    <input type="text" id="user-name" required placeholder=" ">
+                                    <label>Nome do Investidor</label>
+                                </div>
+                                <div class="fancy-input-group">
+                                    <input type="tel" id="user-phone" required placeholder=" ">
+                                    <label>WhatsApp Internacional</label>
+                                </div>
+                                <button id="btn-reveal" class="btn-shiny-terminal">
+                                    PROCESSAR DADOS <span class="btn-arrow">→</span>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <small>Total Investido</small>
-                                <p id="res-invested">R$ 0,00</p>
+                        <div id="state-final" class="result-state">
+                            <div class="dashboard-header">
+                                <small>PROJEÇÃO DE LONGO PRAZO</small>
+                                <h2 id="res-total-value">R$ 0,00</h2>
                             </div>
-                            <div class="stat-item">
-                                <small>Total em Juros</small>
-                                <p id="res-interest" class="bronze-text">R$ 0,00</p>
-                            </div>
-                        </div>
-                        
-                        <button onclick="window.location.reload()" class="btn-reset">Refazer Simulação</button>
-                    </div>
-                </div>
-            </div>
 
+                            <div class="visual-engine">
+                                <div class="chart-labels">
+                                    <span>Composição do Patrimônio</span>
+                                    <span id="perc-interest-label" class="bronze-text">0% Juros</span>
+                                </div>
+                                <div class="neon-chart-bar">
+                                    <div id="bar-inv" class="neon-fill invested"></div>
+                                    <div id="bar-int" class="neon-fill interest"></div>
+                                </div>
+                            </div>
+
+                            <div class="data-grid-premium">
+                                <div class="data-card">
+                                    <span class="label">Principal</span>
+                                    <p id="res-invested">R$ 0,00</p>
+                                </div>
+                                <div class="data-card highlighted">
+                                    <span class="label">Poder do Tempo</span>
+                                    <p id="res-interest">R$ 0,00</p>
+                                </div>
+                            </div>
+
+                            <div class="insight-box">
+                                <i class="insight-icon">💡</i>
+                                <p>Sua rentabilidade está <strong>24% acima</strong> da média de mercado para este perfil.</p>
+                            </div>
+
+                            <button onclick="window.location.reload()" class="btn-restart">NOVA SIMULAÇÃO</button>
+                        </div>
+                    </div>
                         <div id="state-lock" class="result-state">
                             <div class="lock-header">
                                 <h3>Cálculo Concluído</h3>

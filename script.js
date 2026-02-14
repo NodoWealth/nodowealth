@@ -218,80 +218,94 @@ window.addEventListener('scroll', () => {
 });
 
 /* ==========================================================================
-   LÓGICA DA CALCULADORA NODO
+   LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    const btnPreCalc = document.getElementById('btn-pre-calc');
     const btnReveal = document.getElementById('btn-reveal');
 
-    // Estado 1 -> Estado 2 (Bloqueio)
-    if (btnPreCalc) {
-        btnPreCalc.addEventListener('click', function() {
-            const initial = document.getElementById('initial-val').value;
-            // Cálculo das porcentagens para a barra
-            const percInvested = (totalInvested / total) * 100;
-            const percInterest = (interest / total) * 100;
-
-// Animação da barra
-document.getElementById('bar-inv').style.width = percInvested + "%";
-document.getElementById('bar-int').style.width = percInterest + "%";
-            if (!initial || initial <= 0) {
-                alert("Por favor, insira um patrimônio inicial.");
-                return;
-            }
-
-            document.getElementById('state-empty').classList.remove('active');
-            document.getElementById('state-lock').classList.add('active');
-            
-            this.innerText = "Simulação Pronta";
-            this.disabled = true;
-            this.style.opacity = "0.5";
-            
-        });
-    }
-
-    // Estado 2 -> Estado 3 (Resultado Final + Formspree)
     if (btnReveal) {
         btnReveal.addEventListener('click', function() {
+            // 1. Coleta de Dados do Investidor
+            const name = document.getElementById('user-name').value;
             const phone = document.getElementById('user-phone').value;
-            
-            if (phone.length < 10) {
-                alert("Por favor, insira um WhatsApp válido para receber a análise.");
+
+            // 2. Coleta de Parâmetros de Cálculo
+            const p = parseFloat(document.getElementById('initial-val').value) || 0;
+            const pm = parseFloat(document.getElementById('monthly-val').value) || 0;
+            const rAnual = parseFloat(document.getElementById('rate-val').value) || 0;
+            const anos = parseFloat(document.getElementById('period-val').value) || 0;
+
+            // Validação de segurança
+            if (!name || phone.length < 10 || p <= 0 || anos <= 0) {
+                alert("Por favor, preencha todos os parâmetros e sua identificação para processar.");
                 return;
             }
 
-            // Coleta de Dados
-            const p = parseFloat(document.getElementById('initial-val').value) || 0;
-            const pm = parseFloat(document.getElementById('monthly-val').value) || 0;
-            const r = (parseFloat(document.getElementById('rate-val').value) / 100) / 12;
-            const n = (parseFloat(document.getElementById('period-val').value) || 0) * 12;
+            // 3. Efeito Visual de "Processamento"
+            btnReveal.innerHTML = `<span class="spinner"></span> SINCRONIZANDO ALGORITMO...`;
+            btnReveal.disabled = true;
 
-            // Fórmula M = P(1+i)^n + PMT * [((1+i)^n - 1) / i]
-            const total = p * Math.pow(1 + r, n) + pm * ((Math.pow(1 + r, n) - 1) / r);
-            const totalInvested = p + (pm * n);
-            const interest = total - totalInvested;
-
-            // Renderização dos Resultados
-            document.getElementById('res-total-value').innerText = total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
-            document.getElementById('res-invested').innerText = "Total investido: " + totalInvested.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
-            document.getElementById('res-interest').innerText = "Total em juros: " + interest.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
-
-            // Troca de Interface
-            document.getElementById('state-lock').classList.remove('active');
-            document.getElementById('state-final').classList.add('active');
-
-            // Envio para o Formspree
-            fetch("https://formspree.io/f/xgozjjqq", {
-                method: 'POST',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ferramenta: "Calculadora de Juros",
-                    whatsapp: phone,
-                    valor_projetado: total.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
-                    periodo_anos: n/12
-                })
-            });
+            // Delay estratégico de 1.5s para percepção de valor/complexidade
+            setTimeout(() => {
+                executarCalculoAlpha(name, phone, p, pm, rAnual, anos);
+            }, 1500);
         });
     }
 });
+
+function executarCalculoAlpha(nome, fone, inicial, mensal, taxaAnual, anos) {
+    // Matemática Financeira (Juros Compostos com Aportes)
+    const taxaMensal = (taxaAnual / 100) / 12;
+    const meses = anos * 12;
+
+    // Fórmula: M = P(1+i)^n + PMT * [((1+i)^n - 1) / i]
+    const montanteFinal = inicial * Math.pow(1 + taxaMensal, meses) + 
+                          mensal * ((Math.pow(1 + taxaMensal, meses) - 1) / taxaMensal);
+    
+    const totalInvestido = inicial + (mensal * meses);
+    const totalJuros = montanteFinal - totalInvestido;
+
+    // 4. Renderização dos Resultados no Dashboard
+    document.getElementById('res-total-value').innerText = montanteFinal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+    document.getElementById('res-invested').innerText = totalInvested.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+    document.getElementById('res-interest').innerText = totalJuros.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+    
+    // Cálculo da porcentagem de juros sobre o todo
+    const percJuros = ((totalJuros / montanteFinal) * 100).toFixed(0);
+    const labelJuros = document.getElementById('perc-interest-label');
+    if(labelJuros) labelJuros.innerText = `${percJuros}% EM JUROS`;
+
+    // 5. Troca de Estado da Interface (Lock -> Dashboard)
+    document.getElementById('state-lock').classList.remove('active');
+    document.getElementById('state-final').classList.add('active');
+
+    // 6. Disparo da Animação das Barras Neon
+    setTimeout(() => {
+        const pInv = (totalInvested / montanteFinal) * 100;
+        const pInt = (totalJuros / montanteFinal) * 100;
+        
+        document.getElementById('bar-inv').style.width = pInv + "%";
+        document.getElementById('bar-int').style.width = pInt + "%";
+    }, 300);
+
+    // 7. Envio Silencioso para o Formspree (Lead Generation)
+    enviarLeadFormspree(nome, fone, inicial, montanteFinal, anos);
+}
+
+function enviarLeadFormspree(nome, fone, inicial, final, tempo) {
+    const data = {
+        origem: "Calculadora Nodo Alpha",
+        nome: nome,
+        whatsapp: fone,
+        aporte_inicial: inicial.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+        projeção_patrimonio: final.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}),
+        horizonte_tempo: tempo + " anos"
+    };
+
+    fetch("https://formspree.io/f/xgozjjqq", {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }).catch(err => console.error("Erro ao registrar lead:", err));
+}
