@@ -1178,41 +1178,42 @@ canvas#evolutionChart {
     /* Linhas mais finas e elegantes */
     .mobile-menu-icon .bar {
         width: 24px;
-        height: 1.5px; /* Linha mais fina */
+        height: 2px; /* Linha mais fina */
         background-color: #d1a686 !important;
         margin: 3px 0; /* Espaçamento entre as linhas */
         transition: 0.3s;
     }
 
-    /* Ajuste da navegação (O Menu que abre) */
-    .nav-links {
-        display: none;
+   .nav-links {
+        display: none; /* Mantém escondido por padrão */
         position: fixed;
         top: 0;
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: #0a0a0a; /* Fundo do menu aberto */
+        background: #0a0a0a;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 30px;
-        padding: 0;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 10000;
+        transition: right 0.4s ease;
     }
 
+    /* ESTA É A REGRA QUE FAZ APARECER */
     .nav-links.active {
-        display: flex !important;
+        display: flex !important; /* Força o flex para sobrepor o display:none */
         right: 0;
     }
 
-    /* Estilo dos links dentro do menu mobile */
-    .nav-links a {
-        font-size: 1.5rem;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
+    .mobile-menu-icon {
+        display: flex !important;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10001;
+        cursor: pointer;
     }
 }
 

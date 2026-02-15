@@ -1,76 +1,54 @@
 /* ==========================================================================
    CONFIGURAÇÕES GLOBAIS E NAVEGAÇÃO
    ========================================================================== */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. NAVEGAÇÃO MOBILE
     const btn = document.querySelector('.mobile-menu-icon');
     const nav = document.querySelector('.nav-links');
 
     if (btn && nav) {
-        btn.onclick = function() {
+        btn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Evita que o clique "vaze" para o fundo
             nav.classList.toggle('active');
             btn.classList.toggle('open');
-            console.log("Menu disparado");
         };
 
-        // Fecha ao clicar em links
+        // Fecha ao clicar nos links (importante para One Page)
         nav.querySelectorAll('a').forEach(link => {
-            link.onclick = function() {
+            link.onclick = () => {
                 nav.classList.remove('active');
                 btn.classList.remove('open');
-            }
-        });
-    } else {
-        console.error("Elementos do menu não encontrados no HTML");
-    }
-});
-
-let evolutionChartInstance = null;
-
-function initNavigation() {
-    const menuIcon = document.querySelector('.mobile-menu-icon');
-    const navLinks = document.querySelector('.nav-links'); // Ajustado de .main-nav para .nav-links
-
-    if (menuIcon && navLinks) {
-        menuIcon.onclick = function(e) {
-            e.preventDefault();
-            navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('open');
-            
-            // Opcional: impede scroll no fundo quando menu abrir
-            if(navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'initial';
-            }
-        };
-
-        // Fecha o menu ao clicar em qualquer link lá dentro
-        const links = navLinks.querySelectorAll('a');
-        links.forEach(link => {
-            link.onclick = () => {
-                navLinks.classList.remove('active');
-                menuIcon.classList.remove('open');
                 document.body.style.overflow = 'initial';
             };
         });
     }
-}
 
+    // 2. CHAMA AS OUTRAS FUNÇÕES
+    initScrollEffects();
+    
+    // Se tiver contadores ou terminais, chame-os aqui também
+    if (document.querySelector('.counter')) initCounters();
+});
+
+// 3. EFEITOS DE SCROLL
 function initScrollEffects() {
-    // Efeito de Header ao rolar
+    const header = document.querySelector('.header-main'); // Use a classe correta
+    
     window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.style.padding = "15px 5%";
-            header.style.background = "rgba(5, 5, 5, 0.95)";
-        } else {
-            header.style.padding = "0 5%";
-            header.style.background = "rgba(5, 5, 5, 0.6)";
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.background = "rgba(5, 5, 5, 0.98)";
+                header.style.height = "70px"; // Diminui suavemente
+            } else {
+                header.style.background = "rgba(5, 5, 5, 0.8)";
+                header.style.height = "90px";
+            }
         }
     });
 
-    // Reveal animation
-    const reveals = document.querySelectorAll('.reveal');
+    // Reveal animation (Intersection Observer)
+    const reveals = document.querySelectorAll('.reveal, [data-aos]');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -78,10 +56,10 @@ function initScrollEffects() {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
+    
     reveals.forEach(el => revealObserver.observe(el));
 }
-
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
