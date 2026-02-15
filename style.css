@@ -371,133 +371,77 @@ canvas#evolutionChart {
 /* ==========================================================================
    6. ECOSSISTEMA
    ========================================================================== */
+   
 .eco-hero {
-    position: relative;
-    padding: 180px 0 100px;
-    background: radial-gradient(circle at 50% 50%, rgba(209, 166, 134, 0.08) 0%, transparent 60%);
-    overflow: hidden;
+    padding: 160px 0 120px;
+    background: radial-gradient(circle at top, rgba(209, 166, 134, 0.05) 0%, transparent 50%);
     text-align: center;
 }
 
-.eco-badge {
-    background: rgba(209, 166, 134, 0.1);
-    color: var(--bronze);
-    padding: 8px 16px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    border: 1px solid rgba(209, 166, 134, 0.2);
-    display: inline-block;
-    margin-bottom: 24px;
-}
-
-.eco-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 24px;
-}
-
-.eco-description {
-    max-width: 700px;
-    margin: 0 auto 60px;
-    color: #a1a1aa;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* O CORE VISUAL (ÓRBITA) */
-.eco-visual-core {
+/* Container do Visual */
+.eco-architecture-visual {
     position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 40px auto;
-}
-
-.core-orbit {
-    width: 100%;
-    height: 100%;
-    border: 1px dashed rgba(209, 166, 134, 0.3);
-    border-radius: 50%;
+    max-width: 800px;
+    height: 400px;
+    margin: 60px auto 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: spin 60s linear infinite;
 }
 
-.core-center {
-    width: 80px;
-    height: 80px;
+/* O Centro (Nodo) */
+.node-main {
+    width: 100px;
+    height: 100px;
     background: var(--bg-dark);
-    border: 2px solid var(--bronze);
+    border: 1px solid var(--bronze);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 30px rgba(209, 166, 134, 0.3);
-    animation: reverse-spin 60s linear infinite;
+    z-index: 10;
+    box-shadow: 0 0 40px rgba(209, 166, 134, 0.2);
 }
 
-.core-center img { width: 40px; }
+.node-main img { width: 45px; }
 
-/* Estilo comum para os itens da órbita */
-.orbit-item {
+/* Itens de Serviço */
+.node-item {
     position: absolute;
-    background: var(--bg-dark);
+    padding: 12px 24px;
+    background: rgba(10, 10, 10, 0.8);
     border: 1px solid var(--border-light);
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 10px;
-    color: var(--bronze);
-    text-transform: uppercase;
+    border-radius: 4px;
+    font-size: 11px;
     font-weight: 700;
-    white-space: nowrap; /* Evita que o texto quebre */
-    
-    /* A animação reverse-spin deve ser combinada com o translate de posicionamento */
-    animation: reverse-spin 60s linear infinite;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    backdrop-filter: blur(5px);
 }
 
-/* Posições Cardinais Exatas */
-.p1 { 
-    top: 0; 
-    left: 50%; 
-    transform: translate(-50%, -50%); /* Centraliza no topo */
+.ni-1 { top: 0; left: 15%; }
+.ni-2 { top: 20%; right: 10%; }
+.ni-3 { bottom: 10%; left: 25%; }
+
+/* Linhas de Conexão */
+.node-line {
+    position: absolute;
+    background: linear-gradient(to right, transparent, var(--bronze), transparent);
+    height: 1px;
+    opacity: 0.3;
+    z-index: 1;
 }
 
-.p2 { 
-    top: 50%; 
-    right: 0; 
-    transform: translate(50%, -50%); /* Centraliza na direita */
-}
+.l1 { width: 300px; transform: rotate(-35deg); top: 30%; left: 15%; }
+.l2 { width: 250px; transform: rotate(15deg); top: 45%; right: 10%; }
+.l3 { width: 280px; transform: rotate(45deg); bottom: 35%; left: 20%; }
 
-.p3 { 
-    bottom: 0; 
-    left: 50%; 
-    transform: translate(-50%, 50%); /* Centraliza na base */
-}
-
-.p4 { 
-    top: 50%; 
-    left: 0; 
-    transform: translate(-50%, -50%); /* Centraliza na esquerda */
-}
-
-/* Ajuste na animação para não conflitar com o posicionamento */
-@keyframes reverse-spin {
-    from { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(360deg); }
-    to { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(0deg); }
-}
-
-/* Como o transform é usado para posicionar, vamos simplificar a animação 
-   removendo o rotate dos itens se ele estiver entortando o texto, 
-   ou aplicando o rotate de forma que o texto fique sempre reto: */
-
-.orbit-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: reverse-spin 60s linear infinite;
+@media (max-width: 768px) {
+    .eco-architecture-visual { height: 300px; }
+    .ni-1, .ni-2, .ni-3 { position: relative; margin: 10px; left: auto; right: auto; top: auto; bottom: auto; }
+    .node-line { display: none; } /* Remove as linhas no mobile para limpar o visual */
+    .eco-architecture-visual { flex-direction: column; }
 }
 
 /* ==========================================================================
