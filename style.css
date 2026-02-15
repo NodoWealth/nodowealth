@@ -45,9 +45,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* Isso permite que o botão se alinhe verticalmente ao centro do header */
 }
-
 
 .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
 .logo-img { height: 30px; }
@@ -1009,26 +1007,46 @@ canvas#evolutionChart {
 }
 
 /* --- MENU HAMBÚRGUER --- */
-/* RESET PARA O BOTÃO NÃO CRIAR BARRA PRETA */
 .mobile-menu-icon {
-    display: none; /* Esconde no desktop */
+    display: none; /* Escondido no Desktop */
     flex-direction: column;
-    justify-content: center;
     gap: 5px;
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
     z-index: 10001;
 }
 
 .mobile-menu-icon .bar {
-    width: 22px;
-    height: 1.5px;
-    background-color: #d1a686;
+    width: 25px;
+    height: 2px;
+    background-color: var(--bronze);
     transition: 0.3s;
 }
 
+/* --- MEDIA QUERY GLOBAL (Celulares) --- */
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: flex; /* Mostra o ícone no mobile */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%; /* Escondido fora da tela */
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transition: 0.4s;
+    }
+
+    .nav-links.active {
+        right: 0; /* Desliza para dentro da tela */
+    }
 
     /* AJUSTE DE GRIDS EM TODAS AS PÁGINAS */
     .hero-wrapper, 
@@ -1095,30 +1113,47 @@ canvas#evolutionChart {
 .mobile-only-action { display: none; }
 
 @media (max-width: 992px) {
-    /* Garante que a nav-links vire o menu lateral */
+    .mobile-menu-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10001;
+        margin-left: auto; /* Empurra o ícone para a direita */
+    }
+
+    .mobile-menu-icon .bar {
+        width: 25px;
+        height: 2px;
+        background-color: var(--bronze);
+        transition: 0.3s;
+    }
+
+    /* Transformando a nav-links no menu lateral */
     .nav-links {
-        display: flex !important; /* Força o display flex que o mobile precisa */
         position: fixed;
         top: 0;
-        right: -100%; /* Escondido */
+        right: -100%; /* Começa fora da tela */
         width: 280px;
         height: 100vh;
         background: #0a0a0a;
         flex-direction: column;
         padding: 100px 30px;
-        transition: 0.4s ease-in-out;
+        transition: 0.4s;
         z-index: 10000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
 
     .nav-links.active {
-        right: 0; /* Desliza para dentro */
+        right: 0; /* Aparece ao clicar */
     }
 
-    /* Animação do X no hamburguer */
-    .mobile-menu-icon.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .mobile-menu-icon.open .bar:nth-child(2) { opacity: 0; }
-    .mobile-menu-icon.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .header-actions { display: none; } /* Esconde o botão original no mobile */
+    .mobile-only-action { display: block; margin-top: 20px; }
 }
+
 
 @media (max-width: 768px) {
     .split-layout.reverse {
@@ -1137,43 +1172,6 @@ canvas#evolutionChart {
 @media (max-width: 900px) {
     .terminal-layout { grid-template-columns: 1fr; gap: 60px; }
     .terminal-mockup-wrapper { order: 2; }
-}
-
-
-@media (max-width: 992px) {
-    .mobile-menu-icon {
-        display: flex; /* Mostra apenas no mobile */
-    }
-
-    .header-actions { display: none; } /* Esconde o botão dourado no mobile */
-
-    .nav-links {
-        display: none; /* Esconde a lista lateral por padrão */
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: #050505; /* Fundo sólido do menu */
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: 0.4s ease;
-        z-index: 10000;
-    }
-
-    /* QUANDO ATIVO */
-    .nav-links.active {
-        display: flex !important;
-        right: 0;
-    }
-
-    .nav-links a {
-        font-size: 1.5rem;
-        color: #fff;
-        text-decoration: none;
-    }
 }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
