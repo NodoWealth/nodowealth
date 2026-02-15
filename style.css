@@ -441,6 +441,7 @@ canvas#evolutionChart {
 
 .core-center img { width: 40px; }
 
+/* Estilo comum para os itens da órbita */
 .orbit-item {
     position: absolute;
     background: var(--bg-dark);
@@ -451,14 +452,53 @@ canvas#evolutionChart {
     color: var(--bronze);
     text-transform: uppercase;
     font-weight: 700;
+    white-space: nowrap; /* Evita que o texto quebre */
+    
+    /* A animação reverse-spin deve ser combinada com o translate de posicionamento */
     animation: reverse-spin 60s linear infinite;
 }
 
-/* Posições na Órbita */
-.p1 { top: -10px; }
-.p2 { right: -20px; }
-.p3 { bottom: -10px; }
-.p4 { left: -20px; }
+/* Posições Cardinais Exatas */
+.p1 { 
+    top: 0; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* Centraliza no topo */
+}
+
+.p2 { 
+    top: 50%; 
+    right: 0; 
+    transform: translate(50%, -50%); /* Centraliza na direita */
+}
+
+.p3 { 
+    bottom: 0; 
+    left: 50%; 
+    transform: translate(-50%, 50%); /* Centraliza na base */
+}
+
+.p4 { 
+    top: 50%; 
+    left: 0; 
+    transform: translate(-50%, -50%); /* Centraliza na esquerda */
+}
+
+/* Ajuste na animação para não conflitar com o posicionamento */
+@keyframes reverse-spin {
+    from { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(360deg); }
+    to { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(0deg); }
+}
+
+/* Como o transform é usado para posicionar, vamos simplificar a animação 
+   removendo o rotate dos itens se ele estiver entortando o texto, 
+   ou aplicando o rotate de forma que o texto fique sempre reto: */
+
+.orbit-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: reverse-spin 60s linear infinite;
+}
 
 /* ==========================================================================
    7. FOOTER
