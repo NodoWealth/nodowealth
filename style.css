@@ -43,7 +43,7 @@ body {
     max-width: 1300px;
     margin: 0 auto;
     display: flex;
-    justify-content: center !important;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -111,20 +111,22 @@ body {
 
 /* Botão Header */
 .btn-access {
-    background: rgba(211, 166, 134, 0.1);
-    border: 1px solid var(--bronze);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 11px;
+background-color: transparent;
+    color: #d1a686; /* Cor Bronze */
+    border: 1px solid #d1a686;
+    padding: 10px 22px;
+    border-radius: 4px;
     text-decoration: none;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
-    transition: 0.4s;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
-.btn-access:hover { background: var(--bronze); color: #000; }
-
-
+.btn-access:hover { background-color: #d1a686;
+    color: #000;
+    box-shadow: 0 0 15px rgba(209, 166, 134, 0.3);
+}
 
 /* ==========================================================================
    3. HERO SECTION (HOME)
