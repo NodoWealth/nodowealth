@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
@@ -256,4 +255,4 @@ function initCounters() {
     countElements.forEach(el => observer.observe(el));
 }
 
-window.scrollTo({ top: document.getElementById('state-final').offsetTop - 100, behavior: 'smooth' });
+window.scrollTo({ top: document.getElementById('state-final').offsetTop - 100, behavior: 'smooth' });}
