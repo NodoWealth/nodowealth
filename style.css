@@ -1105,6 +1105,55 @@ canvas#evolutionChart {
 }
 
 
+/* No Desktop escondemos o hamburguer */
+.mobile-menu-icon {
+    display: none;
+}
+
+.mobile-only-action { display: none; }
+
+@media (max-width: 992px) {
+    .mobile-menu-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10001;
+        margin-left: auto; /* Empurra o ícone para a direita */
+    }
+
+    .mobile-menu-icon .bar {
+        width: 25px;
+        height: 2px;
+        background-color: var(--bronze);
+        transition: 0.3s;
+    }
+
+    /* Transformando a nav-links no menu lateral */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Começa fora da tela */
+        width: 280px;
+        height: 100vh;
+        background: #0a0a0a;
+        flex-direction: column;
+        padding: 100px 30px;
+        transition: 0.4s;
+        z-index: 10000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active {
+        right: 0; /* Aparece ao clicar */
+    }
+
+    .header-actions { display: none; } /* Esconde o botão original no mobile */
+    .mobile-only-action { display: block; margin-top: 20px; }
+}
+
 
 @media (max-width: 768px) {
     .split-layout.reverse {
@@ -1133,3 +1182,5 @@ canvas#evolutionChart {
 @keyframes reverse-spin { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
 @keyframes scanMove { 0% { top: 0; opacity: 0; } 50% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+
