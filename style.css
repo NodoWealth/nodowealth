@@ -45,7 +45,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Isso permite que o botão se alinhe verticalmente ao centro do header */
 }
+
 
 .logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
 .logo-img { height: 30px; }
@@ -1157,95 +1159,60 @@ canvas#evolutionChart {
     .terminal-mockup-wrapper { order: 2; }
 }
 
-/* Garante que o botão apareça no mobile */
 @media (max-width: 992px) {
+    /* Ajuste do botão para ficar elegante e sem a barra lateral */
     .mobile-menu-icon {
-        display: flex !important; /* Força a aparição */
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 10001;
-        margin-left: 20px;
-    }
-
-    .mobile-menu-icon .bar {
-        width: 25px;
-        height: 2px;
-        background-color: #d1a686; /* Cor Bronze da Nodo */
-        display: block;
-    }
-
-    /* Transforma a lista de links no menu lateral */
-    .nav-links {
-        display: none; /* Esconde a lista padrão */
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: #0a0a0a;
-        flex-direction: column;
-        padding: 100px 30px;
-        transition: 0.4s;
-        z-index: 10000;
-    }
-
-    .nav-links.active {
-        display: flex !important; /* Mostra quando ativo */
-        right: 0;
-    }
-}
-
-/* FORÇAR APARIÇÃO DO HAMBÚRGUER */
-@media (max-width: 992px) {
-    .mobile-menu-icon {
-        display: flex !important; /* Força o display */
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: fixed; /* Fixa no topo para não sumir */
-        top: 25px;
+        display: flex !important;
+        position: absolute; /* Mudado de fixed para absolute para integrar ao header */
+        top: 50%;
         right: 20px;
-        width: 40px;
-        height: 40px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        background: rgba(209, 166, 134, 0.1); /* Fundo leve bronze */
-        border: 1px solid rgba(209, 166, 134, 0.3);
-        border-radius: 8px;
-        z-index: 99999; /* Fica acima de TUDO */
-        cursor: pointer;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        background: transparent; /* Remove o fundo preto/bronze */
+        border: none;
+        z-index: 10001;
+        padding: 0;
     }
 
+    /* Linhas mais finas e elegantes */
     .mobile-menu-icon .bar {
-        display: block !important;
-        width: 22px;
-        height: 2px;
-        background-color: #d1a686 !important; /* Cor Bronze */
+        width: 24px;
+        height: 1.5px; /* Linha mais fina */
+        background-color: #d1a686 !important;
+        margin: 3px 0; /* Espaçamento entre as linhas */
         transition: 0.3s;
     }
 
-    /* Ajuste da navegação para não sobrepor o logo ao abrir */
+    /* Ajuste da navegação (O Menu que abre) */
     .nav-links {
-        display: none; 
-        flex-direction: column;
+        display: none;
         position: fixed;
         top: 0;
         right: -100%;
-        width: 100%; /* Ocupa a tela toda no mobile para facilitar */
+        width: 100%;
         height: 100vh;
-        background: #050505;
-        z-index: 99998;
-        padding: 100px 40px;
-        transition: 0.4s ease;
+        background: #0a0a0a; /* Fundo do menu aberto */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 0;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10000;
     }
 
     .nav-links.active {
         display: flex !important;
         right: 0;
+    }
+
+    /* Estilo dos links dentro do menu mobile */
+    .nav-links a {
+        font-size: 1.5rem;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
     }
 }
 
