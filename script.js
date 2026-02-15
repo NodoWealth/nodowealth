@@ -1,65 +1,35 @@
 /* ==========================================================================
    CONFIGURAÇÕES GLOBAIS E NAVEGAÇÃO
    ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. NAVEGAÇÃO MOBILE
-    const btn = document.querySelector('.mobile-menu-icon');
-    const nav = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+    const btnMenu = document.querySelector('.mobile-menu-icon');
+    const menuNav = document.querySelector('.nav-links');
 
-    if (btn && nav) {
-        btn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation(); // Evita que o clique "vaze" para o fundo
-            nav.classList.toggle('active');
-            btn.classList.toggle('open');
+    if (btnMenu && menuNav) {
+        btnMenu.onclick = function(event) {
+            event.preventDefault();
+            menuNav.classList.toggle('active');
+            btnMenu.classList.toggle('open');
+            
+            // Trava o scroll da página quando o menu abre
+            if(menuNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'initial';
+            }
         };
 
-        // Fecha ao clicar nos links (importante para One Page)
-        nav.querySelectorAll('a').forEach(link => {
-            link.onclick = () => {
-                nav.classList.remove('active');
-                btn.classList.remove('open');
+        // Fecha ao clicar nos links
+        menuNav.querySelectorAll('a').forEach(link => {
+            link.onclick = function() {
+                menuNav.classList.remove('active');
+                btnMenu.classList.remove('open');
                 document.body.style.overflow = 'initial';
             };
         });
     }
-
-    // 2. CHAMA AS OUTRAS FUNÇÕES
-    initScrollEffects();
-    
-    // Se tiver contadores ou terminais, chame-os aqui também
-    if (document.querySelector('.counter')) initCounters();
 });
 
-// 3. EFEITOS DE SCROLL
-function initScrollEffects() {
-    const header = document.querySelector('.header-main'); // Use a classe correta
-    
-    window.addEventListener('scroll', () => {
-        if (header) {
-            if (window.scrollY > 50) {
-                header.style.background = "rgba(5, 5, 5, 0.98)";
-                header.style.height = "70px"; // Diminui suavemente
-            } else {
-                header.style.background = "rgba(5, 5, 5, 0.8)";
-                header.style.height = "90px";
-            }
-        }
-    });
-
-    // Reveal animation (Intersection Observer)
-    const reveals = document.querySelectorAll('.reveal, [data-aos]');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    reveals.forEach(el => revealObserver.observe(el));
-}
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
