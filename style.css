@@ -372,76 +372,140 @@ canvas#evolutionChart {
    6. ECOSSISTEMA
    ========================================================================== */
    
-.eco-hero {
-    padding: 160px 0 120px;
-    background: radial-gradient(circle at top, rgba(209, 166, 134, 0.05) 0%, transparent 50%);
+/* --- HERO CLEAN & PREMIUM --- */
+.eco-hero-clean {
+    padding: 180px 0 100px;
+    background: #050505; /* Fundo puro para destacar o brilho */
     text-align: center;
+    overflow: hidden; /* Garante que o brilho não vaze a tela */
 }
 
-/* Container do Visual */
-.eco-architecture-visual {
+.hero-text-content {
+    margin-bottom: 60px;
     position: relative;
-    max-width: 800px;
-    height: 400px;
-    margin: 60px auto 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 2;
 }
 
-/* O Centro (Nodo) */
-.node-main {
-    width: 100px;
-    height: 100px;
-    background: var(--bg-dark);
-    border: 1px solid var(--bronze);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    box-shadow: 0 0 40px rgba(209, 166, 134, 0.2);
-}
-
-.node-main img { width: 45px; }
-
-/* Itens de Serviço */
-.node-item {
-    position: absolute;
-    padding: 12px 24px;
-    background: rgba(10, 10, 10, 0.8);
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
+.badge-pill {
+    border: 1px solid rgba(209, 166, 134, 0.3);
+    color: var(--bronze);
+    padding: 6px 16px;
+    border-radius: 50px;
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: #fff;
-    backdrop-filter: blur(5px);
+    background: rgba(209, 166, 134, 0.05);
 }
 
-.ni-1 { top: 0; left: 15%; }
-.ni-2 { top: 20%; right: 10%; }
-.ni-3 { bottom: 10%; left: 25%; }
+.clean-title {
+    font-size: 4rem;
+    margin: 20px 0;
+    line-height: 1.1;
+    font-weight: 700;
+}
 
-/* Linhas de Conexão */
-.node-line {
+.clean-desc {
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+/* --- O PAINEL DE VIDRO (A MÁGICA) --- */
+.glass-dashboard-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+/* O brilho dourado atrás do painel */
+.glow-effect {
     position: absolute;
-    background: linear-gradient(to right, transparent, var(--bronze), transparent);
-    height: 1px;
-    opacity: 0.3;
-    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: var(--bronze);
+    filter: blur(120px); /* O segredo do brilho suave */
+    opacity: 0.25;
+    z-index: 0;
+    border-radius: 50%;
+    animation: pulseGlow 5s infinite alternate;
 }
 
-.l1 { width: 300px; transform: rotate(-35deg); top: 30%; left: 15%; }
-.l2 { width: 250px; transform: rotate(15deg); top: 45%; right: 10%; }
-.l3 { width: 280px; transform: rotate(45deg); bottom: 35%; left: 20%; }
+.glass-panel {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; /* Card | Linha | Card... */
+    align-items: center;
+    
+    background: rgba(20, 20, 20, 0.6); /* Escuro mas transparente */
+    backdrop-filter: blur(20px); /* Desfoque do fundo */
+    -webkit-backdrop-filter: blur(20px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Topo mais claro simula luz */
+    border-radius: 24px;
+    padding: 40px 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
 
-@media (max-width: 768px) {
-    .eco-architecture-visual { height: 300px; }
-    .ni-1, .ni-2, .ni-3 { position: relative; margin: 10px; left: auto; right: auto; top: auto; bottom: auto; }
-    .node-line { display: none; } /* Remove as linhas no mobile para limpar o visual */
-    .eco-architecture-visual { flex-direction: column; }
+/* Os Itens Individuais */
+.pillar-card {
+    padding: 10px;
+    transition: 0.3s;
+    cursor: default;
+}
+
+.pillar-card:hover {
+    transform: translateY(-5px);
+}
+
+.pillar-icon {
+    font-family: 'Courier New', monospace; /* Fonte técnica */
+    font-size: 12px;
+    color: var(--bronze);
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.pillar-card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 5px 0;
+    color: #fff;
+}
+
+.pillar-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Linhas divisórias verticais */
+.vertical-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* Estilo para "Em Breve" */
+.pillar-card.inactive {
+    opacity: 0.5;
+}
+
+.coming-soon-text {
+    color: var(--bronze) !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.2; transform: translate(-50%, -50%) scale(0.9); }
+    100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.1); }
 }
 
 /* ==========================================================================
@@ -640,6 +704,23 @@ canvas#evolutionChart {
 @media (max-width: 768px) {
     .eco-hero { padding-top: 140px; }
     .eco-visual-core { width: 200px; height: 200px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .clean-title { font-size: 2.5rem; }
+    
+    .glass-panel {
+        grid-template-columns: 1fr; /* Empilha tudo */
+        gap: 30px;
+        padding: 30px;
+    }
+    
+    .vertical-line {
+        width: 100%;
+        height: 1px; /* Vira linha horizontal */
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    }
 }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
