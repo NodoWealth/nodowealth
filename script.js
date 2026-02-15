@@ -1,26 +1,26 @@
 /* ==========================================================================
    CONFIGURAÇÕES GLOBAIS E NAVEGAÇÃO
    ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-    const menuIcon = document.querySelector('.mobile-menu-icon');
-    const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.mobile-menu-icon');
+    const nav = document.querySelector('.nav-links');
 
-    if (menuIcon && navLinks) {
-        menuIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation(); // Evita conflitos com outros cliques
-            navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('open');
-            console.log("Menu clicado!"); // Para você testar no console do celular
-        });
+    if (btn && nav) {
+        btn.onclick = function() {
+            nav.classList.toggle('active');
+            btn.classList.toggle('open');
+            console.log("Menu disparado");
+        };
 
-        // Fecha ao clicar nos links
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.onclick = () => {
-                navLinks.classList.remove('active');
-                menuIcon.classList.remove('open');
-            };
+        // Fecha ao clicar em links
+        nav.querySelectorAll('a').forEach(link => {
+            link.onclick = function() {
+                nav.classList.remove('active');
+                btn.classList.remove('open');
+            }
         });
+    } else {
+        console.error("Elementos do menu não encontrados no HTML");
     }
 });
 
