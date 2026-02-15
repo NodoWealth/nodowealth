@@ -1009,46 +1009,25 @@ canvas#evolutionChart {
 }
 
 /* --- MENU HAMBÚRGUER --- */
+/* RESET PARA O BOTÃO NÃO CRIAR BARRA PRETA */
 .mobile-menu-icon {
-    display: none; /* Escondido no Desktop */
+    display: none; /* Esconde no desktop */
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
+    padding: 10px;
     z-index: 10001;
 }
 
 .mobile-menu-icon .bar {
-    width: 25px;
-    height: 2px;
-    background-color: var(--bronze);
+    width: 22px;
+    height: 1.5px;
+    background-color: #d1a686;
     transition: 0.3s;
 }
-
-/* --- MEDIA QUERY GLOBAL (Celulares) --- */
-@media (max-width: 768px) {
-    .mobile-menu-icon {
-        display: flex; /* Mostra o ícone no mobile */
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 80px;
-        right: -100%; /* Escondido fora da tela */
-        width: 100%;
-        height: calc(100vh - 80px);
-        background: rgba(5, 5, 5, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        align-items: center;
-        padding-top: 50px;
-        transition: 0.4s;
-    }
-
-    .nav-links.active {
-        right: 0; /* Desliza para dentro da tela */
-    }
 
     /* AJUSTE DE GRIDS EM TODAS AS PÁGINAS */
     .hero-wrapper, 
@@ -1106,14 +1085,6 @@ canvas#evolutionChart {
     .feature-card { padding: 20px; }
 }
 
-
-/* No Desktop escondemos o hamburguer */
-.mobile-menu-icon {
-    display: none;
-}
-
-.mobile-only-action { display: none; }
-
 @media (max-width: 992px) {
     /* Garante que a nav-links vire o menu lateral */
     .nav-links {
@@ -1159,61 +1130,40 @@ canvas#evolutionChart {
     .terminal-mockup-wrapper { order: 2; }
 }
 
+
 @media (max-width: 992px) {
-    /* Ajuste do botão para ficar elegante e sem a barra lateral */
     .mobile-menu-icon {
-        display: flex !important;
-        position: absolute; /* Mudado de fixed para absolute para integrar ao header */
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        width: 32px;
-        height: 32px;
-        background: transparent; /* Remove o fundo preto/bronze */
-        border: none;
-        z-index: 10001;
-        padding: 0;
+        display: flex; /* Mostra apenas no mobile */
     }
 
-    /* Linhas mais finas e elegantes */
-    .mobile-menu-icon .bar {
-        width: 24px;
-        height: 2px; /* Linha mais fina */
-        background-color: #d1a686 !important;
-        margin: 3px 0; /* Espaçamento entre as linhas */
-        transition: 0.3s;
-    }
+    .header-actions { display: none; } /* Esconde o botão dourado no mobile */
 
-   .nav-links {
-        display: none; /* Mantém escondido por padrão */
+    .nav-links {
+        display: none; /* Esconde a lista lateral por padrão */
         position: fixed;
         top: 0;
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: #0a0a0a;
+        background: #050505; /* Fundo sólido do menu */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 30px;
+        transition: 0.4s ease;
         z-index: 10000;
-        transition: right 0.4s ease;
     }
 
-    /* ESTA É A REGRA QUE FAZ APARECER */
+    /* QUANDO ATIVO */
     .nav-links.active {
-        display: flex !important; /* Força o flex para sobrepor o display:none */
+        display: flex !important;
         right: 0;
     }
 
-    .mobile-menu-icon {
-        display: flex !important;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10001;
-        cursor: pointer;
+    .nav-links a {
+        font-size: 1.5rem;
+        color: #fff;
+        text-decoration: none;
     }
 }
 
