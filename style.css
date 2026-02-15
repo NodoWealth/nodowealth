@@ -1157,6 +1157,47 @@ canvas#evolutionChart {
     .terminal-mockup-wrapper { order: 2; }
 }
 
+/* Garante que o botão apareça no mobile */
+@media (max-width: 992px) {
+    .mobile-menu-icon {
+        display: flex !important; /* Força a aparição */
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10001;
+        margin-left: 20px;
+    }
+
+    .mobile-menu-icon .bar {
+        width: 25px;
+        height: 2px;
+        background-color: #d1a686; /* Cor Bronze da Nodo */
+        display: block;
+    }
+
+    /* Transforma a lista de links no menu lateral */
+    .nav-links {
+        display: none; /* Esconde a lista padrão */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #0a0a0a;
+        flex-direction: column;
+        padding: 100px 30px;
+        transition: 0.4s;
+        z-index: 10000;
+    }
+
+    .nav-links.active {
+        display: flex !important; /* Mostra quando ativo */
+        right: 0;
+    }
+}
+
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 @keyframes slideUp { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }

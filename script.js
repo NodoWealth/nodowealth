@@ -2,18 +2,25 @@
    CONFIGURAÇÕES GLOBAIS E NAVEGAÇÃO
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-    initNavigation();
-    initScrollEffects();
-    
-    // Inicializa o Terminal Nodo se os elementos existirem
-    const btnReveal = document.getElementById('btn-reveal');
-    if (btnReveal) {
-        initTerminalNodo(btnReveal);
-    }
+    const menuIcon = document.querySelector('.mobile-menu-icon');
+    const navLinks = document.querySelector('.nav-links');
 
-    // Inicializa Contadores da Home
-    if (document.querySelector('.counter')) {
-        initCounters();
+    if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Evita conflitos com outros cliques
+            navLinks.classList.toggle('active');
+            menuIcon.classList.toggle('open');
+            console.log("Menu clicado!"); // Para você testar no console do celular
+        });
+
+        // Fecha ao clicar nos links
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.onclick = () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('open');
+            };
+        });
     }
 });
 
