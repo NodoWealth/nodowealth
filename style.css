@@ -508,6 +508,114 @@ canvas#evolutionChart {
     100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.1); }
 }
 
+/* --- SECÇÃO ESCURA PADRÃO --- */
+.eco-section-dark {
+    padding: 100px 0;
+    background-color: #080808; /* Um pouco mais claro que o preto puro da Hero */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Tipografia da Secção */
+.section-tag {
+    color: var(--bronze);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.section-desc {
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+/* Botão com Seta */
+.btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--bronze);
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+.btn-arrow:hover {
+    color: var(--bronze);
+    gap: 15px; /* A seta anda para a direita */
+}
+
+/* --- CARDS DE CARACTERÍSTICAS (LADO DIREITO) --- */
+.eco-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(10px); /* Move levemente para a direita */
+    border-color: rgba(209, 166, 134, 0.2);
+}
+
+.feature-card.highlight {
+    background: linear-gradient(90deg, rgba(209, 166, 134, 0.05), transparent);
+    border-left: 2px solid var(--bronze);
+}
+
+.card-number {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: var(--bronze);
+    opacity: 0.5;
+    font-weight: 700;
+}
+
+.card-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #eee;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.5;
+}
+
 /* ==========================================================================
    7. FOOTER
    ========================================================================== */
@@ -706,7 +814,7 @@ canvas#evolutionChart {
     .eco-visual-core { width: 200px; height: 200px; }
 }
 
-/* Mobile */
+/* Seção 1 Ecossistema */
 @media (max-width: 768px) {
     .clean-title { font-size: 2.5rem; }
     
@@ -721,6 +829,18 @@ canvas#evolutionChart {
         height: 1px; /* Vira linha horizontal */
         background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
     }
+}
+
+/* Seção 2 Ecossistema*/
+@media (max-width: 768px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .section-title { font-size: 2rem; }
+    
+    .feature-card { padding: 20px; }
 }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
