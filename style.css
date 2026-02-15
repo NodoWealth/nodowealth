@@ -1071,6 +1071,17 @@ canvas#evolutionChart {
     }
 }
 
+/* Espaçamento para páginas internas - Ajustado para o seu Header */
+.pt-large {
+    padding-top: 160px !important; 
+}
+
+@media (max-width: 992px) {
+    .pt-large {
+        padding-top: 120px !important; /* Um pouco menor no mobile */
+    }
+}
+
 /* Responsividade Mobile */
 @media (max-width: 768px) {
     .eco-hero { padding-top: 140px; }
