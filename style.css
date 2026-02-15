@@ -22,16 +22,18 @@ body {
 }
 
 /* ==========================================================================
-   2. HEADER & NAVEGAÇÃO (CORRIGIDO)
+   HEADER & NAVEGAÇÃO - CÓDIGO CORRIGIDO
    ========================================================================== */
+
+/* Configuração da Barra Fixa */
 .header-main {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(15px);
+    background: rgba(5, 5, 5, 0.95); /* Fundo escuro levemente transparente */
+    backdrop-filter: blur(15px);     /* Efeito de desfoque moderno */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 10000;
     display: flex;
@@ -53,15 +55,14 @@ body {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    z-index: 10002; /* Garante que o logo fique sobre o menu mobile */
+    z-index: 10002;
 }
-
-.logo-img { height: 40px; widdth: auto; }
+.logo-img { height: 40px; width: auto; }
 .brand-meta { display: flex; flex-direction: column; }
-.brand-name { color: #fff; font-weight: 700; letter-spacing: 1px; font-size: 14px; }
-.brand-status { color: var(--bronze); font-size: 10px; letter-spacing: 2px; }
+.brand-name { color: #fff; font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+.brand-status { color: #d1a686; font-size: 10px; letter-spacing: 2px; }
 
-/* --- NAVEGAÇÃO DESKTOP --- */
+/* --- NAVEGAÇÃO DESKTOP (PC) --- */
 .nav-links {
     display: flex;
     gap: 30px;
@@ -75,72 +76,75 @@ body {
     font-weight: 500;
     transition: color 0.3s;
 }
+.nav-links a:hover { color: #d1a686; }
 
-.nav-links a:hover { color: var(--bronze); }
+/* --- MENU CASCATA (DROPDOWN) --- */
+.dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+.dropdown-trigger { cursor: pointer; display: flex; align-items: center; gap: 5px; }
 
-/* --- DROPDOWN (CASCATA) --- */
-.dropdown { position: relative; }
-.dropdown-trigger { cursor: pointer; }
-
+/* O Menu que abre */
 .dropdown-content {
     display: none; /* Escondido por padrão */
     position: absolute;
-    top: 100%;
-    left: -10px;
+    top: 50px; /* Distância do topo */
+    left: -15px;
     background: #0a0a0a;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     min-width: 180px;
-    padding: 10px 0;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 10px 0;
+    z-index: 10001;
 }
 
-.dropdown:hover .dropdown-content { display: block; } /* Aparece ao passar o mouse */
+/* Mostrar ao passar o mouse (Desktop) */
+.dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
 
 .dropdown-content a {
     display: block;
     padding: 10px 20px;
-    font-size: 13px;
     color: #ccc;
+    font-size: 13px;
 }
 .dropdown-content a:hover { background: rgba(255,255,255,0.05); color: #fff; }
 
-/* Botão Mobile dentro do menu (escondido no PC) */
+/* Botão "Acessar" extra (escondido no PC) */
 .mobile-only-btn { display: none; }
 
-/* --- BOTÃO HAMBURGUER (ESTILO BASE) --- */
+/* --- BOTÃO HAMBURGUER (CORRIGIDO) --- */
 .mobile-menu-icon {
     display: none; /* Invisível no PC */
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
-    background: transparent; /* FUNDO TRANSPARENTE (Remove a barra preta) */
+    gap: 6px;
+    background: transparent !important; /* IMPORTANTE: Remove fundo preto/cinza */
     border: none;
     cursor: pointer;
-    z-index: 10002;
     padding: 10px;
+    z-index: 10002;
 }
 
 .mobile-menu-icon .bar {
     width: 24px;
     height: 2px;
-    background-color: var(--bronze);
+    background-color: #d1a686; /* Cor Bronze */
     transition: 0.3s;
+    border-radius: 2px;
 }
 
 /* ==========================================================================
-   MOBILE & TABLET (Abaixo de 992px)
+   MOBILE (CELULAR E TABLET - < 992px)
    ========================================================================== */
 @media (max-width: 992px) {
-    /* Mostra o hamburguer */
+    /* Mostra o ícone */
     .mobile-menu-icon { display: flex; }
 
-    /* Esconde o botão de ação desktop para dar espaço */
+    /* Esconde o botão dourado do header para não apertar */
     .header-actions .btn-access { display: none; }
 
-    /* Estilo do Menu Lateral (Drawer) */
+    /* Estilo do MENU ABERTO */
     .nav-links {
-        display: none; /* Importante: display none nativo */
+        display: none; /* Escondido nativamente */
         position: fixed;
         top: 0;
         right: -100%;
@@ -148,50 +152,61 @@ body {
         height: 100vh;
         background: #050505;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: 0.4s ease-in-out;
+        justify-content: flex-start; /* Alinha itens mais ao topo */
+        padding-top: 120px; /* Espaço para o header */
+        gap: 25px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 10000;
-        padding-top: 60px;
     }
 
-    /* Classe ativada pelo JS */
+    /* CLASSE MÁGICA QUE O JS ATIVA */
     .nav-links.active {
-        display: flex !important; /* Força o display flex */
+        display: flex !important;
         right: 0;
     }
 
-    .nav-links a { font-size: 1.2rem; }
-    
-    /* Ajuste da cascata no Mobile (Abre lista plana) */
+    /* Links maiores no celular */
+    .nav-links a { font-size: 1.3rem; font-weight: 400; }
+
+    /* Ajuste da CASCATA no Mobile */
+    .dropdown { 
+        display: flex; 
+        flex-direction: column; 
+        height: auto; 
+        width: 100%; 
+        align-items: center; 
+    }
     .dropdown-content {
-        position: static; /* Remove posição absoluta */
-        display: block; /* Sempre mostra os sub-itens no mobile */
+        position: static; /* Não flutua mais */
+        display: block;   /* Sempre visível no menu mobile */
         background: transparent;
         border: none;
         box-shadow: none;
-        padding-left: 0;
+        padding: 0;
         text-align: center;
-        padding-top: 10px;
+        margin-top: 10px;
     }
-    
-    .dropdown-trigger { font-weight: 700; color: var(--bronze) !important; pointer-events: none; }
-    .dropdown-content a { padding: 5px 0; font-size: 1rem; color: #888; }
-    
+    .dropdown-trigger { color: #d1a686 !important; font-weight: 700; pointer-events: none; }
+    .dropdown-content a { font-size: 1rem; color: #888; padding: 5px 0; }
+
+    /* Botão extra mobile */
     .mobile-only-btn {
         display: block;
         margin-top: 20px;
-        padding: 12px 30px;
-        border: 1px solid var(--bronze);
-        border-radius: 5px;
+        padding: 12px 40px;
+        border: 1px solid #d1a686;
+        border-radius: 4px;
+        color: #d1a686 !important;
+        font-size: 1rem !important;
     }
-    
-    /* Animação do X */
-    .mobile-menu-icon.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+
+    /* Animação do X no ícone */
+    .mobile-menu-icon.open .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .mobile-menu-icon.open .bar:nth-child(2) { opacity: 0; }
-    .mobile-menu-icon.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu-icon.open .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ==========================================================================
    3. HERO SECTION (HOME)
