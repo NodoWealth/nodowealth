@@ -47,7 +47,7 @@ body {
     align-items: center;
 }
 
-.logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+.logo-wrapper { display: flex; align-items: left; gap: 15px; text-decoration: none; }
 .logo-img { height: 30px; }
 .brand-meta { border-left: 1px solid rgba(211, 166, 134, 0.3); padding-left: 15px; }
 .brand-name { display: block; color: #fff; font-weight: 800; font-size: 14px; letter-spacing: 1px; }
