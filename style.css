@@ -22,16 +22,17 @@ body {
 }
 
 /* ==========================================================================
-   2. HEADER & NAVEGAÇÃO
+   2. HEADER & NAVEGAÇÃO (CORRIGIDO)
    ========================================================================== */
-/* --- HEADER BASE (PC) --- */
 .header-main {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 80px;
     background: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 10000;
     display: flex;
     align-items: center;
@@ -46,10 +47,25 @@ body {
     align-items: center;
 }
 
-/* Garante que os links apareçam no PC */
+/* --- LOGO --- */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    z-index: 10002; /* Garante que o logo fique sobre o menu mobile */
+}
+
+.logo-img { height: 40px; widdth: auto; }
+.brand-meta { display: flex; flex-direction: column; }
+.brand-name { color: #fff; font-weight: 700; letter-spacing: 1px; font-size: 14px; }
+.brand-status { color: var(--bronze); font-size: 10px; letter-spacing: 2px; }
+
+/* --- NAVEGAÇÃO DESKTOP --- */
 .nav-links {
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
 .nav-links a {
@@ -57,54 +73,124 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
+.nav-links a:hover { color: var(--bronze); }
+
+/* --- DROPDOWN (CASCATA) --- */
+.dropdown { position: relative; }
+.dropdown-trigger { cursor: pointer; }
+
+.dropdown-content {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255,255,255,0.1);
+    min-width: 180px;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .dropdown-content { display: block; } /* Aparece ao passar o mouse */
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #ccc;
+}
+.dropdown-content a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+
+/* Botão Mobile dentro do menu (escondido no PC) */
+.mobile-only-btn { display: none; }
+
+/* --- BOTÃO HAMBURGUER (ESTILO BASE) --- */
 .mobile-menu-icon {
-    display: none; /* Escondido no PC */
+    display: none; /* Invisível no PC */
     flex-direction: column;
+    justify-content: center;
     gap: 5px;
-    background: transparent;
+    background: transparent; /* FUNDO TRANSPARENTE (Remove a barra preta) */
     border: none;
     cursor: pointer;
+    z-index: 10002;
     padding: 10px;
 }
 
 .mobile-menu-icon .bar {
-    width: 22px;
-    height: 1.5px;
+    width: 24px;
+    height: 2px;
     background-color: var(--bronze);
+    transition: 0.3s;
 }
 
-/* --- AJUSTES MOBILE (Abaixo de 992px) --- */
+/* ==========================================================================
+   MOBILE & TABLET (Abaixo de 992px)
+   ========================================================================== */
 @media (max-width: 992px) {
-    .mobile-menu-icon {
-        display: flex; /* Aparece no mobile */
-    }
+    /* Mostra o hamburguer */
+    .mobile-menu-icon { display: flex; }
 
-    .header-actions .btn-access {
-        display: none; /* Esconde o botão dourado no mobile para não amontoar */
-    }
+    /* Esconde o botão de ação desktop para dar espaço */
+    .header-actions .btn-access { display: none; }
 
+    /* Estilo do Menu Lateral (Drawer) */
     .nav-links {
-        display: none; /* Esconde a linha de links */
+        display: none; /* Importante: display none nativo */
         position: fixed;
-        top: 80px; /* Começa logo abaixo do header */
-        left: 0;
+        top: 0;
+        right: -100%;
         width: 100%;
-        height: calc(100vh - 80px);
-        background: #0a0a0a;
+        height: 100vh;
+        background: #050505;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 40px;
-        z-index: 9999;
+        gap: 30px;
+        transition: 0.4s ease-in-out;
+        z-index: 10000;
+        padding-top: 60px;
     }
 
-    /* Regra que faz o menu aparecer quando clicado */
+    /* Classe ativada pelo JS */
     .nav-links.active {
-        display: flex !important;
+        display: flex !important; /* Força o display flex */
+        right: 0;
     }
+
+    .nav-links a { font-size: 1.2rem; }
+    
+    /* Ajuste da cascata no Mobile (Abre lista plana) */
+    .dropdown-content {
+        position: static; /* Remove posição absoluta */
+        display: block; /* Sempre mostra os sub-itens no mobile */
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding-left: 0;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+    .dropdown-trigger { font-weight: 700; color: var(--bronze) !important; pointer-events: none; }
+    .dropdown-content a { padding: 5px 0; font-size: 1rem; color: #888; }
+    
+    .mobile-only-btn {
+        display: block;
+        margin-top: 20px;
+        padding: 12px 30px;
+        border: 1px solid var(--bronze);
+        border-radius: 5px;
+    }
+    
+    /* Animação do X */
+    .mobile-menu-icon.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-icon.open .bar:nth-child(2) { opacity: 0; }
+    .mobile-menu-icon.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 }
 
 /* ==========================================================================

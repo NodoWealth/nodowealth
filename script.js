@@ -2,36 +2,44 @@
    CONFIGURAÇÕES GLOBAIS E NAVEGAÇÃO
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.querySelector('.mobile-menu-icon');
-    const nav = document.querySelector('.nav-links');
+    /* --- LÓGICA DO MENU MOBILE --- */
+    const menuBtn = document.querySelector('.mobile-menu-icon');
+    const navMenu = document.querySelector('.nav-links');
 
-    if (btn && nav) {
-        btn.onclick = function(e) {
+    if (menuBtn && navMenu) {
+        menuBtn.onclick = function(e) {
             e.preventDefault();
-            nav.classList.toggle('active');
-            // Animação opcional no botão
-            btn.classList.toggle('open');
-        };
-    }
-});
+            // Alterna as classes
+            navMenu.classList.toggle('active');
+            menuBtn.classList.toggle('open');
             
-            // Trava o scroll da página quando o menu abre
-            if(menuNav.classList.contains('active')) {
+            // Bloqueia/Desbloqueia o scroll da página
+            if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
-                document.body.style.overflow = 'initial';
+                document.body.style.overflow = '';
             }
         };
 
-        // Fecha ao clicar nos links
-        menuNav.querySelectorAll('a').forEach(link => {
-            link.onclick = function() {
-                menuNav.classList.remove('active');
-                btnMenu.classList.remove('open');
-                document.body.style.overflow = 'initial';
+        // Fecha o menu ao clicar em qualquer link
+        const links = navMenu.querySelectorAll('a');
+        links.forEach(link => {
+            link.onclick = () => {
+                navMenu.classList.remove('active');
+                menuBtn.classList.remove('open');
+                document.body.style.overflow = '';
             };
         });
-        
+    }
+
+    /* --- OUTRAS INICIALIZAÇÕES --- */
+    if (typeof initScrollEffects === 'function') initScrollEffects();
+    if (typeof initCounters === 'function' && document.querySelector('.counter')) initCounters();
+    
+    const btnReveal = document.getElementById('btn-reveal');
+    if (btnReveal && typeof initTerminalNodo === 'function') initTerminalNodo(btnReveal);
+});
+
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
