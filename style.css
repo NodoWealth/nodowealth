@@ -24,109 +24,88 @@ body {
 /* ==========================================================================
    2. HEADER & NAVEGAÇÃO
    ========================================================================== */
+/* --- HEADER BASE (PC) --- */
 .header-main {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     height: 80px;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
     z-index: 10000;
     display: flex;
     align-items: center;
-    background: rgba(5, 5, 5, 0.9);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border-light);
 }
 
 .header-container {
     width: 90%;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* Isso permite que o botão se alinhe verticalmente ao centro do header */
 }
 
+/* Garante que os links apareçam no PC */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
 
-.logo-wrapper { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-.logo-img { height: 30px; }
-.brand-meta { border-left: 1px solid rgba(211, 166, 134, 0.3); padding-left: 15px; }
-.brand-name { display: block; color: #fff; font-weight: 800; font-size: 14px; letter-spacing: 1px; }
-.brand-status { color: var(--bronze); font-size: 8px; letter-spacing: 2px; font-weight: 700; }
-
-/* Menu Nav */
-.nav-links { display: flex; align-items: center; gap: 30px; }
-
-.nav-links a, .dropdown-trigger {
-    color: #71717a;
+.nav-links a {
+    color: #fff;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     transition: 0.3s;
-    background: none;
+}
+
+.mobile-menu-icon {
+    display: none; /* Escondido no PC */
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
     border: none;
     cursor: pointer;
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-}
-
-.nav-links a:hover, .dropdown-trigger:hover { color: var(--bronze); }
-.bronze-text { color: var(--bronze) !important; }
-
-/* Dropdown */
-.dropdown { position: relative; }
-.arrow { font-size: 10px; margin-left: 5px; transition: 0.3s; }
-.dropdown:hover .arrow { transform: rotate(180deg); }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0a0a0a;
-    border: 1px solid var(--border-light);
-    min-width: 260px;
     padding: 10px;
-    border-radius: 12px;
-    margin-top: 15px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-.dropdown-content::before {
-    content: ""; position: absolute; top: -20px; left: 0; right: 0; height: 20px;
+.mobile-menu-icon .bar {
+    width: 22px;
+    height: 1.5px;
+    background-color: var(--bronze);
 }
 
-.dropdown:hover .dropdown-content { display: block; animation: slideUp 0.3s forwards; }
+/* --- AJUSTES MOBILE (Abaixo de 992px) --- */
+@media (max-width: 992px) {
+    .mobile-menu-icon {
+        display: flex; /* Aparece no mobile */
+    }
 
-.dropdown-item {
-    display: flex; align-items: center; gap: 15px; padding: 12px;
-    border-radius: 8px; text-decoration: none; transition: 0.3s;
+    .header-actions .btn-access {
+        display: none; /* Esconde o botão dourado no mobile para não amontoar */
+    }
+
+    .nav-links {
+        display: none; /* Esconde a linha de links */
+        position: fixed;
+        top: 80px; /* Começa logo abaixo do header */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: #0a0a0a;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        z-index: 9999;
+    }
+
+    /* Regra que faz o menu aparecer quando clicado */
+    .nav-links.active {
+        display: flex !important;
+    }
 }
-.dropdown-item:hover { background: rgba(255,255,255,0.05); }
-.item-text strong { display: block; color: #fff; font-size: 13px; }
-.item-text span { color: #71717a; font-size: 11px; }
-
-/* Botão Header */
-.btn-access {
-    background: rgba(211, 166, 134, 0.1);
-    border: 1px solid var(--bronze);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 11px;
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.4s;
-}
-.btn-access:hover { background: var(--bronze); color: #000; }
-
-
 
 /* ==========================================================================
    3. HERO SECTION (HOME)

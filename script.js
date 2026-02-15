@@ -2,14 +2,18 @@
    CONFIGURAÇÕES GLOBAIS E NAVEGAÇÃO
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', function() {
-    const btnMenu = document.querySelector('.mobile-menu-icon');
-    const menuNav = document.querySelector('.nav-links');
+    const btn = document.querySelector('.mobile-menu-icon');
+    const nav = document.querySelector('.nav-links');
 
-    if (btnMenu && menuNav) {
-        btnMenu.onclick = function(event) {
-            event.preventDefault();
-            menuNav.classList.toggle('active');
-            btnMenu.classList.toggle('open');
+    if (btn && nav) {
+        btn.onclick = function(e) {
+            e.preventDefault();
+            nav.classList.toggle('active');
+            // Animação opcional no botão
+            btn.classList.toggle('open');
+        };
+    }
+});
             
             // Trava o scroll da página quando o menu abre
             if(menuNav.classList.contains('active')) {
@@ -27,8 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = 'initial';
             };
         });
-    }
-});
+        
 /* ==========================================================================
    LÓGICA DO TERMINAL NODO: INTELIGÊNCIA FINANCEIRA
    ========================================================================== */
