@@ -718,6 +718,72 @@ canvas#evolutionChart {
     font-weight: 900;
 }
 
+/* --- TOOLS SECTION --- */
+.tools-bg {
+    background: linear-gradient(to bottom, #080808, #050505);
+    padding-bottom: 120px;
+}
+
+.section-header-left {
+    max-width: 600px;
+    margin-bottom: 60px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.tool-preview-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tool-preview-card:hover {
+    background: rgba(209, 166, 134, 0.02);
+    border-color: rgba(209, 166, 134, 0.3);
+    transform: translateY(-10px);
+}
+
+.tool-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.tool-preview-card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.tool-preview-card p {
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.tool-features {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+
+.tool-features li {
+    font-size: 0.8rem;
+    color: var(--bronze);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
 /* ==========================================================================
    7. FOOTER
    ========================================================================== */
@@ -747,7 +813,7 @@ canvas#evolutionChart {
 
 
 /* ==========================================================================
-   7. RESPONSIVIDADE
+   8. RESPONSIVIDADE
    ========================================================================== */
 @media (max-width: 900px) {
     .hero-wrapper { grid-template-columns: 1fr; text-align: center; }
@@ -954,6 +1020,10 @@ canvas#evolutionChart {
     }
 }
 
+/* Seção 3 Ecossistema*/
+@media (max-width: 992px) {
+    .tools-grid { grid-template-columns: 1fr; }
+}
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
