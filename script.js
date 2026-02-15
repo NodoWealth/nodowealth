@@ -21,11 +21,30 @@ let evolutionChartInstance = null;
 
 function initNavigation() {
     const menuIcon = document.querySelector('.mobile-menu-icon');
-    const nav = document.querySelector('.main-nav');
-    if (menuIcon && nav) {
-        menuIcon.addEventListener('click', () => {
-            nav.classList.toggle('active');
+    const navLinks = document.querySelector('.nav-links'); // Ajustado de .main-nav para .nav-links
+
+    if (menuIcon && navLinks) {
+        menuIcon.onclick = function(e) {
+            e.preventDefault();
+            navLinks.classList.toggle('active');
             menuIcon.classList.toggle('open');
+            
+            // Opcional: impede scroll no fundo quando menu abrir
+            if(navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'initial';
+            }
+        };
+
+        // Fecha o menu ao clicar em qualquer link lá dentro
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.onclick = () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('open');
+                document.body.style.overflow = 'initial';
+            };
         });
     }
 }
