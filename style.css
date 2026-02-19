@@ -925,6 +925,105 @@ canvas#evolutionChart {
    8. RESEARCH
    ========================================================================== */
 
+   /* ==========================================================================
+   AJUSTE DE LAYOUT PARA PÁGINAS INTERNAS (RESEARCH/SIMULADOR)
+   ========================================================================== */
+
+/* Garante que o conteúdo não fique por baixo do header fixo */
+.research-page main, 
+.calculator-body main {
+    padding-top: 100px; /* Ajuste conforme a altura do teu header */
+    min-height: 80vh;
+}
+
+/* Estilização dos Cards de Research */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 5%;
+}
+
+.report-card {
+    background: #0a0a0a; /* Fundo escuro consistente */
+    border: 1px solid rgba(209, 166, 134, 0.1); /* Bronze suave */
+    padding: 30px;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.report-card:hover {
+    border-color: #d1a686;
+    transform: translateY(-5px);
+    background: #0f0f0f;
+}
+
+.report-card.locked {
+    filter: grayscale(0.5);
+}
+
+.report-card.locked::after {
+    content: "🔒 PREMIUM";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.6rem;
+    background: #d1a686;
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+/* Botões pequenos para o grid */
+.btn-gold-small {
+    background: #d1a686;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-outline-small {
+    background: transparent;
+    color: #d1a686;
+    border: 1px solid #d1a686;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Advisor Section */
+.advisor-cta {
+    padding: 60px 5%;
+}
+
+.advisor-box {
+    background: linear-gradient(135deg, #121212 0%, #050505 100%);
+    border: 1px solid rgba(209, 166, 134, 0.3);
+    padding: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+
 .research-hero { padding: 100px 5%; text-align: center; background: radial-gradient(circle at center, #1a1512 0%, #050505 100%); }
 .reports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 0; }
 .report-card { background: #111; border: 1px solid #222; padding: 30px; border-radius: 16px; transition: 0.3s; position: relative; }
@@ -1214,6 +1313,10 @@ canvas#evolutionChart {
 @media (max-width: 900px) {
     .terminal-layout { grid-template-columns: 1fr; gap: 60px; }
     .terminal-mockup-wrapper { order: 2; }
+}
+
+@media (max-width: 768px) {
+    .advisor-box { flex-direction: column; text-align: center; }
 }
 
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
