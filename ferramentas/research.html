@@ -60,6 +60,55 @@
         </div>
     </section>
     
+<section class="research-grid container">
+    
+    <article class="research-card featured">
+        <div class="card-meta">
+            <span class="label-open">ACESSO ABERTO</span>
+            <span class="read-time">8 min de leitura</span>
+        </div>
+        <div class="card-body">
+            <h3>Vale S.A. (VALE3): O Despertar do Gigante</h3>
+            <p>Uma análise profunda sobre a soberania operacional no S11D e por que o mercado está precificando o risco China de forma errada.</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn-research-main" onclick="openLeadModal('VALE3')">Ler Tese Completa</button>
+            <span class="date">19 FEV 2026</span>
+        </div>
+    </article>
+
+    <article class="research-card locked">
+        <div class="card-meta">
+            <span class="label-premium">PREMIUM 🔒</span>
+            <span class="read-time">12 min de leitura</span>
+        </div>
+        <div class="card-body">
+            <h3>Small Caps: 3 Joias fora do Radar para 2026</h3>
+            <p>Empresas com múltiplos abaixo de 5x EV/EBITDA e potencial de reprecificação após o ciclo de queda de juros.</p>
+        </div>
+        <div class="card-footer">
+            <a href="acesso.html" class="btn-research-outline">Assine para Acessar</a>
+            <span class="date">15 FEV 2026</span>
+        </div>
+    </article>
+
+    <article class="research-card locked">
+        <div class="card-meta">
+            <span class="label-premium">PREMIUM 🔒</span>
+            <span class="read-time">6 min de leitura</span>
+        </div>
+        <div class="card-body">
+            <h3>Estratégia de Renda Fixa: O Fim do IPCA+ 6?</h3>
+            <p>Como posicionar a carteira para marcação a mercado antes da próxima reunião do COPOM.</p>
+        </div>
+        <div class="card-footer">
+            <a href="acesso.html" class="btn-research-outline">Assine para Acessar</a>
+            <span class="date">10 FEV 2026</span>
+        </div>
+    </article>
+
+</section>
+
     </main>
 
 <footer class="main-footer">
@@ -67,7 +116,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="logo-wrapper">
-                    <img src="logo_nodo.png" alt="Nodo Logo" class="logo-img">
+                    <img src="../logo_nodo.png" alt="Nodo Logo" class="logo-img">
                     <div class="brand-meta">
                         <span class="brand-name">NODO</span>
                         <span class="brand-status">EQUITY & CORE</span>
@@ -89,7 +138,7 @@
             <div class="footer-nav">
                 <h4>Ferramentas</h4>
                 <ul>
-                    <li><a href="ferramentas/calculadora.html">Juros Compostos</a></li>
+                    <li><a href="calculadora.html">Juros Compostos</a></li>
                 </ul>
             </div>
 
@@ -116,23 +165,6 @@
     </div>
 </footer>
 
-    <div id="leadModal" class="modal">
-        <div class="modal-content-small">
-            <h3>Acesse o Research Gratuito</h3>
-            <p>Deixe seu melhor e-mail para receber a análise completa e entrar na nossa lista VIP.</p>
-            <form id="leadForm">
-                <input type="text" placeholder="Seu Nome" required>
-                <input type="email" placeholder="Seu melhor E-mail" required>
-                <button type="submit" class="btn-gold" style="width: 100%;">Liberar Acesso</button>
-            </form>
-            <button class="btn-close" onclick="closeLeadModal()">Fechar</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-    <script>
-        function openLeadModal(report) { document.getElementById('leadModal').style.display = 'flex'; }
-        function closeLeadModal() { document.getElementById('leadModal').style.display = 'none'; }
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>
