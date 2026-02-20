@@ -1050,6 +1050,153 @@ canvas#evolutionChart {
     animation: mouseScroll 2s infinite;
 }
 
+/* SEÇÃO INTELLIGENCE FEED */
+.intelligence-feed {
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-header-technical {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.technical-title {
+    font-family: monospace;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: #444;
+}
+
+.line-decorator {
+    height: 1px;
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.05);
+    margin-right: 40px;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 20px;
+    font-size: 0.7rem;
+    color: #444;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    color: var(--accent-bronze);
+}
+
+/* ITENS DO FEED */
+.intel-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 200px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.intel-item:hover {
+    padding-left: 20px;
+    background: rgba(209, 166, 134, 0.02);
+}
+
+.intel-number {
+    font-family: monospace;
+    color: #222;
+    font-size: 1.2rem;
+}
+
+.intel-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.category {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.access-badge {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 2px;
+}
+
+.access-badge.open {
+    background: rgba(209, 166, 134, 0.1);
+    color: var(--accent-bronze);
+    border: 1px solid var(--accent-bronze);
+}
+
+.access-badge.locked {
+    background: #111;
+    color: #444;
+    border: 1px solid #222;
+}
+
+.intel-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.intel-item:hover .intel-title {
+    color: var(--accent-bronze);
+}
+
+.intel-preview {
+    color: #666;
+    font-size: 0.95rem;
+    max-width: 800px;
+}
+
+.intel-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.intel-item.locked-intel {
+    opacity: 0.6;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .intel-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .intel-number { display: none; }
+    .intel-action { justify-content: flex-start; }
+    .intel-title { font-size: 1.4rem; }
+}
+
 @keyframes mouseScroll {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(200%); }
